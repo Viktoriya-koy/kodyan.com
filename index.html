@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kodyan · Cuidado, conciencia y creación</title>
+    
+    <!-- 1. HOJA DE ESTILOS (CSS) -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- ========================================== -->
+    <!-- LIVING INTERACTIVO (La imagen de tu hija)  -->
+    <!-- ========================================== -->
+    <main id="living-container">
+        
+        <!-- IMAGEN DE FONDO -->
+        <img 
+            src="living-kodyan.jpg" 
+            alt="Living de Kodyan" 
+            usemap="#mapa-kodyan" 
+            id="living-image"
+        />
+
+        <!-- MAPA DE ZONAS CLIQUEABLES -->
+        <map name="mapa-kodyan">
+            <!-- ZONA 1: ECO (ventana con árboles) -->
+            <area 
+                shape="rect" 
+                coords="0,0,300,600" 
+                href="/eco/" 
+                alt="Kodyan Eco"
+                data-pilar="eco"
+            />
+            
+            <!-- ZONA 2: CARE (sillón con pulpo) -->
+            <area 
+                shape="circle" 
+                coords="400,300,150" 
+                href="/care/" 
+                alt="Kodyan Care"
+                data-pilar="care"
+            />
+            
+            <!-- ZONA 3: 3D (estantería con juguetes) -->
+            <area 
+                shape="rect" 
+                coords="700,200,1000,600" 
+                href="/3d/" 
+                alt="Kodyan 3D"
+                data-pilar="3d"
+            />
+            
+            <!-- ZONA 4: SOBRE (cuadro en la pared) -->
+            <area 
+                shape="rect" 
+                coords="500,50,700,150" 
+                href="/sobre/" 
+                alt="Sobre Kodyan"
+                data-pilar="sobre"
+            />
+        </map>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- FOOTER (Pie de página)                    -->
+    <!-- ========================================== -->
+    <footer>
+        <p>© 2025 Kodyan · Hecho con ❤️ y 🐙</p>
+        <p>
+            <a href="/care/">Care</a> · 
+            <a href="/eco/">Eco</a> · 
+            <a href="/3d/">3D</a> · 
+            <a href="/sobre/">Sobre</a>
+        </p>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- 2. ARCHIVO DE JAVASCRIPT                  -->
+    <!-- ========================================== -->
+    <script src="script.js"></script>
+</body>
+</html>
