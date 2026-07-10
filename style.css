@@ -1,0 +1,139 @@
+/* ============================================= */
+/* 1. RESET Y ESTILOS GENERALES                  */
+/* ============================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #367588; /* Tu color favorito de fondo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+}
+
+/* ============================================= */
+/* 2. CONTENEDOR DEL LIVING                      */
+/* ============================================= */
+
+#living-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    transition: box-shadow 0.3s ease;
+}
+
+#living-container:hover {
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
+}
+
+#living-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+/* ============================================= */
+/* 3. ZONAS CLIQUEABLES (Áreas del mapa)        */
+/* ============================================= */
+
+/* Todas las áreas se comportan como enlaces */
+area {
+    cursor: pointer;
+}
+
+/* Cuando el mouse pasa por encima de un área,
+   la imagen cambia sutilmente (efecto global) */
+#living-image.hover-eco {
+    filter: brightness(1.05) drop-shadow(0 0 20px rgba(46, 204, 113, 0.3));
+}
+
+#living-image.hover-care {
+    filter: brightness(1.05) drop-shadow(0 0 20px rgba(155, 89, 182, 0.3));
+}
+
+#living-image.hover-3d {
+    filter: brightness(1.05) drop-shadow(0 0 20px rgba(243, 156, 18, 0.3));
+}
+
+#living-image.hover-sobre {
+    filter: brightness(1.05) drop-shadow(0 0 20px rgba(54, 117, 136, 0.3));
+}
+
+/* ============================================= */
+/* 4. FOOTER (Pie de página)                    */
+/* ============================================= */
+
+footer {
+    margin-top: 30px;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
+    font-weight: 500;
+    margin: 0 8px;
+}
+
+footer a:hover {
+    color: #ffffff;
+    border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
+footer p:first-child {
+    opacity: 0.7;
+    font-weight: 300;
+}
+
+/* ============================================= */
+/* 5. RESPONSIVE (Para móviles)                 */
+/* ============================================= */
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    #living-container {
+        border-radius: 16px;
+    }
+
+    footer {
+        font-size: 0.75rem;
+        margin-top: 20px;
+    }
+
+    footer a {
+        margin: 0 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    #living-container {
+        border-radius: 12px;
+    }
+
+    footer p {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
