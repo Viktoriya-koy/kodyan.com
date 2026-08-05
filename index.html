@@ -73,11 +73,21 @@
         }
         .skip-link:focus { top: 0; }
 
-        /* Foco visible para navegación por teclado */
         *:focus-visible {
             outline: 3px solid var(--color-primario);
             outline-offset: 3px;
             border-radius: 6px;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
         }
 
         /* ============================================ */
@@ -136,6 +146,7 @@
             gap: 32px;
             list-style: none;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         nav a {
@@ -145,6 +156,7 @@
             font-size: 1rem;
             transition: color 0.2s ease;
             position: relative;
+            white-space: nowrap;
         }
 
         nav a::after {
@@ -166,7 +178,113 @@
         }
 
         /* ============================================ */
-        /* 4. HERO (con el nuevo texto)                 */
+        /* 4. BOTÓN DE ACCESIBILIDAD                    */
+        /* ============================================ */
+        .btn-accesibilidad {
+            background: rgba(54, 117, 136, 0.10);
+            border: 2px solid var(--color-primario);
+            color: var(--color-primario);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .btn-accesibilidad:hover {
+            background: var(--color-primario);
+            color: var(--blanco);
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(54, 117, 136, 0.3);
+        }
+
+        .btn-accesibilidad:focus-visible {
+            outline: 3px solid var(--color-primario);
+            outline-offset: 3px;
+        }
+
+        /* ============================================ */
+        /* 5. PANEL DE ACCESIBILIDAD                    */
+        /* ============================================ */
+        .panel-accesibilidad {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: var(--blanco);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            padding: 24px;
+            width: 280px;
+            z-index: 999;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            transform: translateY(-10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .panel-accesibilidad.activo {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .panel-accesibilidad h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 16px;
+            letter-spacing: -0.2px;
+        }
+
+        .panel-accesibilidad .opcion {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .panel-accesibilidad .opcion:last-child {
+            border-bottom: none;
+        }
+
+        .panel-accesibilidad .opcion span {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        .panel-accesibilidad .opcion button {
+            background: #f1f5f9;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .panel-accesibilidad .opcion button:hover {
+            background: var(--color-primario);
+            color: var(--blanco);
+        }
+
+        .panel-accesibilidad .opcion button.activo {
+            background: var(--color-primario);
+            color: var(--blanco);
+        }
+
+        /* ============================================ */
+        /* 6. HERO                                     */
         /* ============================================ */
         .hero {
             padding: 80px 0 40px;
@@ -244,14 +362,8 @@
             line-height: 1.6;
         }
 
-        .hero p .separador {
-            color: var(--color-primario);
-            opacity: 0.3;
-            margin: 0 6px;
-        }
-
         /* ============================================ */
-        /* 5. CARDS (Glassmorphism)                     */
+        /* 7. CARDS (Glassmorphism)                     */
         /* ============================================ */
         .cards-grid {
             display: grid;
@@ -415,7 +527,7 @@
         }
 
         /* ============================================ */
-        /* 6. FOOTER                                    */
+        /* 8. FOOTER                                    */
         /* ============================================ */
         footer {
             background: #0f172a;
@@ -477,7 +589,79 @@
         }
 
         /* ============================================ */
-        /* 7. RESPONSIVE                                */
+        /* 9. ESTILOS PARA MODOS DE ACCESIBILIDAD       */
+        /* ============================================ */
+        body.alto-contraste {
+            background: #000 !important;
+            color: #fff !important;
+        }
+        body.alto-contraste .card {
+            background: #1a1a1a !important;
+            border-color: #fff !important;
+        }
+        body.alto-contraste .card p {
+            color: #ddd !important;
+        }
+        body.alto-contraste .card h2 {
+            color: #fff !important;
+        }
+        body.alto-contraste header {
+            background: #000 !important;
+            border-color: #fff !important;
+        }
+        body.alto-contraste nav a {
+            color: #fff !important;
+        }
+        body.alto-contraste .btn-card {
+            border: 2px solid #fff !important;
+        }
+        body.alto-contraste .panel-accesibilidad {
+            background: #1a1a1a !important;
+            border-color: #fff !important;
+        }
+        body.alto-contraste .panel-accesibilidad h3,
+        body.alto-contraste .panel-accesibilidad .opcion span {
+            color: #fff !important;
+        }
+        body.alto-contraste footer {
+            background: #000 !important;
+        }
+        body.alto-contraste .hero h1 {
+            color: #fff !important;
+        }
+        body.alto-contraste .hero p {
+            color: #ddd !important;
+        }
+        body.alto-contraste .hero .destacado {
+            color: #fff !important;
+            border-color: #fff !important;
+            background: transparent !important;
+        }
+
+        body.lectura-facil .card p {
+            font-size: 1.2rem !important;
+            line-height: 1.8 !important;
+        }
+        body.lectura-facil .hero p {
+            font-size: 1.4rem !important;
+            line-height: 1.8 !important;
+        }
+        body.lectura-facil .card .btn-card {
+            font-size: 1.1rem !important;
+            padding: 14px 32px !important;
+        }
+        body.lectura-facil nav a {
+            font-size: 1.1rem !important;
+        }
+        body.lectura-facil .card h2 {
+            font-size: 2rem !important;
+        }
+        body.lectura-facil .hero h1 {
+            font-size: 4rem !important;
+        }
+
+        /* ============================================ */
+        /* 10. RESPONSIVE                               */
         /* ============================================ */
         @media (max-width: 992px) {
             .cards-grid {
@@ -485,6 +669,22 @@
             }
             .hero h1 {
                 font-size: 2.8rem;
+            }
+            nav ul {
+                gap: 16px;
+            }
+            nav a {
+                font-size: 0.85rem;
+            }
+            .btn-accesibilidad {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+            .panel-accesibilidad {
+                right: 10px;
+                width: 260px;
+                top: 70px;
             }
         }
 
@@ -505,10 +705,22 @@
                 gap: 24px;
             }
             nav ul {
-                gap: 16px;
+                gap: 10px;
+                justify-content: flex-end;
             }
             nav a {
+                font-size: 0.8rem;
+            }
+            .btn-accesibilidad {
+                width: 34px;
+                height: 34px;
                 font-size: 0.9rem;
+            }
+            .panel-accesibilidad {
+                right: 10px;
+                width: 240px;
+                top: 60px;
+                padding: 16px;
             }
             .hero::before {
                 font-size: 10rem;
@@ -532,6 +744,17 @@
                 height: 60px;
                 font-size: 1.8rem;
             }
+            nav a {
+                font-size: 0.7rem;
+            }
+            nav ul {
+                gap: 6px;
+            }
+            .btn-accesibilidad {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -545,29 +768,29 @@
     <!-- ========================================== -->
     <!-- HEADER                                     -->
     <!-- ========================================== -->
-   <header role="banner">
-    <div class="container header-container">
-        <a href="/" class="logo" aria-label="Kodyan, página principal">
-            <i class="fa-solid fa-octopus-deploy" aria-hidden="true"></i>
-            <span>Kodyan</span>
-        </a>
-        <nav role="navigation" aria-label="Menú principal">
-            <ul>
-                <li><a href="/care/" aria-label="Ir a Kodyan Care, herramientas emocionales">Care</a></li>
-                <li><a href="/eco/" aria-label="Ir a Kodyan Eco, calculadoras ecológicas">Eco</a></li>
-                <li><a href="/3d/" aria-label="Ir a Kodyan 3D, objetos impresos en 3D">3D</a></li>
-                <li><a href="/sobre/" aria-label="Conoce más sobre Kodyan">Acerca de</a></li>
-                <li><a href="/contacto/" aria-label="Ponte en contacto con Kodyan">Contacto</a></li>
-                <li>
-                    <button class="btn-accesibilidad" id="btnAccesibilidad" aria-label="Abrir panel de accesibilidad" title="Opciones de accesibilidad">
-                        <i class="fa-solid fa-universal-access" aria-hidden="true"></i>
-                    </button>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</header>
-    
+    <header role="banner">
+        <div class="container header-container">
+            <a href="/" class="logo" aria-label="Kodyan, página principal">
+                <i class="fa-solid fa-octopus-deploy" aria-hidden="true"></i>
+                <span>Kodyan</span>
+            </a>
+            <nav role="navigation" aria-label="Menú principal">
+                <ul>
+                    <li><a href="/care/" aria-label="Ir a Kodyan Care, herramientas emocionales">Care</a></li>
+                    <li><a href="/eco/" aria-label="Ir a Kodyan Eco, calculadoras ecológicas">Eco</a></li>
+                    <li><a href="/3d/" aria-label="Ir a Kodyan 3D, objetos impresos en 3D">3D</a></li>
+                    <li><a href="/sobre/" aria-label="Conoce más sobre Kodyan">Acerca de</a></li>
+                    <li><a href="/contacto/" aria-label="Ponte en contacto con Kodyan">Contacto</a></li>
+                    <li>
+                        <button class="btn-accesibilidad" id="btnAccesibilidad" aria-label="Abrir panel de accesibilidad" title="Opciones de accesibilidad" aria-expanded="false">
+                            <i class="fa-solid fa-universal-access" aria-hidden="true"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
     <!-- ========================================== -->
     <!-- MAIN (Contenido principal)                 -->
     <!-- ========================================== -->
@@ -645,6 +868,8 @@
                         <li><a href="/care/" aria-label="Ir a Kodyan Care">Care</a></li>
                         <li><a href="/eco/" aria-label="Ir a Kodyan Eco">Eco</a></li>
                         <li><a href="/3d/" aria-label="Ir a Kodyan 3D">3D</a></li>
+                        <li><a href="/sobre/" aria-label="Conoce más sobre Kodyan">Acerca de</a></li>
+                        <li><a href="/contacto/" aria-label="Ponte en contacto con Kodyan">Contacto</a></li>
                     </ul>
                 </div>
                 <div>
@@ -659,6 +884,109 @@
             </div>
         </div>
     </footer>
+
+    <!-- ========================================== -->
+    <!-- PANEL DE ACCESIBILIDAD (HTML)              -->
+    <!-- ========================================== -->
+    <div class="panel-accesibilidad" id="panelAccesibilidad" role="dialog" aria-label="Panel de accesibilidad">
+        <h3>♿ Opciones de accesibilidad</h3>
+        
+        <div class="opcion">
+            <span>🔍 Tamaño de texto</span>
+            <div>
+                <button id="disminuirTexto" aria-label="Disminuir tamaño de texto">A-</button>
+                <button id="aumentarTexto" aria-label="Aumentar tamaño de texto">A+</button>
+            </div>
+        </div>
+        
+        <div class="opcion">
+            <span>🌓 Contraste</span>
+            <button id="toggleContraste" aria-label="Activar o desactivar alto contraste">Activar</button>
+        </div>
+        
+        <div class="opcion">
+            <span>📖 Lectura fácil</span>
+            <button id="toggleLectura" aria-label="Activar o desactivar modo lectura">Activar</button>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT PARA ACCESIBILIDAD              -->
+    <!-- ========================================== -->
+    <script>
+        // =============================================
+        // 1. ABRIR/CERRAR PANEL DE ACCESIBILIDAD
+        // =============================================
+        const btnAccesibilidad = document.getElementById('btnAccesibilidad');
+        const panelAccesibilidad = document.getElementById('panelAccesibilidad');
+        let panelAbierto = false;
+
+        btnAccesibilidad.addEventListener('click', function(e) {
+            e.stopPropagation();
+            panelAbierto = !panelAbierto;
+            panelAccesibilidad.classList.toggle('activo', panelAbierto);
+            this.setAttribute('aria-expanded', panelAbierto);
+        });
+
+        // Cerrar panel al hacer clic fuera
+        document.addEventListener('click', function(e) {
+            if (panelAbierto && !panelAccesibilidad.contains(e.target) && e.target !== btnAccesibilidad) {
+                panelAccesibilidad.classList.remove('activo');
+                panelAbierto = false;
+                btnAccesibilidad.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Cerrar con ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && panelAbierto) {
+                panelAccesibilidad.classList.remove('activo');
+                panelAbierto = false;
+                btnAccesibilidad.setAttribute('aria-expanded', 'false');
+                btnAccesibilidad.focus();
+            }
+        });
+
+        // =============================================
+        // 2. FUNCIONES DE ACCESIBILIDAD
+        // =============================================
+
+        // Aumentar texto
+        let tamañoTexto = 100;
+        const body = document.body;
+
+        document.getElementById('aumentarTexto').addEventListener('click', function() {
+            if (tamañoTexto < 140) {
+                tamañoTexto += 10;
+                body.style.fontSize = tamañoTexto + '%';
+            }
+        });
+
+        document.getElementById('disminuirTexto').addEventListener('click', function() {
+            if (tamañoTexto > 70) {
+                tamañoTexto -= 10;
+                body.style.fontSize = tamañoTexto + '%';
+            }
+        });
+
+        // Alto contraste
+        let contrasteActivo = false;
+        document.getElementById('toggleContraste').addEventListener('click', function() {
+            contrasteActivo = !contrasteActivo;
+            body.classList.toggle('alto-contraste', contrasteActivo);
+            this.textContent = contrasteActivo ? 'Desactivar' : 'Activar';
+            this.classList.toggle('activo', contrasteActivo);
+        });
+
+        // Modo lectura fácil
+        let lecturaActiva = false;
+        document.getElementById('toggleLectura').addEventListener('click', function() {
+            lecturaActiva = !lecturaActiva;
+            body.classList.toggle('lectura-facil', lecturaActiva);
+            this.textContent = lecturaActiva ? 'Desactivar' : 'Activar';
+            this.classList.toggle('activo', lecturaActiva);
+        });
+    </script>
 
 </body>
 </html>
