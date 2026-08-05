@@ -184,24 +184,27 @@
             background: rgba(54, 117, 136, 0.10);
             border: 2px solid var(--color-primario);
             color: var(--color-primario);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            font-size: 1.2rem;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 0;
-            line-height: 1;
-            flex-shrink: 0;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+
+        .btn-accesibilidad i {
+            font-size: 1.1rem;
         }
 
         .btn-accesibilidad:hover {
             background: var(--color-primario);
             color: var(--blanco);
-            transform: scale(1.05);
+            transform: scale(1.02);
             box-shadow: 0 4px 12px rgba(54, 117, 136, 0.3);
         }
 
@@ -677,9 +680,8 @@
                 font-size: 0.85rem;
             }
             .btn-accesibilidad {
-                width: 38px;
-                height: 38px;
-                font-size: 1rem;
+                font-size: 0.8rem;
+                padding: 6px 14px;
             }
             .panel-accesibilidad {
                 right: 10px;
@@ -712,8 +714,11 @@
                 font-size: 0.8rem;
             }
             .btn-accesibilidad {
-                width: 34px;
-                height: 34px;
+                font-size: 0.7rem;
+                padding: 4px 10px;
+                gap: 4px;
+            }
+            .btn-accesibilidad i {
                 font-size: 0.9rem;
             }
             .panel-accesibilidad {
@@ -751,8 +756,11 @@
                 gap: 6px;
             }
             .btn-accesibilidad {
-                width: 30px;
-                height: 30px;
+                font-size: 0.65rem;
+                padding: 4px 8px;
+                gap: 3px;
+            }
+            .btn-accesibilidad i {
                 font-size: 0.8rem;
             }
         }
@@ -784,6 +792,7 @@
                     <li>
                         <button class="btn-accesibilidad" id="btnAccesibilidad" aria-label="Abrir panel de accesibilidad" title="Opciones de accesibilidad" aria-expanded="false">
                             <i class="fa-solid fa-universal-access" aria-hidden="true"></i>
+                            Accesibilidad
                         </button>
                     </li>
                 </ul>
