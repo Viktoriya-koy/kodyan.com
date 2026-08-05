@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kodyan · Conciencia, creatividad y cuidado</title>
     
+    <!-- Font Awesome (para los iconos) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <!-- Google Fonts (Inter para todo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
     
     <style>
         /* ============================================ */
-        /* RESET Y VARIABLES                             */
+        /* 1. RESET Y VARIABLES                         */
         /* ============================================ */
         * {
             margin: 0;
@@ -22,25 +24,29 @@
             --color-primario: #367588;
             --color-primario-claro: #4a8da0;
             --color-primario-oscuro: #1f4a5c;
-            --color-care: #6C3483;
-            --color-eco: #1EA85A;
-            --color-3d: #D68910;
+            --color-care: #9B59B6;
+            --color-eco: #2ECC71;
+            --color-3d: #F39C12;
             --blanco: #ffffff;
-            --gris-claro: #f8faff;
-            --sombra: 0 20px 60px rgba(0, 0, 0, 0.10);
-            --sombra-hover: 0 25px 70px rgba(0, 0, 0, 0.18);
-            --radio: 24px;
+            --gris-bg: #f2f6fa;
+            --sombra-card: 0 8px 30px rgba(0, 0, 0, 0.06);
+            --sombra-hover: 0 20px 50px rgba(0, 0, 0, 0.12);
+            --radio: 28px;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--gris-claro);
+            background: var(--gris-bg);
             color: #1e293b;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             font-size: 1.125rem;
             line-height: 1.6;
+            /* Fondo con textura sutil para que no parezca de los 200 */
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(54, 117, 136, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(155, 89, 182, 0.03) 0%, transparent 50%);
         }
 
         .container {
@@ -51,7 +57,7 @@
         }
 
         /* ============================================ */
-        /* SKIP LINK                                    */
+        /* 2. SKIP LINK Y ACCESIBILIDAD                 */
         /* ============================================ */
         .skip-link {
             position: absolute;
@@ -66,28 +72,26 @@
             font-weight: 600;
             text-decoration: none;
         }
-        .skip-link:focus {
-            top: 0;
-        }
+        .skip-link:focus { top: 0; }
 
         *:focus-visible {
             outline: 3px solid var(--color-primario);
             outline-offset: 3px;
-            border-radius: 4px;
+            border-radius: 6px;
         }
 
         /* ============================================ */
-        /* HEADER                                       */
+        /* 3. HEADER (más limpio y elegante)            */
         /* ============================================ */
         header {
-            background: var(--blanco);
-            border-bottom: 1px solid #e9edf4;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
             padding: 16px 0;
             position: sticky;
             top: 0;
             z-index: 50;
-            backdrop-filter: blur(12px);
-            background: rgba(255, 255, 255, 0.85);
         }
 
         .header-container {
@@ -97,18 +101,27 @@
         }
 
         .logo {
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             font-weight: 800;
             color: var(--color-primario);
             text-decoration: none;
-            letter-spacing: -0.5px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .logo i {
             font-size: 2rem;
+            color: var(--color-primario);
+            background: rgba(54, 117, 136, 0.08);
+            padding: 8px;
+            border-radius: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .logo:hover i {
+            background: rgba(54, 117, 136, 0.15);
+            transform: rotate(-5deg);
         }
 
         .logo span {
@@ -120,7 +133,7 @@
 
         nav ul {
             display: flex;
-            gap: 28px;
+            gap: 32px;
             list-style: none;
             align-items: center;
         }
@@ -129,27 +142,80 @@
             text-decoration: none;
             color: #475569;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 1rem;
             transition: color 0.2s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--color-primario);
+            transition: width 0.3s ease;
         }
 
         nav a:hover {
             color: var(--color-primario);
         }
+        nav a:hover::after {
+            width: 100%;
+        }
 
         /* ============================================ */
-        /* HERO                                         */
+        /* 4. HERO (con más respiro)                    */
         /* ============================================ */
         .hero {
-            padding: 60px 0 40px;
+            padding: 80px 0 40px;
             text-align: center;
+            position: relative;
+        }
+
+        /* Pulpo decorativo de fondo (sutil) */
+        .hero::before {
+            content: '\f4b9'; /* Código de fa-octopus-deploy */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 18rem;
+            position: absolute;
+            top: -40px;
+            right: -60px;
+            color: rgba(54, 117, 136, 0.03);
+            pointer-events: none;
+            z-index: 0;
+            transform: rotate(10deg);
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .destacado {
+            display: inline-block;
+            background: rgba(54, 117, 136, 0.06);
+            padding: 6px 20px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-primario);
+            margin-bottom: 20px;
+            border: 1px solid rgba(54, 117, 136, 0.06);
+            letter-spacing: 0.3px;
+        }
+
+        .hero .destacado i {
+            margin-right: 8px;
         }
 
         .hero h1 {
-            font-size: 3.2rem;
+            font-size: 3.6rem;
             font-weight: 800;
-            letter-spacing: -1px;
-            line-height: 1.1;
+            letter-spacing: -1.5px;
+            line-height: 1.05;
             margin-bottom: 16px;
             color: #0f172a;
         }
@@ -157,70 +223,123 @@
         .hero h1 i {
             color: var(--color-primario);
             font-style: normal;
+            position: relative;
+        }
+
+        .hero h1 i::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: rgba(54, 117, 136, 0.15);
+            border-radius: 4px;
         }
 
         .hero p {
             font-size: 1.2rem;
-            color: #475569;
+            color: #64748b;
             max-width: 600px;
-            margin: 0 auto 32px;
-            line-height: 1.5;
-        }
-
-        .hero .destacado {
-            display: inline-block;
-            background: rgba(54, 117, 136, 0.08);
-            padding: 6px 18px;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--color-primario);
-            margin-bottom: 20px;
-            border: 1px solid rgba(54, 117, 136, 0.15);
+            margin: 0 auto 0;
+            line-height: 1.6;
         }
 
         /* ============================================ */
-        /* CARDS (Pantallazos de cada rama)             */
+        /* 5. CARDS (Glassmorphism + Glow)              */
         /* ============================================ */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            padding: 20px 0 60px;
+            padding: 40px 0 80px;
         }
 
         .card {
-            background: var(--blanco);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border-radius: var(--radio);
             padding: 40px 30px;
-            box-shadow: var(--sombra);
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: var(--sombra-card);
             text-align: center;
-            border: 1px solid #f1f5f9;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             display: flex;
             flex-direction: column;
             align-items: center;
             text-decoration: none;
             color: inherit;
+            position: relative;
+        }
+
+        /* Borde de color sutil en hover */
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: var(--radio);
+            padding: 1px;
+            background: transparent;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            transition: all 0.4s ease;
+            pointer-events: none;
+        }
+
+        .card-care::before {
+            background: linear-gradient(135deg, var(--color-care), transparent 60%);
+        }
+        .card-eco::before {
+            background: linear-gradient(135deg, var(--color-eco), transparent 60%);
+        }
+        .card-3d::before {
+            background: linear-gradient(135deg, var(--color-3d), transparent 60%);
+        }
+
+        .card:hover::before {
+            opacity: 1;
         }
 
         .card:hover {
             transform: translateY(-8px);
             box-shadow: var(--sombra-hover);
+            background: rgba(255, 255, 255, 0.95);
+            border-color: transparent;
         }
 
         .card .icono {
-            font-size: 3.5rem;
-            margin-bottom: 16px;
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            border-radius: 24px;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
         }
 
-        .card .icono i {
-            font-size: 3.5rem;
+        .card-care .icono {
+            background: rgba(155, 89, 182, 0.10);
+            color: var(--color-care);
+        }
+        .card-eco .icono {
+            background: rgba(46, 204, 113, 0.10);
+            color: var(--color-eco);
+        }
+        .card-3d .icono {
+            background: rgba(243, 156, 18, 0.10);
+            color: var(--color-3d);
+        }
+
+        .card:hover .icono {
+            transform: scale(1.02) rotate(-2deg);
         }
 
         .card h2 {
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             font-weight: 700;
             margin-bottom: 12px;
             letter-spacing: -0.3px;
@@ -239,8 +358,6 @@
             padding: 12px 32px;
             border-radius: 40px;
             font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
             font-size: 0.95rem;
             border: none;
             cursor: pointer;
@@ -248,7 +365,9 @@
             max-width: 200px;
             text-align: center;
             min-height: 48px;
-            min-width: 48px;
+            transition: all 0.3s ease;
+            background: #f1f5f9;
+            color: #475569;
         }
 
         .card-care .btn-card {
@@ -256,15 +375,9 @@
             color: var(--blanco);
         }
         .card-care .btn-card:hover {
-            background: #5a2b6b;
+            background: #7d3c98;
             transform: scale(1.02);
-            box-shadow: 0 8px 24px rgba(108, 52, 131, 0.35);
-        }
-        .card-care h2 {
-            color: var(--color-care);
-        }
-        .card-care .icono i {
-            color: var(--color-care);
+            box-shadow: 0 8px 24px rgba(155, 89, 182, 0.3);
         }
 
         .card-eco .btn-card {
@@ -272,15 +385,9 @@
             color: var(--blanco);
         }
         .card-eco .btn-card:hover {
-            background: #168a45;
+            background: #1ea85a;
             transform: scale(1.02);
-            box-shadow: 0 8px 24px rgba(30, 168, 90, 0.35);
-        }
-        .card-eco h2 {
-            color: var(--color-eco);
-        }
-        .card-eco .icono i {
-            color: var(--color-eco);
+            box-shadow: 0 8px 24px rgba(46, 204, 113, 0.3);
         }
 
         .card-3d .btn-card {
@@ -288,19 +395,13 @@
             color: var(--blanco);
         }
         .card-3d .btn-card:hover {
-            background: #a96f0d;
+            background: #d68910;
             transform: scale(1.02);
-            box-shadow: 0 8px 24px rgba(214, 137, 16, 0.35);
-        }
-        .card-3d h2 {
-            color: var(--color-3d);
-        }
-        .card-3d .icono i {
-            color: var(--color-3d);
+            box-shadow: 0 8px 24px rgba(243, 156, 18, 0.3);
         }
 
         .card-3d .btn-card.proximamente {
-            background: #e2e8f0;
+            background: #e9edf4;
             color: #94a3b8;
             cursor: not-allowed;
         }
@@ -310,13 +411,14 @@
         }
 
         /* ============================================ */
-        /* FOOTER                                       */
+        /* 6. FOOTER (más moderno)                     */
         /* ============================================ */
         footer {
             background: #0f172a;
             color: #cbd5e1;
             padding: 40px 0 24px;
             margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         .footer-grid {
@@ -331,12 +433,13 @@
             font-size: 1rem;
             margin-bottom: 12px;
             font-weight: 600;
+            letter-spacing: -0.2px;
         }
 
         .footer-grid p {
             font-size: 0.9rem;
             line-height: 1.6;
-            opacity: 0.8;
+            opacity: 0.7;
         }
 
         .footer-grid ul {
@@ -351,8 +454,8 @@
             color: #cbd5e1;
             text-decoration: none;
             font-size: 0.9rem;
-            opacity: 0.8;
-            transition: opacity 0.2s;
+            opacity: 0.7;
+            transition: all 0.2s ease;
         }
 
         .footer-grid ul a:hover {
@@ -365,21 +468,28 @@
             padding-top: 24px;
             text-align: center;
             font-size: 0.85rem;
-            opacity: 0.6;
+            opacity: 0.5;
+            letter-spacing: 0.2px;
         }
 
         /* ============================================ */
-        /* RESPONSIVE                                   */
+        /* 7. RESPONSIVE                                */
         /* ============================================ */
         @media (max-width: 992px) {
             .cards-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .hero h1 {
+                font-size: 2.8rem;
+            }
         }
 
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.4rem;
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
             }
             .cards-grid {
                 grid-template-columns: 1fr;
@@ -394,7 +504,12 @@
                 gap: 16px;
             }
             nav a {
-                font-size: 0.85rem;
+                font-size: 0.9rem;
+            }
+            .hero::before {
+                font-size: 10rem;
+                right: -20px;
+                top: 0px;
             }
         }
 
@@ -402,11 +517,16 @@
             .hero h1 {
                 font-size: 1.8rem;
             }
-            .hero p {
-                font-size: 1rem;
+            .hero .destacado {
+                font-size: 0.75rem;
             }
             .card {
                 padding: 30px 20px;
+            }
+            .card .icono {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -445,7 +565,9 @@
         <!-- HERO -->
         <section class="hero" aria-labelledby="hero-title">
             <div class="container">
-                <span class="destacado" aria-hidden="true"><i class="fa-solid fa-octopus-deploy"></i> Kodyan</span>
+                <span class="destacado" aria-hidden="true">
+                    <i class="fa-solid fa-octopus-deploy"></i> Kodyan
+                </span>
                 <h1 id="hero-title">Conciencia, <i>creatividad</i> y cuidado</h1>
                 <p>
                     Un espacio donde la conciencia, la creatividad y el cuidado se encuentran 
