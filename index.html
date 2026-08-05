@@ -529,69 +529,108 @@
             box-shadow: none;
         }
 
-        /* ============================================ */
-        /* 8. FOOTER                                    */
-        /* ============================================ */
-        footer {
-            background: #0f172a;
-            color: #cbd5e1;
-            padding: 40px 0 24px;
-            margin-top: auto;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-        }
+        /* /* ============================================ */
+/* 7. FOOTER (NUEVO AZUL KODYAN)                */
+/* ============================================ */
+footer {
+    background: linear-gradient(135deg, #1f4a5c 0%, #367588 50%, #4a8da0 100%);
+    color: #f0f9ff;
+    padding: 40px 0 24px;
+    margin-top: auto;
+    border-top: 2px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 -8px 30px rgba(54, 117, 136, 0.15);
+}
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
 
-        .footer-grid h4 {
-            color: var(--blanco);
-            font-size: 1rem;
-            margin-bottom: 12px;
-            font-weight: 600;
-            letter-spacing: -0.2px;
-        }
+.footer-grid h4 {
+    color: #ffffff;
+    font-size: 1rem;
+    margin-bottom: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
 
-        .footer-grid p {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            opacity: 0.7;
-        }
+.footer-grid p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    opacity: 0.85;
+}
 
-        .footer-grid ul {
-            list-style: none;
-        }
+.footer-grid ul {
+    list-style: none;
+}
 
-        .footer-grid ul li {
-            margin-bottom: 8px;
-        }
+.footer-grid ul li {
+    margin-bottom: 10px;
+}
 
-        .footer-grid ul a {
-            color: #cbd5e1;
-            text-decoration: none;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            transition: all 0.2s ease;
-        }
+.footer-grid ul a {
+    color: #e6f4f9;
+    text-decoration: none;
+    font-size: 0.95rem;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
 
-        .footer-grid ul a:hover {
-            opacity: 1;
-            color: var(--blanco);
-        }
+.footer-grid ul a:hover {
+    opacity: 1;
+    color: #ffffff;
+    transform: translateX(4px);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
 
-        .footer-bottom {
-            border-top: 1px solid #1e293b;
-            padding-top: 24px;
-            text-align: center;
-            font-size: 0.85rem;
-            opacity: 0.5;
-            letter-spacing: 0.2px;
-        }
+/* Enlace de correo en el footer */
+.footer-grid .email-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    color: #e6f4f9;
+    text-decoration: none;
+    opacity: 0.85;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
 
-        /* ============================================ */
+.footer-grid .email-link:hover {
+    opacity: 1;
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+.footer-grid .email-link i {
+    font-size: 1.1rem;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 24px;
+    text-align: center;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    margin-top: 8px;
+    letter-spacing: 0.3px;
+}
+
+.footer-bottom a {
+    color: #e6f4f9;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.footer-bottom a:hover {
+    opacity: 1;
+} ============================================ */
         /* 9. ESTILOS PARA MODOS DE ACCESIBILIDAD       */
         /* ============================================ */
         body.alto-contraste {
