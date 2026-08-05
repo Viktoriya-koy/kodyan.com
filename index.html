@@ -640,7 +640,35 @@
             border-color: #fff !important;
             background: transparent !important;
         }
-
+body.alto-contraste .card-care .icono {
+    background: rgba(155, 89, 182, 0.30) !important;
+    color: #fff !important;
+}
+body.alto-contraste .card-eco .icono {
+    background: rgba(46, 204, 113, 0.30) !important;
+    color: #fff !important;
+}
+body.alto-contraste .card-3d .icono {
+    background: rgba(243, 156, 18, 0.30) !important;
+    color: #fff !important;
+}
+body.alto-contraste .card-care h2 {
+    color: #d4a0e8 !important;
+}
+body.alto-contraste .card-eco h2 {
+    color: #7ddfa0 !important;
+}
+body.alto-contraste .card-3d h2 {
+    color: #f5c542 !important;
+}
+body.alto-contraste .btn-accesibilidad {
+    border-color: #fff !important;
+    color: #fff !important;
+}
+body.alto-contraste .btn-accesibilidad:hover {
+    background: #fff !important;
+    color: #000 !important;
+}
         body.lectura-facil .card p {
             font-size: 1.2rem !important;
             line-height: 1.8 !important;
@@ -659,9 +687,16 @@
         body.lectura-facil .card h2 {
             font-size: 2rem !important;
         }
-        body.lectura-facil .hero h1 {
-            font-size: 4rem !important;
-        }
+      body.lectura-facil .hero h1 {
+    font-size: 4rem !important;
+}
+body.lectura-facil .panel-accesibilidad .opcion button {
+    font-size: 1.1rem !important;
+    padding: 10px 18px !important;
+}
+body.lectura-facil .panel-accesibilidad h3 {
+    font-size: 1.3rem !important;
+}
 
         /* ============================================ */
         /* 10. RESPONSIVE                               */
@@ -896,8 +931,8 @@
     <!-- ========================================== -->
     <!-- PANEL DE ACCESIBILIDAD (HTML)              -->
     <!-- ========================================== -->
-    <div class="panel-accesibilidad" id="panelAccesibilidad" role="dialog" aria-label="Panel de accesibilidad">
-        <h3>♿ Opciones de accesibilidad</h3>
+<div class="panel-accesibilidad" id="panelAccesibilidad" role="dialog" aria-label="Panel de accesibilidad" aria-live="polite">
+    <h3>♿ Opciones de accesibilidad</h3>
         
         <div class="opcion">
             <span>🔍 Tamaño de texto</span>
