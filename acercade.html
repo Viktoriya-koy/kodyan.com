@@ -1,28 +1,698 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kodyan · Acerca de</title>
+    
+    <!-- Font Awesome (iconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    
+    <style>
+        /* ============================================ */
+        /* 1. RESET Y VARIABLES                         */
+        /* ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primario: #367588;
+            --color-primario-claro: #4a8da0;
+            --color-primario-oscuro: #1f4a5c;
+            --color-care: #9B59B6;
+            --color-eco: #2ECC71;
+            --color-3d: #F39C12;
+            --blanco: #ffffff;
+            --gris-bg: #f2f6fa;
+            --sombra-card: 0 8px 30px rgba(0, 0, 0, 0.06);
+            --sombra-hover: 0 20px 50px rgba(0, 0, 0, 0.12);
+            --radio: 28px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gris-bg);
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-size: 1.125rem;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(54, 117, 136, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(155, 89, 182, 0.03) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+
+        /* ============================================ */
+        /* 2. SKIP LINK Y ACCESIBILIDAD                 */
+        /* ============================================ */
+        .skip-link {
+            position: absolute;
+            top: -1000px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-primario);
+            color: var(--blanco);
+            padding: 12px 24px;
+            border-radius: 0 0 8px 8px;
+            z-index: 999;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .skip-link:focus { top: 0; }
+
+        *:focus-visible {
+            outline: 3px solid var(--color-primario);
+            outline-offset: 3px;
+            border-radius: 6px;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* ============================================ */
+        /* 3. HEADER                                    */
+        /* ============================================ */
+        header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--color-primario);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--color-primario);
+            background: rgba(54, 117, 136, 0.08);
+            padding: 8px;
+            border-radius: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .logo:hover i {
+            background: rgba(54, 117, 136, 0.15);
+            transform: rotate(-5deg);
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--color-primario), var(--color-primario-claro));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--color-primario);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--color-primario);
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ============================================ */
+        /* 4. BOTÓN DE ACCESIBILIDAD                    */
+        /* ============================================ */
+        .btn-accesibilidad {
+            background: rgba(54, 117, 136, 0.10);
+            border: 2px solid var(--color-primario);
+            color: var(--color-primario);
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+
+        .btn-accesibilidad i {
+            font-size: 1.1rem;
+        }
+
+        .btn-accesibilidad:hover {
+            background: var(--color-primario);
+            color: var(--blanco);
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(54, 117, 136, 0.3);
+        }
+
+        .btn-accesibilidad:focus-visible {
+            outline: 3px solid var(--color-primario);
+            outline-offset: 3px;
+        }
+
+        /* ============================================ */
+        /* 5. PANEL DE ACCESIBILIDAD                    */
+        /* ============================================ */
+        .panel-accesibilidad {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: var(--blanco);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            padding: 24px;
+            width: 280px;
+            z-index: 999;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            transform: translateY(-10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .panel-accesibilidad.activo {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .panel-accesibilidad h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 16px;
+            letter-spacing: -0.2px;
+        }
+
+        .panel-accesibilidad .opcion {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .panel-accesibilidad .opcion:last-child {
+            border-bottom: none;
+        }
+
+        .panel-accesibilidad .opcion span {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        .panel-accesibilidad .opcion button {
+            background: #f1f5f9;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .panel-accesibilidad .opcion button:hover {
+            background: var(--color-primario);
+            color: var(--blanco);
+        }
+
+        .panel-accesibilidad .opcion button.activo {
+            background: var(--color-primario);
+            color: var(--blanco);
+        }
+
+        /* ============================================ */
+        /* 6. CONTENIDO PRINCIPAL (Acerca de)           */
+        /* ============================================ */
+        .pagina-interna {
+            padding: 80px 0 60px;
+            flex: 1;
+        }
+
+        .pagina-interna h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: #0f172a;
+            margin-bottom: 24px;
+        }
+
+        .pagina-interna h1 i {
+            color: var(--color-primario);
+        }
+
+        .pagina-interna h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--color-primario);
+            margin-top: 40px;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .pagina-interna p {
+            font-size: 1.1rem;
+            color: #475569;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-bottom: 16px;
+        }
+
+        .pagina-interna hr {
+            border: none;
+            border-top: 2px solid #e9edf4;
+            margin: 40px 0;
+            max-width: 700px;
+        }
+
+        .pagina-interna .volver {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--color-primario);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .pagina-interna .volver:hover {
+            color: var(--color-primario-oscuro);
+            transform: translateX(-4px);
+        }
+
+        .pagina-interna .volver i {
+            margin-right: 8px;
+        }
+
+        /* ============================================ */
+        /* 7. FOOTER                                    */
+        /* ============================================ */
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 40px 0 24px;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-grid h4 {
+            color: var(--blanco);
+            font-size: 1rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+
+        .footer-grid p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            opacity: 0.7;
+        }
+
+        .footer-grid ul {
+            list-style: none;
+        }
+
+        .footer-grid ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-grid ul a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: all 0.2s ease;
+        }
+
+        .footer-grid ul a:hover {
+            opacity: 1;
+            color: var(--blanco);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.5;
+            letter-spacing: 0.2px;
+        }
+
+        /* ============================================ */
+        /* 8. RESPONSIVE                                */
+        /* ============================================ */
+        @media (max-width: 992px) {
+            .pagina-interna h1 {
+                font-size: 2.4rem;
+            }
+            nav ul {
+                gap: 16px;
+            }
+            nav a {
+                font-size: 0.85rem;
+            }
+            .btn-accesibilidad {
+                font-size: 0.8rem;
+                padding: 6px 14px;
+            }
+            .panel-accesibilidad {
+                right: 10px;
+                width: 260px;
+                top: 70px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pagina-interna {
+                padding: 60px 0 40px;
+            }
+            .pagina-interna h1 {
+                font-size: 2rem;
+            }
+            .pagina-interna h2 {
+                font-size: 1.3rem;
+            }
+            .pagina-interna p {
+                font-size: 1rem;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            nav ul {
+                gap: 10px;
+                justify-content: flex-end;
+            }
+            nav a {
+                font-size: 0.8rem;
+            }
+            .btn-accesibilidad {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+                gap: 4px;
+            }
+            .btn-accesibilidad i {
+                font-size: 0.9rem;
+            }
+            .panel-accesibilidad {
+                right: 10px;
+                width: 240px;
+                top: 60px;
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pagina-interna h1 {
+                font-size: 1.6rem;
+            }
+            .pagina-interna h2 {
+                font-size: 1.1rem;
+            }
+            nav a {
+                font-size: 0.7rem;
+            }
+            nav ul {
+                gap: 6px;
+            }
+            .btn-accesibilidad {
+                font-size: 0.65rem;
+                padding: 4px 8px;
+                gap: 3px;
+            }
+            .btn-accesibilidad i {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Sobre Kodyan</h1>
+    <!-- ========================================== -->
+    <!-- SKIP LINK (Accesibilidad)                  -->
+    <!-- ========================================== -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-    <h2>¿Qué es Kodyan?</h2>
-    <p>Kodyan es un proyecto que nace de la necesidad de crear herramientas reales para la vida cotidiana. No somos una empresa grande, somos un equipo pequeño (a veces de una sola persona) que cree que el cuidado emocional, la conciencia ambiental y la creatividad no deberían estar separados.</p>
+    <!-- ========================================== -->
+    <!-- HEADER                                     -->
+    <!-- ========================================== -->
+    <header role="banner">
+        <div class="container header-container">
+            <a href="index.html" class="logo" aria-label="Kodyan, página principal">
+                <i class="fa-solid fa-octopus-deploy" aria-hidden="true"></i>
+                <span>Kodyan</span>
+            </a>
+            <nav role="navigation" aria-label="Menú principal">
+                <ul>
+                    <li><a href="care.html" aria-label="Ir a Kodyan Care, herramientas emocionales">Care</a></li>
+                    <li><a href="eco.html" aria-label="Ir a Kodyan Eco, calculadoras ecológicas">Eco</a></li>
+                    <li><a href="3d.html" aria-label="Ir a Kodyan 3D, objetos impresos en 3D">3D</a></li>
+                    <li><a href="acercade.html" aria-label="Conoce más sobre Kodyan">Acerca de</a></li>
+                    <li><a href="contacto.html" aria-label="Ponte en contacto con Kodyan">Contacto</a></li>
+                    <li>
+                        <button class="btn-accesibilidad" id="btnAccesibilidad" aria-label="Abrir panel de accesibilidad" title="Opciones de accesibilidad" aria-expanded="false">
+                            <i class="fa-solid fa-universal-access" aria-hidden="true"></i>
+                            Accesibilidad
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <h2>¿Por qué estos tres pilares?</h2>
-    <p>Porque la vida no es una sola cosa. A veces necesitamos ayuda para manejar una crisis (Care), otras veces queremos entender nuestro impacto en el planeta (Eco), y otras simplemente queremos crear o comprar algo hecho con cuidado (3D).</p>
+    <!-- ========================================== -->
+    <!-- MAIN (Contenido principal)                 -->
+    <!-- ========================================== -->
+    <main id="main-content" role="main" class="pagina-interna">
+        <div class="container">
 
-    <p>Kodyan es el lugar donde esas tres cosas conviven sin venderse como una marca perfecta. Hay herramientas, hay errores, hay aprendizaje y hay mucho trabajo en proceso.</p>
+            <h1>Acerca de <i>Kodyan</i></h1>
 
-    <h2>¿Quién está detrás?</h2>
-    <p>Detrás de Kodyan hay un equipo humano, pequeño y comprometido, que cree que las herramientas para cuidar la mente, el planeta y la creatividad deberían ser accesibles y estar al alcance de todos. No tenemos una gran estructura ni una marca perfecta. Tenemos ideas, ganas de hacerlas realidad y la honestidad de decir que esto es un trabajo en proceso constante.</p>
+            <h2>¿Qué es Kodyan?</h2>
+            <p>Kodyan es un proyecto que nace de la necesidad de crear herramientas reales para la vida cotidiana. No somos una empresa grande, somos un equipo pequeño (a veces de una sola persona) que cree que el cuidado emocional, la conciencia ambiental y la creatividad no deberían estar separados.</p>
 
-    <hr>
+            <h2>¿Por qué estos tres pilares?</h2>
+            <p>Porque la vida no es una sola cosa. A veces necesitamos ayuda para manejar una crisis (Care), otras veces queremos entender nuestro impacto en el planeta (Eco), y otras simplemente queremos crear o comprar algo hecho con cuidado (3D).</p>
 
-    <p><a href="index.html">← Volver al inicio</a></p>
+            <p>Kodyan es el lugar donde esas tres cosas conviven sin venderse como una marca perfecta. Hay herramientas, hay errores, hay aprendizaje y hay mucho trabajo en proceso.</p>
+
+            <h2>¿Quién está detrás?</h2>
+            <p>Detrás de Kodyan hay un equipo humano, pequeño y comprometido, que cree que las herramientas para cuidar la mente, el planeta y la creatividad deberían ser accesibles y estar al alcance de todos. No tenemos una gran estructura ni una marca perfecta. Tenemos ideas, ganas de hacerlas realidad y la honestidad de decir que esto es un trabajo en proceso constante.</p>
+
+            <hr>
+
+            <a href="index.html" class="volver"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Volver al inicio</a>
+
+        </div>
+    </main>
+
+    <!-- ========================================== -->
+    <!-- FOOTER                                     -->
+    <!-- ========================================== -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4><i class="fa-solid fa-octopus-deploy" aria-hidden="true"></i> Kodyan</h4>
+                    <p>Conciencia, creatividad y cuidado. Un espacio donde la salud mental, el medio ambiente y la creatividad se encuentran.</p>
+                </div>
+                <div>
+                    <h4>Explora</h4>
+                    <ul>
+                        <li><a href="care.html" aria-label="Ir a Kodyan Care">Care</a></li>
+                        <li><a href="eco.html" aria-label="Ir a Kodyan Eco">Eco</a></li>
+                        <li><a href="3d.html" aria-label="Ir a Kodyan 3D">3D</a></li>
+                        <li><a href="acercade.html" aria-label="Conoce más sobre Kodyan">Acerca de</a></li>
+                        <li><a href="contacto.html" aria-label="Ponte en contacto con Kodyan">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="mailto:hola@kodyan.com" aria-label="Enviar correo a Kodyan">hola@kodyan.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kodyan · Hecho con ❤️ y 🐙 · Esto no sustituye a terapia profesional.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- PANEL DE ACCESIBILIDAD (HTML)              -->
+    <!-- ========================================== -->
+    <div class="panel-accesibilidad" id="panelAccesibilidad" role="dialog" aria-label="Panel de accesibilidad" aria-live="polite">
+        <h3>♿ Opciones de accesibilidad</h3>
+        
+        <div class="opcion">
+            <span>🔍 Tamaño de texto</span>
+            <div>
+                <button id="disminuirTexto" aria-label="Disminuir tamaño de texto">A-</button>
+                <button id="aumentarTexto" aria-label="Aumentar tamaño de texto">A+</button>
+            </div>
+        </div>
+        
+        <div class="opcion">
+            <span>🌓 Contraste</span>
+            <button id="toggleContraste" aria-label="Activar o desactivar alto contraste">Activar</button>
+        </div>
+        
+        <div class="opcion">
+            <span>📖 Lectura fácil</span>
+            <button id="toggleLectura" aria-label="Activar o desactivar modo lectura">Activar</button>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT PARA ACCESIBILIDAD              -->
+    <!-- ========================================== -->
+    <script>
+        // =============================================
+        // 1. ABRIR/CERRAR PANEL DE ACCESIBILIDAD
+        // =============================================
+        const btnAccesibilidad = document.getElementById('btnAccesibilidad');
+        const panelAccesibilidad = document.getElementById('panelAccesibilidad');
+        let panelAbierto = false;
+
+        btnAccesibilidad.addEventListener('click', function(e) {
+            e.stopPropagation();
+            panelAbierto = !panelAbierto;
+            panelAccesibilidad.classList.toggle('activo', panelAbierto);
+            this.setAttribute('aria-expanded', panelAbierto);
+        });
+
+        // Cerrar panel al hacer clic fuera
+        document.addEventListener('click', function(e) {
+            if (panelAbierto && !panelAccesibilidad.contains(e.target) && e.target !== btnAccesibilidad) {
+                panelAccesibilidad.classList.remove('activo');
+                panelAbierto = false;
+                btnAccesibilidad.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Cerrar con ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && panelAbierto) {
+                panelAccesibilidad.classList.remove('activo');
+                panelAbierto = false;
+                btnAccesibilidad.setAttribute('aria-expanded', 'false');
+                btnAccesibilidad.focus();
+            }
+        });
+
+        // =============================================
+        // 2. FUNCIONES DE ACCESIBILIDAD
+        // =============================================
+
+        // Aumentar texto usando ZOOM (escala toda la página)
+        let tamañoTexto = 100;
+        const body = document.body;
+
+        document.getElementById('aumentarTexto').addEventListener('click', function() {
+            if (tamañoTexto < 140) {
+                tamañoTexto += 10;
+                body.style.zoom = tamañoTexto / 100;
+            }
+        });
+
+        document.getElementById('disminuirTexto').addEventListener('click', function() {
+            if (tamañoTexto > 70) {
+                tamañoTexto -= 10;
+                body.style.zoom = tamañoTexto / 100;
+            }
+        });
+
+        // Alto contraste
+        let contrasteActivo = false;
+        document.getElementById('toggleContraste').addEventListener('click', function() {
+            contrasteActivo = !contrasteActivo;
+            body.classList.toggle('alto-contraste', contrasteActivo);
+            this.textContent = contrasteActivo ? 'Desactivar' : 'Activar';
+            this.classList.toggle('activo', contrasteActivo);
+        });
+
+        // Modo lectura fácil
+        let lecturaActiva = false;
+        document.getElementById('toggleLectura').addEventListener('click', function() {
+            lecturaActiva = !lecturaActiva;
+            body.classList.toggle('lectura-facil', lecturaActiva);
+            this.textContent = lecturaActiva ? 'Desactivar' : 'Activar';
+            this.classList.toggle('activo', lecturaActiva);
+        });
+    </script>
 
 </body>
 </html>
