@@ -1,656 +1,161 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kodyan · Conciencia, creatividad y cuidado</title>
+<!-- ========================================== -->
+<!-- PANEL DE ACCESIBILIDAD (HTML)              -->
+<!-- ========================================== -->
+<div class="panel-accesibilidad" id="panelAccesibilidad" role="dialog" aria-label="Panel de accesibilidad">
+    <h3>♿ Opciones de accesibilidad</h3>
     
-    <!-- Font Awesome (iconos) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <!-- Google Fonts (Inter) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <div class="opcion">
+        <span>🔍 Tamaño de texto</span>
+        <div>
+            <button id="disminuirTexto" aria-label="Disminuir tamaño de texto">A-</button>
+            <button id="aumentarTexto" aria-label="Aumentar tamaño de texto">A+</button>
+        </div>
+    </div>
     
-    <style>
-        /* ============================================ */
-        /* 1. RESET Y VARIABLES                         */
-        /* ============================================ */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    <div class="opcion">
+        <span>🌓 Contraste</span>
+        <button id="toggleContraste" aria-label="Activar o desactivar alto contraste">Activar</button>
+    </div>
+    
+    <div class="opcion">
+        <span>📖 Lectura fácil</span>
+        <button id="toggleLectura" aria-label="Activar o desactivar modo lectura">Activar</button>
+    </div>
+</div>
+
+<script>
+    // =============================================
+    // 1. ABRIR/CERRAR PANEL DE ACCESIBILIDAD
+    // =============================================
+    const btnAccesibilidad = document.getElementById('btnAccesibilidad');
+    const panelAccesibilidad = document.getElementById('panelAccesibilidad');
+    let panelAbierto = false;
+
+    btnAccesibilidad.addEventListener('click', function(e) {
+        e.stopPropagation();
+        panelAbierto = !panelAbierto;
+        panelAccesibilidad.classList.toggle('activo', panelAbierto);
+        this.setAttribute('aria-expanded', panelAbierto);
+    });
+
+    // Cerrar panel al hacer clic fuera
+    document.addEventListener('click', function(e) {
+        if (panelAbierto && !panelAccesibilidad.contains(e.target) && e.target !== btnAccesibilidad) {
+            panelAccesibilidad.classList.remove('activo');
+            panelAbierto = false;
+            btnAccesibilidad.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // Cerrar con ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && panelAbierto) {
+            panelAccesibilidad.classList.remove('activo');
+            panelAbierto = false;
+            btnAccesibilidad.setAttribute('aria-expanded', 'false');
+            btnAccesibilidad.focus();
+        }
+    });
+
+    // =============================================
+    // 2. FUNCIONES DE ACCESIBILIDAD
+    // =============================================
+
+    // Aumentar texto
+    let tamañoTexto = 100;
+    const body = document.body;
+
+    document.getElementById('aumentarTexto').addEventListener('click', function() {
+        if (tamañoTexto < 140) {
+            tamañoTexto += 10;
+            body.style.fontSize = tamañoTexto + '%';
+        }
+    });
+
+    document.getElementById('disminuirTexto').addEventListener('click', function() {
+        if (tamañoTexto > 70) {
+            tamañoTexto -= 10;
+            body.style.fontSize = tamañoTexto + '%';
+        }
+    });
+
+    // Alto contraste
+    let contrasteActivo = false;
+    document.getElementById('toggleContraste').addEventListener('click', function() {
+        contrasteActivo = !contrasteActivo;
+        body.classList.toggle('alto-contraste', contrasteActivo);
+        this.textContent = contrasteActivo ? 'Desactivar' : 'Activar';
+        this.classList.toggle('activo', contrasteActivo);
+    });
+
+    // Modo lectura fácil
+    let lecturaActiva = false;
+    document.getElementById('toggleLectura').addEventListener('click', function() {
+        lecturaActiva = !lecturaActiva;
+        body.classList.toggle('lectura-facil', lecturaActiva);
+        this.textContent = lecturaActiva ? 'Desactivar' : 'Activar';
+        this.classList.toggle('activo', lecturaActiva);
+    });
+
+    // =============================================
+    // 3. ESTILOS PARA LOS MODOS (se añaden al CSS)
+    // =============================================
+    // (Estos estilos se añaden dinámicamente)
+    const styleAccesibilidad = document.createElement('style');
+    styleAccesibilidad.textContent = `
+        /* Alto contraste */
+        body.alto-contraste {
+            background: #000 !important;
+            color: #fff !important;
+        }
+        body.alto-contraste .card {
+            background: #1a1a1a !important;
+            border-color: #fff !important;
+        }
+        body.alto-contraste .card p {
+            color: #ddd !important;
+        }
+        body.alto-contraste .card h2 {
+            color: #fff !important;
+        }
+        body.alto-contraste header {
+            background: #000 !important;
+            border-color: #fff !important;
+        }
+        body.alto-contraste nav a {
+            color: #fff !important;
+        }
+        body.alto-contraste .btn-card {
+            border: 2px solid #fff !important;
+        }
+        body.alto-contraste .panel-accesibilidad {
+            background: #1a1a1a !important;
+            border-color: #fff !important;
+        }
+        body.alto-contraste .panel-accesibilidad h3,
+        body.alto-contraste .panel-accesibilidad .opcion span {
+            color: #fff !important;
+        }
+        body.alto-contraste footer {
+            background: #000 !important;
         }
 
-        :root {
-            --color-primario: #367588;
-            --color-primario-claro: #4a8da0;
-            --color-primario-oscuro: #1f4a5c;
-            --color-care: #9B59B6;
-            --color-eco: #2ECC71;
-            --color-3d: #F39C12;
-            --blanco: #ffffff;
-            --gris-bg: #f2f6fa;
-            --sombra-card: 0 8px 30px rgba(0, 0, 0, 0.06);
-            --sombra-hover: 0 20px 50px rgba(0, 0, 0, 0.12);
-            --radio: 28px;
+        /* Modo lectura fácil */
+        body.lectura-facil .card p {
+            font-size: 1.2rem !important;
+            line-height: 1.8 !important;
         }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--gris-bg);
-            color: #1e293b;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            font-size: 1.125rem;
-            line-height: 1.6;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(54, 117, 136, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 90% 80%, rgba(155, 89, 182, 0.03) 0%, transparent 50%);
+        body.lectura-facil .hero p {
+            font-size: 1.4rem !important;
+            line-height: 1.8 !important;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            width: 100%;
+        body.lectura-facil .card .btn-card {
+            font-size: 1.1rem !important;
+            padding: 14px 32px !important;
         }
-
-        /* ============================================ */
-        /* 2. SKIP LINK Y ACCESIBILIDAD                 */
-        /* ============================================ */
-        .skip-link {
-            position: absolute;
-            top: -1000px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--color-primario);
-            color: var(--blanco);
-            padding: 12px 24px;
-            border-radius: 0 0 8px 8px;
-            z-index: 999;
-            font-weight: 600;
-            text-decoration: none;
+        body.lectura-facil nav a {
+            font-size: 1.1rem !important;
         }
-        .skip-link:focus { top: 0; }
-
-        /* Foco visible para navegación por teclado */
-        *:focus-visible {
-            outline: 3px solid var(--color-primario);
-            outline-offset: 3px;
-            border-radius: 6px;
-        }
-
-        /* ============================================ */
-        /* 3. HEADER                                    */
-        /* ============================================ */
-        header {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-            padding: 16px 0;
-            position: sticky;
-            top: 0;
-            z-index: 50;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.7rem;
-            font-weight: 800;
-            color: var(--color-primario);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo i {
-            font-size: 2rem;
-            color: var(--color-primario);
-            background: rgba(54, 117, 136, 0.08);
-            padding: 8px;
-            border-radius: 14px;
-            transition: all 0.2s ease;
-        }
-
-        .logo:hover i {
-            background: rgba(54, 117, 136, 0.15);
-            transform: rotate(-5deg);
-        }
-
-        .logo span {
-            background: linear-gradient(135deg, var(--color-primario), var(--color-primario-claro));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-            align-items: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #475569;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: color 0.2s ease;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background: var(--color-primario);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--color-primario);
-        }
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* ============================================ */
-        /* 4. HERO (con el nuevo texto)                 */
-        /* ============================================ */
-        .hero {
-            padding: 80px 0 40px;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '\f4b9';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            font-size: 18rem;
-            position: absolute;
-            top: -40px;
-            right: -60px;
-            color: rgba(54, 117, 136, 0.03);
-            pointer-events: none;
-            z-index: 0;
-            transform: rotate(10deg);
-        }
-
-        .hero .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero .destacado {
-            display: inline-block;
-            background: rgba(54, 117, 136, 0.06);
-            padding: 6px 20px;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--color-primario);
-            margin-bottom: 20px;
-            border: 1px solid rgba(54, 117, 136, 0.06);
-            letter-spacing: 0.3px;
-        }
-
-        .hero .destacado i {
-            margin-right: 8px;
-        }
-
-        .hero h1 {
-            font-size: 3.6rem;
-            font-weight: 800;
-            letter-spacing: -1.5px;
-            line-height: 1.05;
-            margin-bottom: 16px;
-            color: #0f172a;
-        }
-
-        .hero h1 i {
-            color: var(--color-primario);
-            font-style: normal;
-            position: relative;
-        }
-
-        .hero h1 i::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: rgba(54, 117, 136, 0.15);
-            border-radius: 4px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #475569;
-            max-width: 650px;
-            margin: 0 auto 0;
-            line-height: 1.6;
-        }
-
-        .hero p .separador {
-            color: var(--color-primario);
-            opacity: 0.3;
-            margin: 0 6px;
-        }
-
-        /* ============================================ */
-        /* 5. CARDS (Glassmorphism)                     */
-        /* ============================================ */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            padding: 40px 0 80px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: var(--radio);
-            padding: 40px 30px;
-            box-shadow: var(--sombra-card);
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: inherit;
-            position: relative;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: var(--radio);
-            padding: 1px;
-            background: transparent;
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            transition: all 0.4s ease;
-            pointer-events: none;
-        }
-
-        .card-care::before {
-            background: linear-gradient(135deg, var(--color-care), transparent 60%);
-        }
-        .card-eco::before {
-            background: linear-gradient(135deg, var(--color-eco), transparent 60%);
-        }
-        .card-3d::before {
-            background: linear-gradient(135deg, var(--color-3d), transparent 60%);
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--sombra-hover);
-            background: rgba(255, 255, 255, 0.95);
-            border-color: transparent;
-        }
-
-        .card .icono {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 80px;
-            height: 80px;
-            border-radius: 24px;
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .card-care .icono {
-            background: rgba(155, 89, 182, 0.10);
-            color: var(--color-care);
-        }
-        .card-eco .icono {
-            background: rgba(46, 204, 113, 0.10);
-            color: var(--color-eco);
-        }
-        .card-3d .icono {
-            background: rgba(243, 156, 18, 0.10);
-            color: var(--color-3d);
-        }
-
-        .card:hover .icono {
-            transform: scale(1.02) rotate(-2deg);
-        }
-
-        .card h2 {
-            font-size: 1.7rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            letter-spacing: -0.3px;
-        }
-
-        .card p {
-            color: #64748b;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 24px;
-            flex-grow: 1;
-        }
-
-        .card .btn-card {
-            display: inline-block;
-            padding: 12px 32px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            max-width: 200px;
-            text-align: center;
-            min-height: 48px;
-            transition: all 0.3s ease;
-            background: #f1f5f9;
-            color: #475569;
-        }
-
-        .card-care .btn-card {
-            background: var(--color-care);
-            color: var(--blanco);
-        }
-        .card-care .btn-card:hover {
-            background: #7d3c98;
-            transform: scale(1.02);
-            box-shadow: 0 8px 24px rgba(155, 89, 182, 0.3);
-        }
-
-        .card-eco .btn-card {
-            background: var(--color-eco);
-            color: var(--blanco);
-        }
-        .card-eco .btn-card:hover {
-            background: #1ea85a;
-            transform: scale(1.02);
-            box-shadow: 0 8px 24px rgba(46, 204, 113, 0.3);
-        }
-
-        .card-3d .btn-card {
-            background: var(--color-3d);
-            color: var(--blanco);
-        }
-        .card-3d .btn-card:hover {
-            background: #d68910;
-            transform: scale(1.02);
-            box-shadow: 0 8px 24px rgba(243, 156, 18, 0.3);
-        }
-
-        .card-3d .btn-card.proximamente {
-            background: #e9edf4;
-            color: #94a3b8;
-            cursor: not-allowed;
-        }
-        .card-3d .btn-card.proximamente:hover {
-            transform: none;
-            box-shadow: none;
-        }
-
-        /* ============================================ */
-        /* 6. FOOTER                                    */
-        /* ============================================ */
-        footer {
-            background: #0f172a;
-            color: #cbd5e1;
-            padding: 40px 0 24px;
-            margin-top: auto;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-grid h4 {
-            color: var(--blanco);
-            font-size: 1rem;
-            margin-bottom: 12px;
-            font-weight: 600;
-            letter-spacing: -0.2px;
-        }
-
-        .footer-grid p {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            opacity: 0.7;
-        }
-
-        .footer-grid ul {
-            list-style: none;
-        }
-
-        .footer-grid ul li {
-            margin-bottom: 8px;
-        }
-
-        .footer-grid ul a {
-            color: #cbd5e1;
-            text-decoration: none;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            transition: all 0.2s ease;
-        }
-
-        .footer-grid ul a:hover {
-            opacity: 1;
-            color: var(--blanco);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #1e293b;
-            padding-top: 24px;
-            text-align: center;
-            font-size: 0.85rem;
-            opacity: 0.5;
-            letter-spacing: 0.2px;
-        }
-
-        /* ============================================ */
-        /* 7. RESPONSIVE                                */
-        /* ============================================ */
-        @media (max-width: 992px) {
-            .cards-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            .hero p {
-                font-size: 1rem;
-            }
-            .cards-grid {
-                grid-template-columns: 1fr;
-                max-width: 450px;
-                margin: 0 auto;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-            nav ul {
-                gap: 16px;
-            }
-            nav a {
-                font-size: 0.9rem;
-            }
-            .hero::before {
-                font-size: 10rem;
-                right: -20px;
-                top: 0px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            .hero .destacado {
-                font-size: 0.75rem;
-            }
-            .card {
-                padding: 30px 20px;
-            }
-            .card .icono {
-                width: 60px;
-                height: 60px;
-                font-size: 1.8rem;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- ========================================== -->
-    <!-- SKIP LINK (Accesibilidad)                  -->
-    <!-- ========================================== -->
-    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-
-    <!-- ========================================== -->
-    <!-- HEADER                                     -->
-    <!-- ========================================== -->
-    <header role="banner">
-        <div class="container header-container">
-            <a href="/" class="logo" aria-label="Kodyan, página principal">
-                <i class="fa-solid fa-octopus-deploy" aria-hidden="true"></i>
-                <span>Kodyan</span>
-            </a>
-            <nav role="navigation" aria-label="Menú principal">
-                <ul>
-                    <li><a href="/care/" aria-label="Ir a Kodyan Care, herramientas emocionales">Care</a></li>
-                    <li><a href="/eco/" aria-label="Ir a Kodyan Eco, calculadoras ecológicas">Eco</a></li>
-                    <li><a href="/3d/" aria-label="Ir a Kodyan 3D, objetos impresos en 3D">3D</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- ========================================== -->
-    <!-- MAIN (Contenido principal)                 -->
-    <!-- ========================================== -->
-    <main id="main-content" role="main">
-
-        <!-- HERO -->
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="container">
-                <span class="destacado" aria-hidden="true">
-                    <i class="fa-solid fa-octopus-deploy"></i> Kodyan
-                </span>
-                <h1 id="hero-title">Conciencia, <i>creatividad</i> y cuidado</h1>
-                <p>
-                    Tres mundos, un solo lugar. Herramientas para tu día a día.
-                </p>
-            </div>
-        </section>
-
-        <!-- CARDS (Los 3 pilares) -->
-        <section class="container" aria-labelledby="pilares-title">
-            <div class="cards-grid">
-
-                <!-- CARD: CARE -->
-                <a href="/care/" class="card card-care" aria-label="Ir a Kodyan Care, herramientas emocionales">
-                    <span class="icono" aria-hidden="true"><i class="fa-solid fa-heart-pulse"></i></span>
-                    <h2>Kodyan Care</h2>
-                    <p>
-                        Primeros auxilios emocionales y psicológicos para situaciones de crisis. 
-                        Recursos, guías y herramientas para cuidar tu mente.
-                    </p>
-                    <span class="btn-card" aria-hidden="true">Explorar Care →</span>
-                </a>
-
-                <!-- CARD: ECO -->
-                <a href="/eco/" class="card card-eco" aria-label="Ir a Kodyan Eco, calculadoras ecológicas">
-                    <span class="icono" aria-hidden="true"><i class="fa-solid fa-leaf"></i></span>
-                    <h2>Kodyan Eco</h2>
-                    <p>
-                        Calcula tu huella de carbono y aprende cómo reducir tu impacto en el planeta. 
-                        Herramientas educativas para niños, jóvenes y adultos.
-                    </p>
-                    <span class="btn-card" aria-hidden="true">Explorar Eco →</span>
-                </a>
-
-                <!-- CARD: 3D -->
-                <div class="card card-3d" role="article" aria-label="Kodyan 3D, próximamente">
-                    <span class="icono" aria-hidden="true"><i class="fa-solid fa-cube"></i></span>
-                    <h2>Kodyan 3D</h2>
-                    <p>
-                        Próximamente: Tienda de objetos únicos hechos con impresión 3D. 
-                        Diseños funcionales y creativos.
-                    </p>
-                    <span class="btn-card proximamente" aria-label="Kodyan 3D estará disponible próximamente" aria-disabled="true">Próximamente</span>
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-
-    <!-- ========================================== -->
-    <!-- FOOTER                                     -->
-    <!-- ========================================== -->
-    <footer role="contentinfo">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h4><i class="fa-solid fa-octopus-deploy" aria-hidden="true"></i> Kodyan</h4>
-                    <p>Conciencia, creatividad y cuidado. Un espacio donde la salud mental, el medio ambiente y la creatividad se encuentran.</p>
-                </div>
-                <div>
-                    <h4>Explora</h4>
-                    <ul>
-                        <li><a href="/care/" aria-label="Ir a Kodyan Care">Care</a></li>
-                        <li><a href="/eco/" aria-label="Ir a Kodyan Eco">Eco</a></li>
-                        <li><a href="/3d/" aria-label="Ir a Kodyan 3D">3D</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Contacto</h4>
-                    <ul>
-                        <li><a href="mailto:hola@kodyan.com" aria-label="Enviar correo a Kodyan">hola@kodyan.com</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Kodyan · Hecho con ❤️ y 🐙 · Esto no sustituye a terapia profesional.</p>
-            </div>
-        </div>
-    </footer>
-
-</body>
-</html>
+    `;
+    document.head.appendChild(styleAccesibilidad);
+</script>
