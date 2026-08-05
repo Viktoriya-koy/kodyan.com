@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Técnicas de Anclaje | Kodyan Care</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ESTILOS ESPECÍFICOS PARA ANCLAJE */
+        .herramienta-detalle {
+            padding: 8rem 0 4rem;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f7f5 100%);
+        }
+
+        .tecnicas-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .tecnica {
+            background: var(--color-surface);
+            margin-bottom: 1.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--color-primary);
+            transition: var(--transition);
+            overflow: hidden;
+        }
+
+        .tecnica-header {
+            padding: 1.8rem 2.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .tecnica-header:hover {
+            background-color: rgba(109, 103, 228, 0.05);
+        }
+
+        .tecnica-header h2 {
+            color: var(--color-text);
+            margin: 0;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tecnica-header h2 .emoji {
+            font-size: 1.8rem;
+        }
+
+        .tecnica-toggle {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            transition: transform 0.3s ease;
+        }
+
+        .tecnica.open .tecnica-toggle {
+            transform: rotate(180deg);
+        }
+
+        .tecnica-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+            padding: 0 2.5rem;
+        }
+
+        .tecnica.open .tecnica-content {
+            max-height: 2000px; /* Valor suficientemente alto para el contenido */
+            padding-bottom: 2.5rem;
+        }
+
+        .tecnica > p {
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .pasos {
+            background: var(--color-secondary);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+        }
+
+        .pasos h4 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .pasos ol, .pasos ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pasos li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+            color: var(--color-text);
+        }
+
+        .pasos strong {
+            color: var(--color-primary-dark);
+        }
+
+        .tip {
+            background: #f0f9ff;
+            border-left: 4px solid var(--color-guide);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            font-style: italic;
+        }
+
+        .btn-empezar {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-block;
+            margin-top: 1rem;
+            text-decoration: none;
+        }
+
+        .btn-empezar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(109, 103, 228, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tecnicas-container {
+                padding: 0.5rem;
+            }
+            
+            .tecnica-header {
+                padding: 1.5rem;
+            }
+            
+            .tecnica-header h2 {
+                font-size: 1.4rem;
+            }
+            
+            .tecnica-content {
+                padding: 0 1.5rem;
+            }
+            
+            .tecnica.open .tecnica-content {
+                padding-bottom: 1.5rem;
+            }
+            
+            .pasos {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animación para números de pasos */
+        .pasos ol li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 2.5rem;
+        }
+
+        .pasos ol li:before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: -0.2rem;
+            background: var(--color-primary);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* Indicador de estado para acordeones */
+        .tecnica-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-top: 1rem;
+        }
+
+        .tecnica-indicator i {
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="resources/pulpo-logo.png" alt="Kodyan Care" class="logo-pulpo">
+                Kodyan Care
+            </a>
+            <nav>
+    <ul class="nav-links">
+        <li><a href="index.html#herramientas">Herramientas</a></li>
+        <li><a href="index.html#regulacion">Regulación</a></li>
+        <li><a href="index.html#como-ayudar">Cómo Ayudar</a></li>  <!-- NUEVO -->
+        <li><a href="emergencias.html" class="btn-emergencia">🚨 Emergencia</a></li>
+    </ul>
+</nav>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== CONTENIDO PRINCIPAL ===== -->
+    <main class="herramienta-detalle">
+        <div class="container">
+            <h1>🧠 Técnicas de Anclaje</h1>
+            <p class="subtitulo">Para traer la mente al presente cuando la ansiedad golpea fuerte</p>
+            
+            <div class="tecnica-indicator">
+                <i class="fas fa-info-circle"></i>
+                Haz clic en cada técnica para ver los detalles
+            </div>
+
+            <div class="tecnicas-container">
+                <!-- TÉCNICA 1: 5-4-3-2-1 -->
+                <div class="tecnica" id="tecnica-1">
+                    <div class="tecnica-header">
+                        <h2><span class="emoji">🔍</span> 5-4-3-2-1 - Conectá con el ahora</h2>
+                        <div class="tecnica-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="tecnica-content">
+                        <p>Cuando la ansiedad o el pánico golpean, tu mente vive en el futuro. Esta técnica usa tus sentidos para traerte de vuelta al presente.</p>
+                        
+                        <div class="pasos">
+                            <h4>👀 Mirá a tu alrededor y nombra:</h4>
+                            <ol>
+                                <li><strong>5 cosas</strong> que puedas <strong>VER</strong> (una lámpara, el color de la pared, un libro).</li>
+                                <li><strong>4 cosas</strong> que puedas <strong>TOCAR</strong> (la textura de tu jean, la frialdad del piso, tu propio brazo).</li>
+                                <li><strong>3 cosas</strong> que puedas <strong>OÍR</strong> (el zumbido de la heladera, un pájaro afuera, tu respiración).</li>
+                                <li><strong>2 cosas</strong> que puedas <strong>OLER</strong> (tu perfume, el café de la mañana).</li>
+                                <li><strong>1 cosa</strong> que puedas <strong>SABOREAR</strong> (el gusto de tu propia boca, un sorbo de agua).</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="tip">
+                            <p>💡 No importa si se repiten. El objetivo es enfocar la mente en lo sensorial.</p>
+                        </div>
+                        
+                        <button class="btn-empezar" onclick="empezarTecnica('54321')">
+                            🌀 Empezar ahora
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TÉCNICA 2: RESPIRACIÓN CUADRADA -->
+                <div class="tecnica" id="tecnica-2">
+                    <div class="tecnica-header">
+                        <h2><span class="emoji">🌀</span> Respiración Cuadrada</h2>
+                        <div class="tecnica-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="tecnica-content">
+                        <p>Esta técnica es como un botón de pausa para tu sistema nervioso. Regula la respiración y calma el cuerpo al instante.</p>
+                        
+                        <div class="pasos">
+                            <h4>🔄 Seguí este ciclo:</h4>
+                            <ol>
+                                <li><strong>Inhalá</strong> profundamente por la nariz contando hasta 4.</li>
+                                <li><strong>Mantené</strong> la respiración contando hasta 4.</li>
+                                <li><strong>Exhalá</strong> lentamente por la boca contando hasta 4.</li>
+                                <li><strong>Mantené</strong> los pulmones vacíos contando hasta 4.</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="tip">
+                            <p>💡 Concentrate solo en los números y el sonido de tu respiración. Repetí 4 veces.</p>
+                        </div>
+                        
+                        <button class="btn-empezar" onclick="empezarTecnica('respiracion')">
+                            🌬️ Empezar ahora
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TÉCNICA 3: ANCLAJE CON HIELO -->
+                <div class="tecnica" id="tecnica-3">
+                    <div class="tecnica-header">
+                        <h2><span class="emoji">🧊</span> Anclaje con Hielo</h2>
+                        <div class="tecnica-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="tecnica-content">
+                        <p>Cuando sentís que te desconectás de tu cuerpo o que la ansiedad es física, el contraste térmico suele 'resetear' momentáneamente los circuitos de pánico.</p>
+                        
+                        <div class="pasos">
+                            <h4>❄️ Pasos:</h4>
+                            <ul>
+                                <li>Agarrá un cubito de hielo (o una bebida muy fría).</li>
+                                <li>Enfocate en la sensación de frío intenso en tu mano o muñeca.</li>
+                                <li>Describila mentalmente: <em>"Es tan frío que casi duele, pero no. Está mojado. Se está derritiendo".</em></li>
+                                <li>También podés pasarte el hielo por la nuca o las sienes.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tip">
+                            <p>💡 El shock térmico ayuda a interrumpir los pensamientos catastróficos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TÉCNICA 4: ANCLAJE TÁCTIL -->
+                <div class="tecnica" id="tecnica-4">
+                    <div class="tecnica-header">
+                        <h2><span class="emoji">✋</span> Anclaje Táctil</h2>
+                        <div class="tecnica-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="tecnica-content">
+                        <p>Usá tu propio cuerpo para groundear cuando sentís que te desconectás de la realidad.</p>
+                        
+                        <div class="pasos">
+                            <h4>🖐️ Ejercicios:</h4>
+                            <ul>
+                                <li><strong>Presión en palmas:</strong> Apretá fuerte las palmas una contra otra por 10 segundos.</li>
+                                <li><strong>Masaje de manos:</strong> Masajeá cada dedo lentamente, concentrándote en la sensación.</li>
+                                <li><strong>Pies en el suelo:</strong> Apretá los pies contra el piso como si quisieras agarrarte.</li>
+                                <li><strong>Autoabrazo:</strong> Abrazate fuerte, sintiendo tu propio calor y presión.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tip">
+                            <p>💡 Ideal para disociación o cuando sentís que "no estás en tu cuerpo".</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TÉCNICA 5: ANCLAJE VISUAL -->
+                <div class="tecnica" id="tecnica-5">
+                    <div class="tecnica-header">
+                        <h2><span class="emoji">👁️</span> Anclaje Visual</h2>
+                        <div class="tecnica-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="tecnica-content">
+                        <p>Cuando los pensamientos son demasiado intensos, usá la vista para enfocar en algo concreto.</p>
+                        
+                        <div class="pasos">
+                            <h4>🎯 Ejercicios:</h4>
+                            <ul>
+                                <li><strong>Objeto azul:</strong> Buscá y nombrá todos los objetos azules en la habitación.</li>
+                                <li><strong>Formas:</strong> Identificá todas las formas circulares que veas.</li>
+                                <li><strong>Seguimiento:</strong> Seguí con la vista las líneas del piso o pared.</li>
+                                <li><strong>Detalle:</strong> Elegí un objeto y describí cada detalle minuciosamente.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tip">
+                            <p>💡 Funciona especialmente bien para sobrepensamiento y rumiación.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TÉCNICA 6: ANCLAJE AUDITIVO -->
+                <div class="tecnica" id="tecnica-6">
+                    <div class="tecnica-header">
+                        <h2><span class="emoji">👂</span> Anclaje Auditivo</h2>
+                        <div class="tecnica-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="tecnica-content">
+                        <p>Usá los sonidos del ambiente para conectar con el presente cuando la mente se va al pasado o futuro.</p>
+                        
+                        <div class="pasos">
+                            <h4>🎵 Ejercicios:</h4>
+                            <ul>
+                                <li><strong>Sonidos cercanos:</strong> Identificá 3 sonidos que estén cerca de vos.</li>
+                                <li><strong>Sonidos lejanos:</strong> Identificá 3 sonidos que vengan de lejos.</li>
+                                <li><strong>Ritmo:</strong> Seguí el ritmo de tu respiración o latidos.</li>
+                                <li><strong>Silencio:</strong> Concentrate en el sonido del silencio entre los ruidos.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tip">
+                            <p>💡 Ideal para ataques de pánico donde sentís que el mundo se acelera.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TÉCNICA 7: TÉCNICA DEL MANDARINA -->
+                <div class="tecnica" id="tecnica-7">
+                    <div class="tecnica-header">
+                        <h2><span class="emoji">🍊</span> Técnica de la Mandarina</h2>
+                        <div class="tecnica-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="tecnica-content">
+                        <p>Una técnica multisensorial que combina olfato, tacto y vista para un anclaje profundo.</p>
+                        
+                        <div class="pasos">
+                            <h4>🍊 Pasos completos:</h4>
+                            <ol>
+                                <li>Conseguí una fruta cítrica (naranja, mandarina, limón).</li>
+                                <li><strong>Tacto:</strong> Sentí la textura de la cáscara con los ojos cerrados.</li>
+                                <li><strong>Olfato:</strong> Percibí el aroma intensamente.</li>
+                                <li><strong>Vista:</strong> Observá cada detalle del color y forma.</li>
+                                <li><strong>Oído:</strong> Escuchá el sonido al pelarla lentamente.</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="tip">
+                            <p>💡 Muy efectiva para crisis de despersonalización o desrealización.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TÉCNICA 8: ANCLAJE DE OBJETO SEGURO -->
+                <div class="tecnica" id="tecnica-8">
+                    <div class="tecnica-header">
+                        <h2><span class="emoji">🛡️</span> Anclaje de Objeto Seguro</h2>
+                        <div class="tecnica-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="tecnica-content">
+                        <p>Creá una conexión psicológica con un objeto que te traiga calma y seguridad.</p>
+                        
+                        <div class="pasos">
+                            <h4>🔮 Cómo crear tu ancla:</h4>
+                            <ol>
+                                <li>Elegí un objeto pequeño (piedra, anillo, pulsera).</li>
+                                <li>Cuando estés tranquilo, tocá el objeto mientras respirás profundamente.</li>
+                                <li>Asociá la sensación de calma con el tacto del objeto.</li>
+                                <li>Repetí esto varias veces en estados de calma.</li>
+                                <li>En crisis, tocá el objeto para activar la respuesta de calma.</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="tip">
+                            <p>💡 Funciona por condicionamiento clásico - como el perro de Pavlov pero para calma.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TÉCNICA 9: ANCLAJE DE RESPIRACIÓN CON MOVIMIENTO -->
+                <div class="tecnica" id="tecnica-9">
+                    <div class="tecnica-header">
+                        <h2><span class="emoji">💨</span> Respiración con Movimiento</h2>
+                        <div class="tecnica-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="tecnica-content">
+                        <p>Combiná respiración consciente con movimiento suave para sincronizar cuerpo y mente.</p>
+                        
+                        <div class="pasos">
+                            <h4>🔄 Secuencia:</h4>
+                            <ol>
+                                <li>Inhalá levantando lentamente los brazos hacia el cielo.</li>
+                                <li>Exhalá bajando los brazos como alas suaves.</li>
+                                <li>Inhalá girando suavemente el torso hacia la derecha.</li>
+                                <li>Exhalá volviendo al centro.</li>
+                                <li>Repetí hacia la izquierda.</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="tip">
+                            <p>💡 Perfecto para cuando la ansiedad se manifiesta como inquietud o tensión muscular.</p>
+                        </div>
+                        
+                        <button class="btn-empezar" onclick="empezarTecnica('resp-movimiento')">
+                            🕊️ Empezar secuencia
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TÉCNICA 10: ANCLAJE DE "NOMBRAR" -->
+                <div class="tecnica" id="tecnica-10">
+                    <div class="tecnica-header">
+                        <h2><span class="emoji">🏷️</span> Técnica de "Nombrar"</h2>
+                        <div class="tecnica-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="tecnica-content">
+                        <p>Cuando los sentimientos son abrumadores, ponerles nombre reduce su intensidad.</p>
+                        
+                        <div class="pasos">
+                            <h4>🗣️ Pasos:</h4>
+                            <ol>
+                                <li>Identificá la emoción principal: "Esto es... ansiedad".</li>
+                                <li>Nombrá las sensaciones físicas: "Siento opresión en el pecho".</li>
+                                <li>Reconocé los pensamientos: "Estoy pensando que algo malo va a pasar".</li>
+                                <li>Decí: "Esto es temporal, es una ola que va a pasar".</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="tip">
+                            <p>💡 Nombrar activa la corteza prefrontal y calma la amígdala (centro del miedo).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">Kodyan Care</a>
+                    <p>Tu puerto seguro para tormentas emocionales.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Herramientas</h4>
+                    <ul>
+                        <li><a href="anclaje.html">Técnicas de Anclaje</a></li>
+                        <li><a href="descarga.html">Descarga Rápida</a></li>
+                        <li><a href="chat.html">Chat de Apoyo</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="emergencias.html">Líneas de Crisis</a></li>
+                        <li><a href="index.html#regulacion">Regulación Emocional</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="mailto:care@koyhq.com">care@koyhq.com</a></li>
+                        <li><a href="https://instagram.com/kodyan.care" target="_blank">Instagram</a></li>
+                        <li><a href="https://koyhq.com" target="_blank">Kodyan HQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p><strong>💡 Importante:</strong> Esto no es un substituto de terapia profesional. Si estás en crisis, contactá a <a href="emergencias.html">recursos de emergencia</a>.</p>
+                <p>&copy; 2025 Kodyan Care. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="js/script.js"></script>
+    <script>
+        // Funciones específicas para anclaje
+        function empezarTecnica(tipo) {
+            switch(tipo) {
+                case '54321':
+                    alert('🧠 Vamos a practicar 5-4-3-2-1. Mirá a tu alrededor y empezá a nombrar...');
+                    break;
+                case 'respiracion':
+                    alert('🌬️ Vamos con respiración cuadrada. Inhalá... 2... 3... 4...');
+                    break;
+                case 'resp-movimiento':
+                    alert('🕊️ Secuencia de respiración con movimiento. Empecemos...');
+                    break;
+            }
+        }
+
+        // Timer para respiración (podría expandirse)
+        function iniciarTemporizador() {
+            // Para futura implementación
+            console.log('⏰ Temporizador iniciado');
+        }
+
+        // Sistema de acordeón para las técnicas
+        document.addEventListener('DOMContentLoaded', function() {
+            const tecnicas = document.querySelectorAll('.tecnica');
+            
+            // Cargar estado guardado
+            tecnicas.forEach(tecnica => {
+                const id = tecnica.id;
+                const savedState = localStorage.getItem(id);
+                
+                if (savedState === 'open') {
+                    tecnica.classList.add('open');
+                }
+            });
+            
+            // Añadir event listeners
+            tecnicas.forEach(tecnica => {
+                const header = tecnica.querySelector('.tecnica-header');
+                
+                header.addEventListener('click', function() {
+                    // Cerrar todas las demás técnicas (opcional)
+                    // tecnicas.forEach(t => {
+                    //     if (t !== tecnica) {
+                    //         t.classList.remove('open');
+                    //         localStorage.setItem(t.id, 'closed');
+                    //     }
+                    // });
+                    
+                    // Alternar estado de la técnica actual
+                    tecnica.classList.toggle('open');
+                    
+                    // Guardar estado
+                    const state = tecnica.classList.contains('open') ? 'open' : 'closed';
+                    localStorage.setItem(tecnica.id, state);
+                });
+            });
+            
+            // Abrir la primera técnica por defecto si ninguna está abierta
+            const anyOpen = Array.from(tecnicas).some(tecnica => tecnica.classList.contains('open'));
+            if (!anyOpen && tecnicas.length > 0) {
+                tecnicas[0].classList.add('open');
+                localStorage.setItem(tecnicas[0].id, 'open');
+            }
+        });
+    </script>
+</body>
+</html>
