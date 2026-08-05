@@ -1,12 +1,831 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kodyan · Contacto </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kodyan · Contacto</title>
+    
+    <!-- Font Awesome (iconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    
+    <style>
+        /* ============================================ */
+        /* 1. RESET Y VARIABLES                         */
+        /* ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primario: #367588;
+            --color-primario-claro: #4a8da0;
+            --color-primario-oscuro: #1f4a5c;
+            --color-care: #9B59B6;
+            --color-eco: #2ECC71;
+            --color-3d: #F39C12;
+            --blanco: #ffffff;
+            --gris-bg: #f2f6fa;
+            --sombra-card: 0 8px 30px rgba(0, 0, 0, 0.06);
+            --sombra-hover: 0 20px 50px rgba(0, 0, 0, 0.12);
+            --radio: 28px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gris-bg);
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-size: 1.125rem;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(54, 117, 136, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(155, 89, 182, 0.03) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+
+        /* ============================================ */
+        /* 2. SKIP LINK Y ACCESIBILIDAD                 */
+        /* ============================================ */
+        .skip-link {
+            position: absolute;
+            top: -1000px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-primario);
+            color: var(--blanco);
+            padding: 12px 24px;
+            border-radius: 0 0 8px 8px;
+            z-index: 999;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .skip-link:focus { top: 0; }
+
+        *:focus-visible {
+            outline: 3px solid var(--color-primario);
+            outline-offset: 3px;
+            border-radius: 6px;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* ============================================ */
+        /* 3. HEADER                                    */
+        /* ============================================ */
+        header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--color-primario);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--color-primario);
+            background: rgba(54, 117, 136, 0.08);
+            padding: 8px;
+            border-radius: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .logo:hover i {
+            background: rgba(54, 117, 136, 0.15);
+            transform: rotate(-5deg);
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--color-primario), var(--color-primario-claro));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--color-primario);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--color-primario);
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ============================================ */
+        /* 4. BOTÓN DE ACCESIBILIDAD                    */
+        /* ============================================ */
+        .btn-accesibilidad {
+            background: rgba(54, 117, 136, 0.10);
+            border: 2px solid var(--color-primario);
+            color: var(--color-primario);
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+
+        .btn-accesibilidad i {
+            font-size: 1.1rem;
+        }
+
+        .btn-accesibilidad:hover {
+            background: var(--color-primario);
+            color: var(--blanco);
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(54, 117, 136, 0.3);
+        }
+
+        .btn-accesibilidad:focus-visible {
+            outline: 3px solid var(--color-primario);
+            outline-offset: 3px;
+        }
+
+        /* ============================================ */
+        /* 5. PANEL DE ACCESIBILIDAD                    */
+        /* ============================================ */
+        .panel-accesibilidad {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: var(--blanco);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            padding: 24px;
+            width: 280px;
+            z-index: 999;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            transform: translateY(-10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .panel-accesibilidad.activo {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .panel-accesibilidad h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 16px;
+            letter-spacing: -0.2px;
+        }
+
+        .panel-accesibilidad .opcion {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .panel-accesibilidad .opcion:last-child {
+            border-bottom: none;
+        }
+
+        .panel-accesibilidad .opcion span {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        .panel-accesibilidad .opcion button {
+            background: #f1f5f9;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .panel-accesibilidad .opcion button:hover {
+            background: var(--color-primario);
+            color: var(--blanco);
+        }
+
+        .panel-accesibilidad .opcion button.activo {
+            background: var(--color-primario);
+            color: var(--blanco);
+        }
+
+        /* ============================================ */
+        /* 6. CONTENIDO PRINCIPAL (Contacto)            */
+        /* ============================================ */
+        .pagina-interna {
+            padding: 80px 0 60px;
+            flex: 1;
+        }
+
+        .pagina-interna h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: #0f172a;
+            margin-bottom: 24px;
+        }
+
+        .pagina-interna h1 i {
+            color: var(--color-primario);
+        }
+
+        .pagina-interna .contacto-info {
+            max-width: 600px;
+        }
+
+        .pagina-interna .contacto-info > p {
+            font-size: 1.1rem;
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        /* ============================================ */
+        /* 7. FORMULARIO DE CONTACTO                    */
+        /* ============================================ */
+        .formulario-contacto {
+            background: var(--blanco);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: var(--sombra-card);
+            border: 1px solid #e9edf4;
+        }
+
+        .formulario-contacto .grupo {
+            margin-bottom: 20px;
+        }
+
+        .formulario-contacto label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+
+        .formulario-contacto input,
+        .formulario-contacto textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e9edf4;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--gris-bg);
+            color: #1e293b;
+        }
+
+        .formulario-contacto input:focus,
+        .formulario-contacto textarea:focus {
+            outline: none;
+            border-color: var(--color-primario);
+            box-shadow: 0 0 0 4px rgba(54, 117, 136, 0.10);
+            background: var(--blanco);
+        }
+
+        .formulario-contacto textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .formulario-contacto .btn-enviar {
+            background: var(--color-primario);
+            color: var(--blanco);
+            border: none;
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .formulario-contacto .btn-enviar:hover {
+            background: var(--color-primario-oscuro);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(54, 117, 136, 0.3);
+        }
+
+        .formulario-contacto .btn-enviar:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Mensaje de éxito/error */
+        .mensaje-formulario {
+            margin-top: 20px;
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-weight: 500;
+            display: none;
+        }
+
+        .mensaje-formulario.exito {
+            display: block;
+            background: #e6f7e6;
+            color: #1a7a1a;
+            border: 1px solid #b3e0b3;
+        }
+
+        .mensaje-formulario.error {
+            display: block;
+            background: #fde8e8;
+            color: #a11a1a;
+            border: 1px solid #f5c2c2;
+        }
+
+        /* ============================================ */
+        /* 8. FOOTER                                    */
+        /* ============================================ */
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 40px 0 24px;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-grid h4 {
+            color: var(--blanco);
+            font-size: 1rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+
+        .footer-grid p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            opacity: 0.7;
+        }
+
+        .footer-grid ul {
+            list-style: none;
+        }
+
+        .footer-grid ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-grid ul a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: all 0.2s ease;
+        }
+
+        .footer-grid ul a:hover {
+            opacity: 1;
+            color: var(--blanco);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.5;
+            letter-spacing: 0.2px;
+        }
+
+        /* ============================================ */
+        /* 9. RESPONSIVE                                */
+        /* ============================================ */
+        @media (max-width: 992px) {
+            .pagina-interna h1 {
+                font-size: 2.4rem;
+            }
+            nav ul {
+                gap: 16px;
+            }
+            nav a {
+                font-size: 0.85rem;
+            }
+            .btn-accesibilidad {
+                font-size: 0.8rem;
+                padding: 6px 14px;
+            }
+            .panel-accesibilidad {
+                right: 10px;
+                width: 260px;
+                top: 70px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pagina-interna {
+                padding: 60px 0 40px;
+            }
+            .pagina-interna h1 {
+                font-size: 2rem;
+            }
+            .pagina-interna .contacto-info > p {
+                font-size: 1rem;
+            }
+            .formulario-contacto {
+                padding: 24px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            nav ul {
+                gap: 10px;
+                justify-content: flex-end;
+            }
+            nav a {
+                font-size: 0.8rem;
+            }
+            .btn-accesibilidad {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+                gap: 4px;
+            }
+            .btn-accesibilidad i {
+                font-size: 0.9rem;
+            }
+            .panel-accesibilidad {
+                right: 10px;
+                width: 240px;
+                top: 60px;
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pagina-interna h1 {
+                font-size: 1.6rem;
+            }
+            .formulario-contacto {
+                padding: 16px;
+            }
+            nav a {
+                font-size: 0.7rem;
+            }
+            nav ul {
+                gap: 6px;
+            }
+            .btn-accesibilidad {
+                font-size: 0.65rem;
+                padding: 4px 8px;
+                gap: 3px;
+            }
+            .btn-accesibilidad i {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Página en construcción</h1>
-    <p>Vuelve pronto. Mientras tanto, puedes volver al <a href="index.html">inicio</a>.</p>
+
+    <!-- ========================================== -->
+    <!-- SKIP LINK (Accesibilidad)                  -->
+    <!-- ========================================== -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- ========================================== -->
+    <!-- HEADER                                     -->
+    <!-- ========================================== -->
+    <header role="banner">
+        <div class="container header-container">
+            <a href="index.html" class="logo" aria-label="Kodyan, página principal">
+                <i class="fa-solid fa-octopus-deploy" aria-hidden="true"></i>
+                <span>Kodyan</span>
+            </a>
+            <nav role="navigation" aria-label="Menú principal">
+                <ul>
+                    <li><a href="care.html" aria-label="Ir a Kodyan Care, herramientas emocionales">Care</a></li>
+                    <li><a href="eco.html" aria-label="Ir a Kodyan Eco, calculadoras ecológicas">Eco</a></li>
+                    <li><a href="3d.html" aria-label="Ir a Kodyan 3D, objetos impresos en 3D">3D</a></li>
+                    <li><a href="acercade.html" aria-label="Conoce más sobre Kodyan">Acerca de</a></li>
+                    <li><a href="contacto.html" aria-label="Ponte en contacto con Kodyan">Contacto</a></li>
+                    <li>
+                        <button class="btn-accesibilidad" id="btnAccesibilidad" aria-label="Abrir panel de accesibilidad" title="Opciones de accesibilidad" aria-expanded="false">
+                            <i class="fa-solid fa-universal-access" aria-hidden="true"></i>
+                            Accesibilidad
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- MAIN (Contenido principal)                 -->
+    <!-- ========================================== -->
+    <main id="main-content" role="main" class="pagina-interna">
+        <div class="container">
+
+            <h1>Contacto</h1>
+
+            <div class="contacto-info">
+                <p>Si tienes alguna duda, sugerencia o simplemente quieres saludar, escríbenos. Respondemos cuando podemos, pero siempre respondemos.</p>
+
+                <!-- ===== FORMULARIO CON FORMSPREE ===== -->
+                <!-- CAMBIA LA URL action POR LA QUE TE DÉ FORMSPREE -->
+                <form class="formulario-contacto" id="formContacto" action="https://formspree.io/f/mjybvrlj" method="POST">
+                    
+                    <div class="grupo">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="name" placeholder="Tu nombre" required />
+                    </div>
+
+                    <div class="grupo">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+                    </div>
+
+                    <div class="grupo">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="message" placeholder="¿En qué podemos ayudarte?" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-enviar" id="btnEnviar">
+                        <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Enviar mensaje
+                    </button>
+
+                    <div class="mensaje-formulario" id="mensajeFormulario"></div>
+                </form>
+
+                <hr style="border: none; border-top: 2px solid #e9edf4; margin: 40px 0; max-width: 600px;">
+
+                <a href="index.html" class="volver" style="display: inline-block; margin-top: 20px; color: var(--color-primario); text-decoration: none; font-weight: 600; transition: all 0.2s ease;">
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Volver al inicio
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ========================================== -->
+    <!-- FOOTER                                     -->
+    <!-- ========================================== -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4><i class="fa-solid fa-octopus-deploy" aria-hidden="true"></i> Kodyan</h4>
+                    <p>Conciencia, creatividad y cuidado. Un espacio donde la salud mental, el medio ambiente y la creatividad se encuentran.</p>
+                </div>
+                <div>
+                    <h4>Explora</h4>
+                    <ul>
+                        <li><a href="care.html" aria-label="Ir a Kodyan Care">Care</a></li>
+                        <li><a href="eco.html" aria-label="Ir a Kodyan Eco">Eco</a></li>
+                        <li><a href="3d.html" aria-label="Ir a Kodyan 3D">3D</a></li>
+                        <li><a href="acercade.html" aria-label="Conoce más sobre Kodyan">Acerca de</a></li>
+                        <li><a href="contacto.html" aria-label="Ponte en contacto con Kodyan">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="mailto:hola@kodyan.com" aria-label="Enviar correo a Kodyan">hola@kodyan.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kodyan · Hecho con ❤️ y 🐙 · Esto no sustituye a terapia profesional.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- PANEL DE ACCESIBILIDAD (HTML)              -->
+    <!-- ========================================== -->
+    <div class="panel-accesibilidad" id="panelAccesibilidad" role="dialog" aria-label="Panel de accesibilidad" aria-live="polite">
+        <h3>♿ Opciones de accesibilidad</h3>
+        
+        <div class="opcion">
+            <span>🔍 Tamaño de texto</span>
+            <div>
+                <button id="disminuirTexto" aria-label="Disminuir tamaño de texto">A-</button>
+                <button id="aumentarTexto" aria-label="Aumentar tamaño de texto">A+</button>
+            </div>
+        </div>
+        
+        <div class="opcion">
+            <span>🌓 Contraste</span>
+            <button id="toggleContraste" aria-label="Activar o desactivar alto contraste">Activar</button>
+        </div>
+        
+        <div class="opcion">
+            <span>📖 Lectura fácil</span>
+            <button id="toggleLectura" aria-label="Activar o desactivar modo lectura">Activar</button>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT PARA ACCESIBILIDAD Y FORMULARIO-->
+    <!-- ========================================== -->
+    <script>
+        // =============================================
+        // 1. PANEL DE ACCESIBILIDAD
+        // =============================================
+        const btnAccesibilidad = document.getElementById('btnAccesibilidad');
+        const panelAccesibilidad = document.getElementById('panelAccesibilidad');
+        let panelAbierto = false;
+
+        btnAccesibilidad.addEventListener('click', function(e) {
+            e.stopPropagation();
+            panelAbierto = !panelAbierto;
+            panelAccesibilidad.classList.toggle('activo', panelAbierto);
+            this.setAttribute('aria-expanded', panelAbierto);
+        });
+
+        document.addEventListener('click', function(e) {
+            if (panelAbierto && !panelAccesibilidad.contains(e.target) && e.target !== btnAccesibilidad) {
+                panelAccesibilidad.classList.remove('activo');
+                panelAbierto = false;
+                btnAccesibilidad.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && panelAbierto) {
+                panelAccesibilidad.classList.remove('activo');
+                panelAbierto = false;
+                btnAccesibilidad.setAttribute('aria-expanded', 'false');
+                btnAccesibilidad.focus();
+            }
+        });
+
+        // =============================================
+        // 2. FUNCIONES DE ACCESIBILIDAD
+        // =============================================
+        let tamañoTexto = 100;
+        const body = document.body;
+
+        document.getElementById('aumentarTexto').addEventListener('click', function() {
+            if (tamañoTexto < 140) {
+                tamañoTexto += 10;
+                body.style.zoom = tamañoTexto / 100;
+            }
+        });
+
+        document.getElementById('disminuirTexto').addEventListener('click', function() {
+            if (tamañoTexto > 70) {
+                tamañoTexto -= 10;
+                body.style.zoom = tamañoTexto / 100;
+            }
+        });
+
+        let contrasteActivo = false;
+        document.getElementById('toggleContraste').addEventListener('click', function() {
+            contrasteActivo = !contrasteActivo;
+            body.classList.toggle('alto-contraste', contrasteActivo);
+            this.textContent = contrasteActivo ? 'Desactivar' : 'Activar';
+            this.classList.toggle('activo', contrasteActivo);
+        });
+
+        let lecturaActiva = false;
+        document.getElementById('toggleLectura').addEventListener('click', function() {
+            lecturaActiva = !lecturaActiva;
+            body.classList.toggle('lectura-facil', lecturaActiva);
+            this.textContent = lecturaActiva ? 'Desactivar' : 'Activar';
+            this.classList.toggle('activo', lecturaActiva);
+        });
+
+        // =============================================
+        // 3. ENVÍO DEL FORMULARIO (CON FETCH)
+        // =============================================
+        const form = document.getElementById('formContacto');
+        const btnEnviar = document.getElementById('btnEnviar');
+        const mensajeDiv = document.getElementById('mensajeFormulario');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Evita que la página se recargue
+
+            // Mostrar estado de carga
+            btnEnviar.disabled = true;
+            btnEnviar.innerHTML = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Enviando...';
+            mensajeDiv.className = 'mensaje-formulario';
+            mensajeDiv.style.display = 'none';
+
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Error en el envío');
+                }
+            })
+            .then(data => {
+                // Éxito
+                mensajeDiv.textContent = '✅ ¡Mensaje enviado! Te responderemos pronto.';
+                mensajeDiv.className = 'mensaje-formulario exito';
+                mensajeDiv.style.display = 'block';
+                form.reset();
+            })
+            .catch(error => {
+                // Error
+                mensajeDiv.textContent = '❌ Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.';
+                mensajeDiv.className = 'mensaje-formulario error';
+                mensajeDiv.style.display = 'block';
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                btnEnviar.disabled = false;
+                btnEnviar.innerHTML = '<i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Enviar mensaje';
+            });
+        });
+    </script>
 </body>
 </html>
