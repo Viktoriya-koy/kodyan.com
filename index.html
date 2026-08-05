@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kodyan · Conciencia, creatividad y cuidado</title>
     
-    <!-- Font Awesome (para los iconos) -->
+    <!-- Font Awesome (iconos) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <!-- Google Fonts (Inter para todo) -->
+    <!-- Google Fonts (Inter) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
     
     <style>
@@ -43,7 +43,6 @@
             flex-direction: column;
             font-size: 1.125rem;
             line-height: 1.6;
-            /* Fondo con textura sutil para que no parezca de los 200 */
             background-image: 
                 radial-gradient(circle at 10% 20%, rgba(54, 117, 136, 0.03) 0%, transparent 50%),
                 radial-gradient(circle at 90% 80%, rgba(155, 89, 182, 0.03) 0%, transparent 50%);
@@ -74,6 +73,7 @@
         }
         .skip-link:focus { top: 0; }
 
+        /* Foco visible para navegación por teclado */
         *:focus-visible {
             outline: 3px solid var(--color-primario);
             outline-offset: 3px;
@@ -81,7 +81,7 @@
         }
 
         /* ============================================ */
-        /* 3. HEADER (más limpio y elegante)            */
+        /* 3. HEADER                                    */
         /* ============================================ */
         header {
             background: rgba(255, 255, 255, 0.85);
@@ -166,7 +166,7 @@
         }
 
         /* ============================================ */
-        /* 4. HERO (con más respiro)                    */
+        /* 4. HERO (con el nuevo texto)                 */
         /* ============================================ */
         .hero {
             padding: 80px 0 40px;
@@ -174,9 +174,8 @@
             position: relative;
         }
 
-        /* Pulpo decorativo de fondo (sutil) */
         .hero::before {
-            content: '\f4b9'; /* Código de fa-octopus-deploy */
+            content: '\f4b9';
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             font-size: 18rem;
@@ -239,14 +238,20 @@
 
         .hero p {
             font-size: 1.2rem;
-            color: #64748b;
-            max-width: 600px;
+            color: #475569;
+            max-width: 650px;
             margin: 0 auto 0;
             line-height: 1.6;
         }
 
+        .hero p .separador {
+            color: var(--color-primario);
+            opacity: 0.3;
+            margin: 0 6px;
+        }
+
         /* ============================================ */
-        /* 5. CARDS (Glassmorphism + Glow)              */
+        /* 5. CARDS (Glassmorphism)                     */
         /* ============================================ */
         .cards-grid {
             display: grid;
@@ -273,7 +278,6 @@
             position: relative;
         }
 
-        /* Borde de color sutil en hover */
         .card::before {
             content: '';
             position: absolute;
@@ -411,7 +415,7 @@
         }
 
         /* ============================================ */
-        /* 6. FOOTER (más moderno)                     */
+        /* 6. FOOTER                                    */
         /* ============================================ */
         footer {
             background: #0f172a;
@@ -534,7 +538,7 @@
 <body>
 
     <!-- ========================================== -->
-    <!-- SKIP LINK                                  -->
+    <!-- SKIP LINK (Accesibilidad)                  -->
     <!-- ========================================== -->
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
@@ -549,16 +553,16 @@
             </a>
             <nav role="navigation" aria-label="Menú principal">
                 <ul>
-                    <li><a href="/care/" aria-label="Ir a Kodyan Care">Care</a></li>
-                    <li><a href="/eco/" aria-label="Ir a Kodyan Eco">Eco</a></li>
-                    <li><a href="/3d/" aria-label="Ir a Kodyan 3D">3D</a></li>
+                    <li><a href="/care/" aria-label="Ir a Kodyan Care, herramientas emocionales">Care</a></li>
+                    <li><a href="/eco/" aria-label="Ir a Kodyan Eco, calculadoras ecológicas">Eco</a></li>
+                    <li><a href="/3d/" aria-label="Ir a Kodyan 3D, objetos impresos en 3D">3D</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <!-- ========================================== -->
-    <!-- MAIN                                       -->
+    <!-- MAIN (Contenido principal)                 -->
     <!-- ========================================== -->
     <main id="main-content" role="main">
 
@@ -570,19 +574,18 @@
                 </span>
                 <h1 id="hero-title">Conciencia, <i>creatividad</i> y cuidado</h1>
                 <p>
-                    Un espacio donde la conciencia, la creatividad y el cuidado se encuentran 
-                    para transformar las crisis en oportunidades, el impacto en acción y las ideas en realidad.
+                    Tres mundos, un solo lugar. Herramientas para tu día a día.
                 </p>
             </div>
         </section>
 
-        <!-- CARDS (Pantallazos de cada rama) -->
+        <!-- CARDS (Los 3 pilares) -->
         <section class="container" aria-labelledby="pilares-title">
-            <h2 id="pilares-title" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">Los tres pilares de Kodyan</h2>
+            <h2 id="pilares-title" class="visually-hidden">Los tres pilares de Kodyan</h2>
             <div class="cards-grid">
 
                 <!-- CARD: CARE -->
-                <a href="/care/" class="card card-care" aria-label="Ir a Kodyan Care">
+                <a href="/care/" class="card card-care" aria-label="Ir a Kodyan Care, herramientas emocionales">
                     <span class="icono" aria-hidden="true"><i class="fa-solid fa-heart-pulse"></i></span>
                     <h2>Kodyan Care</h2>
                     <p>
@@ -593,7 +596,7 @@
                 </a>
 
                 <!-- CARD: ECO -->
-                <a href="/eco/" class="card card-eco" aria-label="Ir a Kodyan Eco">
+                <a href="/eco/" class="card card-eco" aria-label="Ir a Kodyan Eco, calculadoras ecológicas">
                     <span class="icono" aria-hidden="true"><i class="fa-solid fa-leaf"></i></span>
                     <h2>Kodyan Eco</h2>
                     <p>
@@ -632,15 +635,15 @@
                 <div>
                     <h4>Explora</h4>
                     <ul>
-                        <li><a href="/care/">Care</a></li>
-                        <li><a href="/eco/">Eco</a></li>
-                        <li><a href="/3d/">3D</a></li>
+                        <li><a href="/care/" aria-label="Ir a Kodyan Care">Care</a></li>
+                        <li><a href="/eco/" aria-label="Ir a Kodyan Eco">Eco</a></li>
+                        <li><a href="/3d/" aria-label="Ir a Kodyan 3D">3D</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4>Contacto</h4>
                     <ul>
-                        <li><a href="mailto:hola@kodyan.com">📧 hola@kodyan.com</a></li>
+                        <li><a href="mailto:hola@kodyan.com" aria-label="Enviar correo a Kodyan">hola@kodyan.com</a></li>
                     </ul>
                 </div>
             </div>
