@@ -5,23 +5,444 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kodyan · Conciencia, creatividad y cuidado</title>
     
-    <!-- Font Awesome (ya lo tenías) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
     
     <style>
         /* ============================================ */
-        /* (Aquí va TODO tu CSS, igual que antes)       */
+        /* RESET Y VARIABLES                             */
         /* ============================================ */
-        /* ... (copia el CSS que ya tenías) ...         */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primario: #367588;
+            --color-primario-claro: #4a8da0;
+            --color-primario-oscuro: #1f4a5c;
+            --color-care: #6C3483;
+            --color-eco: #1EA85A;
+            --color-3d: #D68910;
+            --blanco: #ffffff;
+            --gris-claro: #f8faff;
+            --sombra: 0 20px 60px rgba(0, 0, 0, 0.10);
+            --sombra-hover: 0 25px 70px rgba(0, 0, 0, 0.18);
+            --radio: 24px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gris-claro);
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-size: 1.125rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+
         /* ============================================ */
+        /* SKIP LINK                                    */
+        /* ============================================ */
+        .skip-link {
+            position: absolute;
+            top: -1000px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-primario);
+            color: var(--blanco);
+            padding: 12px 24px;
+            border-radius: 0 0 8px 8px;
+            z-index: 999;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        *:focus-visible {
+            outline: 3px solid var(--color-primario);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* ============================================ */
+        /* HEADER                                       */
+        /* ============================================ */
+        header {
+            background: var(--blanco);
+            border-bottom: 1px solid #e9edf4;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--color-primario);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--color-primario), var(--color-primario-claro));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--color-primario);
+        }
+
+        /* ============================================ */
+        /* HERO                                         */
+        /* ============================================ */
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            color: #0f172a;
+        }
+
+        .hero h1 i {
+            color: var(--color-primario);
+            font-style: normal;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #475569;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            line-height: 1.5;
+        }
+
+        .hero .destacado {
+            display: inline-block;
+            background: rgba(54, 117, 136, 0.08);
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-primario);
+            margin-bottom: 20px;
+            border: 1px solid rgba(54, 117, 136, 0.15);
+        }
+
+        /* ============================================ */
+        /* CARDS (Pantallazos de cada rama)             */
+        /* ============================================ */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 20px 0 60px;
+        }
+
+        .card {
+            background: var(--blanco);
+            border-radius: var(--radio);
+            padding: 40px 30px;
+            box-shadow: var(--sombra);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-align: center;
+            border: 1px solid #f1f5f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--sombra-hover);
+        }
+
+        .card .icono {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .card .icono i {
+            font-size: 3.5rem;
+        }
+
+        .card h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .card .btn-card {
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 200px;
+            text-align: center;
+            min-height: 48px;
+            min-width: 48px;
+        }
+
+        .card-care .btn-card {
+            background: var(--color-care);
+            color: var(--blanco);
+        }
+        .card-care .btn-card:hover {
+            background: #5a2b6b;
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(108, 52, 131, 0.35);
+        }
+        .card-care h2 {
+            color: var(--color-care);
+        }
+        .card-care .icono i {
+            color: var(--color-care);
+        }
+
+        .card-eco .btn-card {
+            background: var(--color-eco);
+            color: var(--blanco);
+        }
+        .card-eco .btn-card:hover {
+            background: #168a45;
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(30, 168, 90, 0.35);
+        }
+        .card-eco h2 {
+            color: var(--color-eco);
+        }
+        .card-eco .icono i {
+            color: var(--color-eco);
+        }
+
+        .card-3d .btn-card {
+            background: var(--color-3d);
+            color: var(--blanco);
+        }
+        .card-3d .btn-card:hover {
+            background: #a96f0d;
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(214, 137, 16, 0.35);
+        }
+        .card-3d h2 {
+            color: var(--color-3d);
+        }
+        .card-3d .icono i {
+            color: var(--color-3d);
+        }
+
+        .card-3d .btn-card.proximamente {
+            background: #e2e8f0;
+            color: #94a3b8;
+            cursor: not-allowed;
+        }
+        .card-3d .btn-card.proximamente:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* ============================================ */
+        /* FOOTER                                       */
+        /* ============================================ */
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 40px 0 24px;
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-grid h4 {
+            color: var(--blanco);
+            font-size: 1rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .footer-grid p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        .footer-grid ul {
+            list-style: none;
+        }
+
+        .footer-grid ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-grid ul a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .footer-grid ul a:hover {
+            opacity: 1;
+            color: var(--blanco);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        /* ============================================ */
+        /* RESPONSIVE                                   */
+        /* ============================================ */
+        @media (max-width: 992px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+                margin: 0 auto;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            nav ul {
+                gap: 16px;
+            }
+            nav a {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .card {
+                padding: 30px 20px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- ... (header y todo lo demás igual) ... -->
 
+    <!-- ========================================== -->
+    <!-- SKIP LINK                                  -->
+    <!-- ========================================== -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- ========================================== -->
+    <!-- HEADER                                     -->
+    <!-- ========================================== -->
+    <header role="banner">
+        <div class="container header-container">
+            <a href="/" class="logo" aria-label="Kodyan, página principal">
+                <i class="fa-solid fa-octopus-deploy" aria-hidden="true"></i>
+                <span>Kodyan</span>
+            </a>
+            <nav role="navigation" aria-label="Menú principal">
+                <ul>
+                    <li><a href="/care/" aria-label="Ir a Kodyan Care">Care</a></li>
+                    <li><a href="/eco/" aria-label="Ir a Kodyan Eco">Eco</a></li>
+                    <li><a href="/3d/" aria-label="Ir a Kodyan 3D">3D</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- MAIN                                       -->
+    <!-- ========================================== -->
     <main id="main-content" role="main">
+
+        <!-- HERO -->
         <section class="hero" aria-labelledby="hero-title">
             <div class="container">
                 <span class="destacado" aria-hidden="true"><i class="fa-solid fa-octopus-deploy"></i> Kodyan</span>
@@ -33,33 +454,34 @@
             </div>
         </section>
 
+        <!-- CARDS (Pantallazos de cada rama) -->
         <section class="container" aria-labelledby="pilares-title">
             <h2 id="pilares-title" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">Los tres pilares de Kodyan</h2>
             <div class="cards-grid">
 
                 <!-- CARD: CARE -->
-                <a href="/care/" class="card card-care" aria-label="Ir a Kodyan Care, primeros auxilios emocionales">
+                <a href="/care/" class="card card-care" aria-label="Ir a Kodyan Care">
                     <span class="icono" aria-hidden="true"><i class="fa-solid fa-heart-pulse"></i></span>
                     <h2>Kodyan Care</h2>
                     <p>
                         Primeros auxilios emocionales y psicológicos para situaciones de crisis. 
                         Recursos, guías y herramientas para cuidar tu mente.
                     </p>
-                    <span class="btn-card" aria-hidden="true">Ir a Care →</span>
+                    <span class="btn-card" aria-hidden="true">Explorar Care →</span>
                 </a>
 
                 <!-- CARD: ECO -->
-                <a href="/eco/" class="card card-eco" aria-label="Ir a Kodyan Eco, calculadoras ecológicas">
+                <a href="/eco/" class="card card-eco" aria-label="Ir a Kodyan Eco">
                     <span class="icono" aria-hidden="true"><i class="fa-solid fa-leaf"></i></span>
                     <h2>Kodyan Eco</h2>
                     <p>
                         Calcula tu huella de carbono y aprende cómo reducir tu impacto en el planeta. 
                         Herramientas educativas para niños, jóvenes y adultos.
                     </p>
-                    <span class="btn-card" aria-hidden="true">Ir a Eco →</span>
+                    <span class="btn-card" aria-hidden="true">Explorar Eco →</span>
                 </a>
 
-                <!-- CARD: 3D (Próximamente) -->
+                <!-- CARD: 3D -->
                 <div class="card card-3d" role="article" aria-label="Kodyan 3D, próximamente">
                     <span class="icono" aria-hidden="true"><i class="fa-solid fa-cube"></i></span>
                     <h2>Kodyan 3D</h2>
@@ -72,8 +494,39 @@
 
             </div>
         </section>
+
     </main>
 
-    <!-- ... (footer y scripts igual) ... -->
+    <!-- ========================================== -->
+    <!-- FOOTER                                     -->
+    <!-- ========================================== -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4><i class="fa-solid fa-octopus-deploy" aria-hidden="true"></i> Kodyan</h4>
+                    <p>Conciencia, creatividad y cuidado. Un espacio donde la salud mental, el medio ambiente y la creatividad se encuentran.</p>
+                </div>
+                <div>
+                    <h4>Explora</h4>
+                    <ul>
+                        <li><a href="/care/">Care</a></li>
+                        <li><a href="/eco/">Eco</a></li>
+                        <li><a href="/3d/">3D</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="mailto:hola@kodyan.com">📧 hola@kodyan.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kodyan · Hecho con ❤️ y 🐙 · Esto no sustituye a terapia profesional.</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
