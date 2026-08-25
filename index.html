@@ -46,6 +46,7 @@
             background-image:
                 radial-gradient(circle at 10% 20%, rgba(54, 117, 136, 0.03) 0%, transparent 50%),
                 radial-gradient(circle at 90% 80%, rgba(155, 89, 182, 0.03) 0%, transparent 50%);
+            transition: all 0.3s ease;
         }
 
         .container {
@@ -102,6 +103,7 @@
             position: sticky;
             top: 0;
             z-index: 50;
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
         .header-container {
@@ -121,15 +123,16 @@
             gap: 12px;
         }
 
-        .logo span:first-child {
-            background: rgba(54, 117, 136, 0.08);
-            padding: 6px 12px;
-            border-radius: 12px;
-            font-family: 'Courier New', monospace;
+        .logo-icono {
             font-weight: 800;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
+            background: rgba(54, 117, 136, 0.08);
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
             color: var(--color-primario);
             line-height: 1;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         .logo span:last-child {
@@ -137,6 +140,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            transition: all 0.3s ease;
         }
 
         /* Botón hamburguesa (oculto en escritorio) */
@@ -149,7 +153,7 @@
             cursor: pointer;
             padding: 8px;
             border-radius: 8px;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         .menu-hamburguesa:hover {
@@ -317,18 +321,17 @@
         }
 
         .hero::before {
-            content: '\f4b9';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            font-size: 18rem;
-            position: absolute;
-            top: -40px;
-            right: -60px;
-            color: rgba(54, 117, 136, 0.03);
-            pointer-events: none;
-            z-index: 0;
-            transform: rotate(10deg);
-        }
+    content: '&lt;/&gt;';
+    font-family: 'Courier New', monospace;
+    font-size: 18rem;
+    position: absolute;
+    top: -40px;
+    right: -60px;
+    color: rgba(54, 117, 136, 0.03);
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(10deg);
+}
 
         .hero .container {
             position: relative;
@@ -346,10 +349,18 @@
             margin-bottom: 20px;
             border: 1px solid rgba(54, 117, 136, 0.06);
             letter-spacing: 0.3px;
+            transition: all 0.3s ease;
         }
 
         .hero .destacado i {
             margin-right: 8px;
+        }
+
+        .hero .destacado .logo-icono {
+            font-size: 1rem;
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-right: 6px;
         }
 
         .hero h1 {
@@ -359,6 +370,7 @@
             line-height: 1.05;
             margin-bottom: 16px;
             color: #0f172a;
+            transition: color 0.3s ease;
         }
 
         .hero h1 i {
@@ -384,10 +396,11 @@
             max-width: 650px;
             margin: 0 auto 0;
             line-height: 1.6;
+            transition: color 0.3s ease;
         }
 
         /* ============================================ */
-        /* 7. CARDS (con enlaces corregidos)            */
+        /* 7. CARDS                                     */
         /* ============================================ */
         .cards-grid {
             display: grid;
@@ -464,6 +477,7 @@
             font-weight: 700;
             margin-bottom: 12px;
             letter-spacing: -0.3px;
+            transition: color 0.3s ease;
         }
 
         .card p {
@@ -472,6 +486,7 @@
             line-height: 1.6;
             margin-bottom: 24px;
             flex-grow: 1;
+            transition: color 0.3s ease;
         }
 
         .card .btn-card {
@@ -517,6 +532,7 @@
             margin-top: auto;
             border-top: 2px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 -8px 30px rgba(54, 117, 136, 0.15);
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
         .footer-grid {
@@ -709,7 +725,7 @@
             .hero .destacado { font-size: 0.75rem; }
             .card { padding: 30px 20px; }
             .card .icono { width: 60px; height: 60px; font-size: 1.8rem; }
-            .logo span:first-child { font-size: 1.4rem; padding: 4px 10px; }
+            .logo-icono { font-size: 1.2rem; padding: 2px 8px; }
             .logo span:last-child { font-size: 1.4rem; }
             .menu-hamburguesa { font-size: 1.5rem; }
         }
@@ -728,7 +744,7 @@
     <header role="banner">
         <div class="container header-container">
             <a href="index.html" class="logo" aria-label="Kodyan, página principal">
-                <span aria-hidden="true">&lt;/&gt;</span>
+                <span class="logo-icono" aria-hidden="true">&lt;/&gt;</span>
                 <span>Kodyan</span>
             </a>
 
@@ -762,24 +778,24 @@
     <main id="main-content" role="main">
 
         <!-- HERO -->
-<section class="hero" aria-labelledby="hero-title">
-    <div class="container">
-        <span class="destacado" aria-hidden="true">
-            <span class="logo-icono" style="font-weight: 800; font-size: 1rem; background: rgba(54,117,136,0.08); padding: 2px 8px; border-radius: 6px; font-family: 'Courier New', monospace; color: var(--color-primario); line-height: 1; margin-right: 6px;">&lt;/&gt;</span> Kodyan
-        </span>
-        <h1 id="hero-title">Conciencia, <i>creatividad</i> y cuidado</h1>
-        <p>
-            Tres mundos, un solo lugar. Herramientas para tu día a día.
-        </p>
-    </div>
-</section>
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <span class="destacado" aria-hidden="true">
+                    <span class="logo-icono" style="font-size: 1rem; padding: 2px 8px; border-radius: 6px; margin-right: 6px;">&lt;/&gt;</span> Kodyan
+                </span>
+                <h1 id="hero-title">Conciencia, <i>creatividad</i> y cuidado</h1>
+                <p>
+                    Tres mundos, un solo lugar. Herramientas para tu día a día.
+                </p>
+            </div>
+        </section>
 
         <!-- CARDS (Los 3 pilares) -->
         <section class="container" aria-labelledby="pilares-title">
             <h2 id="pilares-title" class="visually-hidden">Los tres pilares de Kodyan</h2>
             <div class="cards-grid">
 
-                <!-- CARD: CARE (enlace corregido) -->
+                <!-- CARD: CARE -->
                 <a href="care/" class="card card-care" aria-label="Ir a Kodyan Care, herramientas emocionales">
                     <span class="icono" aria-hidden="true"><i class="fa-solid fa-heart-pulse"></i></span>
                     <h2>Kodyan Care</h2>
@@ -790,7 +806,7 @@
                     <span class="btn-card" aria-hidden="true">Explorar Care →</span>
                 </a>
 
-                <!-- CARD: ECO (enlace corregido) -->
+                <!-- CARD: ECO -->
                 <a href="eco/" class="card card-eco" aria-label="Ir a Kodyan Eco, calculadoras ecológicas">
                     <span class="icono" aria-hidden="true"><i class="fa-solid fa-leaf"></i></span>
                     <h2>Kodyan Eco</h2>
@@ -801,7 +817,7 @@
                     <span class="btn-card" aria-hidden="true">Explorar Eco →</span>
                 </a>
 
-                <!-- CARD: 3D (enlace corregido) -->
+                <!-- CARD: 3D -->
                 <a href="3d/" class="card card-3d" aria-label="Ir a Kodyan 3D, objetos impresos en 3D">
                     <span class="icono" aria-hidden="true"><i class="fa-solid fa-cube"></i></span>
                     <h2>Kodyan 3D</h2>
@@ -818,7 +834,7 @@
     </main>
 
     <!-- ========================================== -->
-    <!-- FOOTER (NUEVO AZUL KODYAN)                 -->
+    <!-- FOOTER                                     -->
     <!-- ========================================== -->
     <footer role="contentinfo">
         <div class="container">
@@ -868,30 +884,30 @@
     <!-- ========================================== -->
     <!-- PANEL DE ACCESIBILIDAD (HTML)              -->
     <!-- ========================================== -->
- <div class="panel-accesibilidad" id="panelAccesibilidad" role="dialog" aria-label="Panel de accesibilidad" aria-live="polite">
-    <h3>♿ Opciones de accesibilidad</h3>
+    <div class="panel-accesibilidad" id="panelAccesibilidad" role="dialog" aria-label="Panel de accesibilidad" aria-live="polite">
+        <h3>♿ Opciones de accesibilidad</h3>
 
         <div class="opcion">
-        <span>🔍 Tamaño de texto</span>
-        <div>
-            <button id="disminuirTexto" aria-label="Disminuir tamaño de texto">A-</button>
-            <button id="aumentarTexto" aria-label="Aumentar tamaño de texto">A+</button>
+            <span>🔍 Tamaño de texto</span>
+            <div>
+                <button id="disminuirTexto" aria-label="Disminuir tamaño de texto">A-</button>
+                <button id="aumentarTexto" aria-label="Aumentar tamaño de texto">A+</button>
+            </div>
+        </div>
+
+        <div class="opcion">
+            <span>🌓 Contraste</span>
+            <button id="toggleContraste" aria-label="Activar o desactivar alto contraste">Activar</button>
+        </div>
+
+        <div class="opcion">
+            <span>📖 Lectura fácil</span>
+            <button id="toggleLectura" aria-label="Activar o desactivar modo lectura">Activar</button>
         </div>
     </div>
 
-        <div class="opcion">
-        <span>🌓 Contraste</span>
-        <button id="toggleContraste" aria-label="Activar o desactivar alto contraste">Activar</button>
-    </div>
-
-          <div class="opcion">
-        <span>📖 Lectura fácil</span>
-        <button id="toggleLectura" aria-label="Activar o desactivar modo lectura">Activar</button>
-    </div>
-    </div>
-
     <!-- ========================================== -->
-    <!-- JAVASCRIPT PARA ACCESIBILIDAD Y MENÚ       -->
+    <!-- JAVASCRIPT (Accesibilidad + Menú)          -->
     <!-- ========================================== -->
     <script>
         // =============================================
@@ -910,7 +926,6 @@
             icono.className = menuAbierto ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
         });
 
-        // Cerrar menú al hacer clic fuera
         document.addEventListener('click', function(e) {
             if (menuAbierto && !menuNavegacion.contains(e.target) && e.target !== menuHamburguesa) {
                 menuNavegacion.classList.remove('abierto');
@@ -920,7 +935,6 @@
             }
         });
 
-        // Cerrar menú con ESC
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && menuAbierto) {
                 menuNavegacion.classList.remove('abierto');
@@ -931,7 +945,6 @@
             }
         });
 
-        // Cerrar menú al hacer clic en un enlace (móvil)
         document.querySelectorAll('#menuNavegacion ul a, #menuNavegacion ul .btn-accesibilidad').forEach(enlace => {
             enlace.addEventListener('click', function() {
                 if (window.innerWidth <= 768) {
@@ -975,8 +988,10 @@
         });
 
         // =============================================
-        // 3. FUNCIONES DE ACCESIBILIDAD
+        // 3. FUNCIONES DE ACCESIBILIDAD (CORREGIDAS)
         // =============================================
+
+        // Aumentar texto (zoom)
         let tamañoTexto = 100;
         const body = document.body;
 
@@ -994,31 +1009,61 @@
             }
         });
 
-        // Alto contraste
-let contrasteActivo = false;
-const toggleContraste = document.getElementById('toggleContraste');
-if (toggleContraste) {
-    toggleContraste.addEventListener('click', function() {
-        contrasteActivo = !contrasteActivo;
-        document.body.classList.toggle('alto-contraste', contrasteActivo);
-        this.textContent = contrasteActivo ? 'Desactivar' : 'Activar';
-        this.classList.toggle('activo', contrasteActivo);
-        console.log('Contraste activado:', contrasteActivo); // Para depurar
-    });
-}
+        // =============================================
+        // ALTO CONTRASTE (VERSIÓN SIMPLIFICADA)
+        // =============================================
+        const toggleContraste = document.getElementById('toggleContraste');
+        let contrasteActivo = false;
 
-// Modo lectura fácil
-let lecturaActiva = false;
-const toggleLectura = document.getElementById('toggleLectura');
-if (toggleLectura) {
-    toggleLectura.addEventListener('click', function() {
-        lecturaActiva = !lecturaActiva;
-        document.body.classList.toggle('lectura-facil', lecturaActiva);
-        this.textContent = lecturaActiva ? 'Desactivar' : 'Activar';
-        this.classList.toggle('activo', lecturaActiva);
-        console.log('Lectura fácil activada:', lecturaActiva); // Para depurar
-    });
-}
+        if (toggleContraste) {
+            toggleContraste.addEventListener('click', function() {
+                contrasteActivo = !contrasteActivo;
+
+                if (contrasteActivo) {
+                    document.body.style.backgroundColor = '#000000';
+                    document.body.style.color = '#ffffff';
+                    document.body.style.setProperty('color', '#ffffff', 'important');
+                    this.textContent = 'Desactivar';
+                    this.classList.add('activo');
+                } else {
+                    document.body.style.backgroundColor = '';
+                    document.body.style.color = '';
+                    document.body.style.setProperty('color', '', 'important');
+                    this.textContent = 'Activar';
+                    this.classList.remove('activo');
+                }
+
+                console.log('Contraste activado:', contrasteActivo);
+            });
+        }
+
+        // =============================================
+        // LECTURA FÁCIL (VERSIÓN SIMPLIFICADA)
+        // =============================================
+        const toggleLectura = document.getElementById('toggleLectura');
+        let lecturaActiva = false;
+
+        if (toggleLectura) {
+            toggleLectura.addEventListener('click', function() {
+                lecturaActiva = !lecturaActiva;
+
+                if (lecturaActiva) {
+                    document.body.style.fontSize = '1.4rem';
+                    document.body.style.lineHeight = '1.8';
+                    document.body.style.fontFamily = 'Arial, Helvetica, sans-serif';
+                    this.textContent = 'Desactivar';
+                    this.classList.add('activo');
+                } else {
+                    document.body.style.fontSize = '';
+                    document.body.style.lineHeight = '';
+                    document.body.style.fontFamily = '';
+                    this.textContent = 'Activar';
+                    this.classList.remove('activo');
+                }
+
+                console.log('Lectura fácil activada:', lecturaActiva);
+            });
+        }
     </script>
 
 </body>
