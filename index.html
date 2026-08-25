@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kodyan · Conciencia, creatividad y cuidado</title>
-    
+
     <!-- Font Awesome (iconos) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <!-- Google Fonts (Inter) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
-    
+
     <style>
         /* ============================================ */
         /* 1. RESET Y VARIABLES                         */
@@ -43,7 +43,7 @@
             flex-direction: column;
             font-size: 1.125rem;
             line-height: 1.6;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 10% 20%, rgba(54, 117, 136, 0.03) 0%, transparent 50%),
                 radial-gradient(circle at 90% 80%, rgba(155, 89, 182, 0.03) 0%, transparent 50%);
         }
@@ -91,7 +91,7 @@
         }
 
         /* ============================================ */
-        /* 3. HEADER                                    */
+        /* 3. HEADER Y MENÚ HAMBURGUESA                 */
         /* ============================================ */
         header {
             background: rgba(255, 255, 255, 0.85);
@@ -108,6 +108,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo {
@@ -120,27 +121,47 @@
             gap: 12px;
         }
 
-        .logo i {
-            font-size: 2rem;
-            color: var(--color-primario);
+        .logo span:first-child {
             background: rgba(54, 117, 136, 0.08);
-            padding: 8px;
-            border-radius: 14px;
-            transition: all 0.2s ease;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--color-primario);
+            line-height: 1;
         }
 
-        .logo:hover i {
-            background: rgba(54, 117, 136, 0.15);
-            transform: rotate(-5deg);
-        }
-
-        .logo span {
+        .logo span:last-child {
             background: linear-gradient(135deg, var(--color-primario), var(--color-primario-claro));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
+        /* Botón hamburguesa (oculto en escritorio) */
+        .menu-hamburguesa {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--color-primario);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .menu-hamburguesa:hover {
+            background: rgba(54, 117, 136, 0.08);
+        }
+
+        .menu-hamburguesa:focus-visible {
+            outline: 3px solid var(--color-primario);
+            outline-offset: 3px;
+        }
+
+        /* Menú de navegación en escritorio */
         nav ul {
             display: flex;
             gap: 32px;
@@ -366,7 +387,7 @@
         }
 
         /* ============================================ */
-        /* 7. CARDS (Glassmorphism)                     */
+        /* 7. CARDS (con enlaces corregidos)            */
         /* ============================================ */
         .cards-grid {
             display: grid;
@@ -407,19 +428,11 @@
             pointer-events: none;
         }
 
-        .card-care::before {
-            background: linear-gradient(135deg, var(--color-care), transparent 60%);
-        }
-        .card-eco::before {
-            background: linear-gradient(135deg, var(--color-eco), transparent 60%);
-        }
-        .card-3d::before {
-            background: linear-gradient(135deg, var(--color-3d), transparent 60%);
-        }
+        .card-care::before { background: linear-gradient(135deg, var(--color-care), transparent 60%); }
+        .card-eco::before { background: linear-gradient(135deg, var(--color-eco), transparent 60%); }
+        .card-3d::before { background: linear-gradient(135deg, var(--color-3d), transparent 60%); }
 
-        .card:hover::before {
-            opacity: 1;
-        }
+        .card:hover::before { opacity: 1; }
 
         .card:hover {
             transform: translateY(-8px);
@@ -440,22 +453,11 @@
             transition: all 0.3s ease;
         }
 
-        .card-care .icono {
-            background: rgba(155, 89, 182, 0.10);
-            color: var(--color-care);
-        }
-        .card-eco .icono {
-            background: rgba(46, 204, 113, 0.10);
-            color: var(--color-eco);
-        }
-        .card-3d .icono {
-            background: rgba(243, 156, 18, 0.10);
-            color: var(--color-3d);
-        }
+        .card-care .icono { background: rgba(155, 89, 182, 0.10); color: var(--color-care); }
+        .card-eco .icono { background: rgba(46, 204, 113, 0.10); color: var(--color-eco); }
+        .card-3d .icono { background: rgba(243, 156, 18, 0.10); color: var(--color-3d); }
 
-        .card:hover .icono {
-            transform: scale(1.02) rotate(-2deg);
-        }
+        .card:hover .icono { transform: scale(1.02) rotate(-2deg); }
 
         .card h2 {
             font-size: 1.7rem;
@@ -489,288 +491,202 @@
             color: #475569;
         }
 
-        .card-care .btn-card {
-            background: var(--color-care);
-            color: var(--blanco);
-        }
-        .card-care .btn-card:hover {
-            background: #7d3c98;
-            transform: scale(1.02);
-            box-shadow: 0 8px 24px rgba(155, 89, 182, 0.3);
-        }
+        .card-care .btn-card { background: var(--color-care); color: var(--blanco); }
+        .card-care .btn-card:hover { background: #7d3c98; transform: scale(1.02); box-shadow: 0 8px 24px rgba(155, 89, 182, 0.3); }
 
-        .card-eco .btn-card {
-            background: var(--color-eco);
-            color: var(--blanco);
-        }
-        .card-eco .btn-card:hover {
-            background: #1ea85a;
-            transform: scale(1.02);
-            box-shadow: 0 8px 24px rgba(46, 204, 113, 0.3);
-        }
+        .card-eco .btn-card { background: var(--color-eco); color: var(--blanco); }
+        .card-eco .btn-card:hover { background: #1ea85a; transform: scale(1.02); box-shadow: 0 8px 24px rgba(46, 204, 113, 0.3); }
 
-        .card-3d .btn-card {
-            background: var(--color-3d);
-            color: var(--blanco);
-        }
-        .card-3d .btn-card:hover {
-            background: #d68910;
-            transform: scale(1.02);
-            box-shadow: 0 8px 24px rgba(243, 156, 18, 0.3);
-        }
+        .card-3d .btn-card { background: var(--color-3d); color: var(--blanco); }
+        .card-3d .btn-card:hover { background: #d68910; transform: scale(1.02); box-shadow: 0 8px 24px rgba(243, 156, 18, 0.3); }
 
         .card-3d .btn-card.proximamente {
             background: #e9edf4;
             color: #94a3b8;
             cursor: not-allowed;
         }
-        .card-3d .btn-card.proximamente:hover {
-            transform: none;
-            box-shadow: none;
-        }
-
-        /* /* ============================================ */
-/* 7. FOOTER (NUEVO AZUL KODYAN)                */
-/* ============================================ */
-footer {
-    background: linear-gradient(135deg, #1f4a5c 0%, #367588 50%, #4a8da0 100%);
-    color: #f0f9ff;
-    padding: 40px 0 24px;
-    margin-top: auto;
-    border-top: 2px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 -8px 30px rgba(54, 117, 136, 0.15);
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 40px;
-}
-
-.footer-grid h4 {
-    color: #ffffff;
-    font-size: 1rem;
-    margin-bottom: 16px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    opacity: 0.9;
-}
-
-.footer-grid p {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    opacity: 0.85;
-}
-
-.footer-grid ul {
-    list-style: none;
-}
-
-.footer-grid ul li {
-    margin-bottom: 10px;
-}
-
-.footer-grid ul a {
-    color: #e6f4f9;
-    text-decoration: none;
-    font-size: 0.95rem;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-.footer-grid ul a:hover {
-    opacity: 1;
-    color: #ffffff;
-    transform: translateX(4px);
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-}
-
-/* Enlace de correo en el footer */
-.footer-grid .email-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 12px;
-    color: #e6f4f9;
-    text-decoration: none;
-    opacity: 0.85;
-    transition: all 0.3s ease;
-    font-size: 0.95rem;
-}
-
-.footer-grid .email-link:hover {
-    opacity: 1;
-    color: #ffffff;
-    transform: translateX(4px);
-}
-
-.footer-grid .email-link i {
-    font-size: 1.1rem;
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: 24px;
-    text-align: center;
-    font-size: 0.85rem;
-    opacity: 0.6;
-    margin-top: 8px;
-    letter-spacing: 0.3px;
-}
-
-.footer-bottom a {
-    color: #e6f4f9;
-    text-decoration: none;
-    opacity: 0.7;
-    transition: opacity 0.2s ease;
-}
-
-.footer-bottom a:hover {
-    opacity: 1;
-} ============================================ */
-        /* 9. ESTILOS PARA MODOS DE ACCESIBILIDAD       */
-        /* ============================================ */
-        body.alto-contraste {
-            background: #000 !important;
-            color: #fff !important;
-        }
-        body.alto-contraste .card {
-            background: #1a1a1a !important;
-            border-color: #fff !important;
-        }
-        body.alto-contraste .card p {
-            color: #ddd !important;
-        }
-        body.alto-contraste .card h2 {
-            color: #fff !important;
-        }
-        body.alto-contraste header {
-            background: #000 !important;
-            border-color: #fff !important;
-        }
-        body.alto-contraste nav a {
-            color: #fff !important;
-        }
-        body.alto-contraste .btn-card {
-            border: 2px solid #fff !important;
-        }
-        body.alto-contraste .panel-accesibilidad {
-            background: #1a1a1a !important;
-            border-color: #fff !important;
-        }
-        body.alto-contraste .panel-accesibilidad h3,
-        body.alto-contraste .panel-accesibilidad .opcion span {
-            color: #fff !important;
-        }
-        body.alto-contraste footer {
-            background: #000 !important;
-        }
-        body.alto-contraste .hero h1 {
-            color: #fff !important;
-        }
-        body.alto-contraste .hero p {
-            color: #ddd !important;
-        }
-        body.alto-contraste .hero .destacado {
-            color: #fff !important;
-            border-color: #fff !important;
-            background: transparent !important;
-        }
-body.alto-contraste .card-care .icono {
-    background: rgba(155, 89, 182, 0.30) !important;
-    color: #fff !important;
-}
-body.alto-contraste .card-eco .icono {
-    background: rgba(46, 204, 113, 0.30) !important;
-    color: #fff !important;
-}
-body.alto-contraste .card-3d .icono {
-    background: rgba(243, 156, 18, 0.30) !important;
-    color: #fff !important;
-}
-body.alto-contraste .card-care h2 {
-    color: #d4a0e8 !important;
-}
-body.alto-contraste .card-eco h2 {
-    color: #7ddfa0 !important;
-}
-body.alto-contraste .card-3d h2 {
-    color: #f5c542 !important;
-}
-body.alto-contraste .btn-accesibilidad {
-    border-color: #fff !important;
-    color: #fff !important;
-}
-body.alto-contraste .btn-accesibilidad:hover {
-    background: #fff !important;
-    color: #000 !important;
-}
-        body.lectura-facil .card p {
-            font-size: 1.2rem !important;
-            line-height: 1.8 !important;
-        }
-        body.lectura-facil .hero p {
-            font-size: 1.4rem !important;
-            line-height: 1.8 !important;
-        }
-        body.lectura-facil .card .btn-card {
-            font-size: 1.1rem !important;
-            padding: 14px 32px !important;
-        }
-        body.lectura-facil nav a {
-            font-size: 1.1rem !important;
-        }
-        body.lectura-facil .card h2 {
-            font-size: 2rem !important;
-        }
-      body.lectura-facil .hero h1 {
-    font-size: 4rem !important;
-}
-body.lectura-facil .panel-accesibilidad .opcion button {
-    font-size: 1.1rem !important;
-    padding: 10px 18px !important;
-}
-body.lectura-facil .panel-accesibilidad h3 {
-    font-size: 1.3rem !important;
-}
+        .card-3d .btn-card.proximamente:hover { transform: none; box-shadow: none; }
 
         /* ============================================ */
-        /* 10. RESPONSIVE                               */
+        /* 8. FOOTER (Azul Kodyan)                     */
+        /* ============================================ */
+        footer {
+            background: linear-gradient(135deg, #1f4a5c 0%, #367588 50%, #4a8da0 100%);
+            color: #f0f9ff;
+            padding: 40px 0 24px;
+            margin-top: auto;
+            border-top: 2px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 -8px 30px rgba(54, 117, 136, 0.15);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-grid h4 {
+            color: #ffffff;
+            font-size: 1rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        .footer-grid p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            opacity: 0.85;
+        }
+
+        .footer-grid ul {
+            list-style: none;
+        }
+
+        .footer-grid ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-grid ul a {
+            color: #e6f4f9;
+            text-decoration: none;
+            font-size: 0.95rem;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-grid ul a:hover {
+            opacity: 1;
+            color: #ffffff;
+            transform: translateX(4px);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-grid .email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            color: #e6f4f9;
+            text-decoration: none;
+            opacity: 0.85;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-grid .email-link:hover {
+            opacity: 1;
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        .footer-grid .email-link i {
+            font-size: 1.1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============================================ */
+        /* 9. RESPONSIVE (Móvil)                        */
         /* ============================================ */
         @media (max-width: 992px) {
             .cards-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            nav ul {
-                gap: 16px;
-            }
-            nav a {
-                font-size: 0.85rem;
-            }
-            .btn-accesibilidad {
-                font-size: 0.8rem;
-                padding: 6px 14px;
-            }
-            .panel-accesibilidad {
-                right: 10px;
-                width: 260px;
-                top: 70px;
-            }
+            .hero h1 { font-size: 2.8rem; }
+            nav ul { gap: 16px; }
+            nav a { font-size: 0.85rem; }
+            .btn-accesibilidad { font-size: 0.8rem; padding: 6px 14px; }
+            .panel-accesibilidad { right: 10px; width: 260px; top: 70px; }
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
+            /* Mostrar botón hamburguesa */
+            .menu-hamburguesa { display: block; }
+
+            /* Ocultar menú en móvil por defecto */
+            #menuNavegacion {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                padding: 20px 24px;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+                border-top: 1px solid rgba(0, 0, 0, 0.04);
+                transform: translateY(-10px);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                z-index: 100;
             }
-            .hero p {
-                font-size: 1rem;
+
+            #menuNavegacion.abierto {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
             }
+
+            #menuNavegacion ul {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+            }
+
+            #menuNavegacion ul li {
+                width: 100%;
+                border-bottom: 1px solid #f1f5f9;
+            }
+
+            #menuNavegacion ul li:last-child { border-bottom: none; }
+
+            #menuNavegacion ul a,
+            #menuNavegacion ul .btn-accesibilidad {
+                display: block;
+                padding: 14px 16px;
+                font-size: 1.1rem;
+                width: 100%;
+                text-align: left;
+                background: transparent;
+                border: none;
+                border-radius: 8px;
+                color: #1e293b;
+                transition: background 0.2s ease;
+            }
+
+            #menuNavegacion ul a:hover,
+            #menuNavegacion ul .btn-accesibilidad:hover {
+                background: rgba(54, 117, 136, 0.06);
+            }
+
+            #menuNavegacion ul .btn-accesibilidad {
+                justify-content: flex-start;
+                gap: 12px;
+                font-weight: 500;
+                color: var(--color-primario);
+            }
+
+            #menuNavegacion ul .btn-accesibilidad i {
+                font-size: 1.2rem;
+            }
+
+            /* Ajustes generales para móvil */
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
             .cards-grid {
                 grid-template-columns: 1fr;
                 max-width: 450px;
@@ -780,63 +696,22 @@ body.lectura-facil .panel-accesibilidad h3 {
                 grid-template-columns: 1fr;
                 gap: 24px;
             }
-            nav ul {
-                gap: 10px;
-                justify-content: flex-end;
-            }
-            nav a {
-                font-size: 0.8rem;
-            }
-            .btn-accesibilidad {
-                font-size: 0.7rem;
-                padding: 4px 10px;
-                gap: 4px;
-            }
-            .btn-accesibilidad i {
-                font-size: 0.9rem;
-            }
-            .panel-accesibilidad {
-                right: 10px;
-                width: 240px;
-                top: 60px;
-                padding: 16px;
-            }
             .hero::before {
                 font-size: 10rem;
                 right: -20px;
                 top: 0px;
             }
+            .panel-accesibilidad { right: 10px; width: 240px; top: 60px; padding: 16px; }
         }
 
         @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            .hero .destacado {
-                font-size: 0.75rem;
-            }
-            .card {
-                padding: 30px 20px;
-            }
-            .card .icono {
-                width: 60px;
-                height: 60px;
-                font-size: 1.8rem;
-            }
-            nav a {
-                font-size: 0.7rem;
-            }
-            nav ul {
-                gap: 6px;
-            }
-            .btn-accesibilidad {
-                font-size: 0.65rem;
-                padding: 4px 8px;
-                gap: 3px;
-            }
-            .btn-accesibilidad i {
-                font-size: 0.8rem;
-            }
+            .hero h1 { font-size: 1.8rem; }
+            .hero .destacado { font-size: 0.75rem; }
+            .card { padding: 30px 20px; }
+            .card .icono { width: 60px; height: 60px; font-size: 1.8rem; }
+            .logo span:first-child { font-size: 1.4rem; padding: 4px 10px; }
+            .logo span:last-child { font-size: 1.4rem; }
+            .menu-hamburguesa { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -848,29 +723,36 @@ body.lectura-facil .panel-accesibilidad h3 {
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
     <!-- ========================================== -->
-    <!-- HEADER                                     -->
+    <!-- HEADER CON MENÚ HAMBURGUESA                -->
     <!-- ========================================== -->
     <header role="banner">
         <div class="container header-container">
-            <a href="/" class="logo" aria-label="Kodyan, página principal">
-             <span class="logo-icono-provisorio" aria-hidden="true" style="font-weight: 800; font-size: 1.8rem; background: rgba(54, 117, 136, 0.08); padding: 6px 12px; border-radius: 12px; font-family: 'Courier New', monospace;">&lt;/&gt;</span>
+            <a href="index.html" class="logo" aria-label="Kodyan, página principal">
+                <span aria-hidden="true">&lt;/&gt;</span>
                 <span>Kodyan</span>
             </a>
-            <nav role="navigation" aria-label="Menú principal">
-    <ul>
-        <li><a href="care/index.html" aria-label="Ir a Kodyan Care, herramientas emocionales">Care</a></li>
-        <li><a href="eco/index.html" aria-label="Ir a Kodyan Eco, calculadoras ecológicas">Eco</a></li>
-        <li><a href="3d/index.html" aria-label="Ir a Kodyan 3D, objetos impresos en 3D">3D</a></li>
-        <li><a href="acercade.html" aria-label="Conoce más sobre Kodyan">Acerca de</a></li>
-        <li><a href="contacto.html" aria-label="Ponte en contacto con Kodyan">Contacto</a></li>
-        <li>
-            <button class="btn-accesibilidad" id="btnAccesibilidad" aria-label="Abrir panel de accesibilidad" title="Opciones de accesibilidad" aria-expanded="false">
-                <i class="fa-solid fa-universal-access" aria-hidden="true"></i>
-                Accesibilidad
+
+            <!-- Botón hamburguesa (visible en móvil) -->
+            <button class="menu-hamburguesa" id="menuHamburguesa" aria-label="Abrir menú de navegación" aria-expanded="false">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
             </button>
-        </li>
-    </ul>
-</nav>
+
+            <!-- Menú de navegación -->
+            <nav role="navigation" aria-label="Menú principal" id="menuNavegacion">
+                <ul>
+                    <li><a href="care/" aria-label="Ir a Kodyan Care, herramientas emocionales">Care</a></li>
+                    <li><a href="eco/" aria-label="Ir a Kodyan Eco, calculadoras ecológicas">Eco</a></li>
+                    <li><a href="3d/" aria-label="Ir a Kodyan 3D, objetos impresos en 3D">3D</a></li>
+                    <li><a href="acercade.html" aria-label="Conoce más sobre Kodyan">Acerca de</a></li>
+                    <li><a href="contacto.html" aria-label="Ponte en contacto con Kodyan">Contacto</a></li>
+                    <li>
+                        <button class="btn-accesibilidad" id="btnAccesibilidad" aria-label="Abrir panel de accesibilidad" title="Opciones de accesibilidad" aria-expanded="false">
+                            <i class="fa-solid fa-universal-access" aria-hidden="true"></i>
+                            Accesibilidad
+                        </button>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </header>
 
@@ -887,107 +769,108 @@ body.lectura-facil .panel-accesibilidad h3 {
                 </span>
                 <h1 id="hero-title">Conciencia, <i>creatividad</i> y cuidado</h1>
                 <p>
-                    Tres mundos, un solo lugar. <br> Herramientas para tu día a día.
+                    Tres mundos, un solo lugar. Herramientas para tu día a día.
                 </p>
             </div>
         </section>
 
         <!-- CARDS (Los 3 pilares) -->
         <section class="container" aria-labelledby="pilares-title">
+            <h2 id="pilares-title" class="visually-hidden">Los tres pilares de Kodyan</h2>
             <div class="cards-grid">
 
-                <!-- CARD: CARE -->
-                <a href="/care/" class="card card-care" aria-label="Ir a Kodyan Care, herramientas emocionales">
+                <!-- CARD: CARE (enlace corregido) -->
+                <a href="care/" class="card card-care" aria-label="Ir a Kodyan Care, herramientas emocionales">
                     <span class="icono" aria-hidden="true"><i class="fa-solid fa-heart-pulse"></i></span>
                     <h2>Kodyan Care</h2>
                     <p>
-                        Primeros auxilios emocionales y psicológicos para situaciones de crisis. 
+                        Primeros auxilios emocionales y psicológicos para situaciones de crisis.
                         Recursos, guías y herramientas para cuidar tu mente.
                     </p>
                     <span class="btn-card" aria-hidden="true">Explorar Care →</span>
                 </a>
 
-                <!-- CARD: ECO -->
-                <a href="/eco/" class="card card-eco" aria-label="Ir a Kodyan Eco, calculadoras ecológicas">
+                <!-- CARD: ECO (enlace corregido) -->
+                <a href="eco/" class="card card-eco" aria-label="Ir a Kodyan Eco, calculadoras ecológicas">
                     <span class="icono" aria-hidden="true"><i class="fa-solid fa-leaf"></i></span>
                     <h2>Kodyan Eco</h2>
                     <p>
-                        Calcula tu huella de carbono y aprende cómo reducir tu impacto en el planeta. 
+                        Calcula tu huella de carbono y aprende cómo reducir tu impacto en el planeta.
                         Herramientas educativas para niños, jóvenes y adultos.
                     </p>
                     <span class="btn-card" aria-hidden="true">Explorar Eco →</span>
                 </a>
 
-                <!-- CARD: 3D -->
-                <div class="card card-3d" role="article" aria-label="Kodyan 3D, próximamente">
+                <!-- CARD: 3D (enlace corregido) -->
+                <a href="3d/" class="card card-3d" aria-label="Ir a Kodyan 3D, objetos impresos en 3D">
                     <span class="icono" aria-hidden="true"><i class="fa-solid fa-cube"></i></span>
                     <h2>Kodyan 3D</h2>
                     <p>
-                        Próximamente: Tienda de objetos únicos hechos con impresión 3D. <br>
+                        Próximamente: Tienda de objetos únicos hechos con impresión 3D.
                         Diseños funcionales y creativos.
                     </p>
                     <span class="btn-card proximamente" aria-label="Kodyan 3D estará disponible próximamente" aria-disabled="true">Próximamente</span>
-                </div>
+                </a>
 
             </div>
         </section>
 
     </main>
 
-    <!<!-- ========================================== -->
-<!-- FOOTER (NUEVO AZUL KODYAN)                 -->
-<!-- ========================================== -->
-<footer role="contentinfo">
-    <div class="container">
-        <div class="footer-grid">
-            
-            <!-- Columna 1: Sobre Kodyan -->
-            <div>
-                <h4>🐙 Kodyan</h4>
-                <p>Conciencia, creatividad y cuidado. Un espacio donde la salud mental, el medio ambiente y la creatividad se encuentran.</p>
-                <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 8px;">
-                    <i class="fa-regular fa-envelope" aria-hidden="true"></i> 
-                    <a href="mailto:hola@kodyan.com" class="email-link">hola@kodyan.com</a>
-                </p>
-            </div>
+    <!-- ========================================== -->
+    <!-- FOOTER (NUEVO AZUL KODYAN)                 -->
+    <!-- ========================================== -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
 
-            <!-- Columna 2: Explora -->
-            <div>
-                <h4>Explora</h4>
-                <ul>
-                    <li><a href="care/">❤️ Care</a></li>
-                    <li><a href="eco/">🌱 Eco</a></li>
-                    <li><a href="3d/">🖨️ 3D</a></li>
-                    <li><a href="acercade.html">📖 Acerca de</a></li>
-                    <li><a href="contacto.html">✉️ Contacto</a></li>
-                </ul>
-            </div>
+                <!-- Columna 1: Sobre Kodyan -->
+                <div>
+                    <h4>🐙 Kodyan</h4>
+                    <p>Conciencia, creatividad y cuidado. Un espacio donde la salud mental, el medio ambiente y la creatividad se encuentran.</p>
+                    <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 8px;">
+                        <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+                        <a href="mailto:hola@kodyan.com" class="email-link">hola@kodyan.com</a>
+                    </p>
+                </div>
 
-            <!-- Columna 3: Detrás de Kodyan (personal y cálido) -->
-            <div>
-                <h4>Detrás de Kodyan</h4>
-                <p style="font-size: 0.92rem; line-height: 1.6; opacity: 0.85;">
-                    Un proyecto pequeño, con una visión clara: hacer accesibles las herramientas para cuidar la mente, el planeta y la creatividad.
-                </p>
-                <p style="margin-top: 12px; font-size: 0.9rem; opacity: 0.7;">
-                    <i class="fa-brands fa-instagram" aria-hidden="true"></i> 
-                    <a href="#" style="color: #e6f4f9; text-decoration: none; opacity: 0.7;">Instagram (próximamente)</a>
-                </p>
-            </div>
+                <!-- Columna 2: Explora -->
+                <div>
+                    <h4>Explora</h4>
+                    <ul>
+                        <li><a href="care/">❤️ Care</a></li>
+                        <li><a href="eco/">🌱 Eco</a></li>
+                        <li><a href="3d/">🖨️ 3D</a></li>
+                        <li><a href="acercade.html">📖 Acerca de</a></li>
+                        <li><a href="contacto.html">✉️ Contacto</a></li>
+                    </ul>
+                </div>
 
+                <!-- Columna 3: Detrás de Kodyan -->
+                <div>
+                    <h4>Detrás de Kodyan</h4>
+                    <p style="font-size: 0.92rem; line-height: 1.6; opacity: 0.85;">
+                        Un proyecto pequeño, con una visión clara: hacer accesibles las herramientas para cuidar la mente, el planeta y la creatividad.
+                    </p>
+                    <p style="margin-top: 12px; font-size: 0.9rem; opacity: 0.7;">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                        <a href="#" style="color: #e6f4f9; text-decoration: none; opacity: 0.7;">Instagram (próximamente)</a>
+                    </p>
+                </div>
+
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kodyan · Hecho con ❤️ y 🐙 · Esto no sustituye a terapia profesional.</p>
+            </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Kodyan · Hecho con ❤️ y 🐙 · Esto no sustituye a terapia profesional.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <!-- ========================================== -->
     <!-- PANEL DE ACCESIBILIDAD (HTML)              -->
     <!-- ========================================== -->
-<div class="panel-accesibilidad" id="panelAccesibilidad" role="dialog" aria-label="Panel de accesibilidad" aria-live="polite">
-    <h3>♿ Opciones de accesibilidad</h3>
-        
+    <div class="panel-accesibilidad" id="panelAccesibilidad" role="dialog" aria-label="Panel de accesibilidad" aria-live="polite">
+        <h3>♿ Opciones de accesibilidad</h3>
+
         <div class="opcion">
             <span>🔍 Tamaño de texto</span>
             <div>
@@ -995,12 +878,12 @@ body.lectura-facil .panel-accesibilidad h3 {
                 <button id="aumentarTexto" aria-label="Aumentar tamaño de texto">A+</button>
             </div>
         </div>
-        
+
         <div class="opcion">
             <span>🌓 Contraste</span>
             <button id="toggleContraste" aria-label="Activar o desactivar alto contraste">Activar</button>
         </div>
-        
+
         <div class="opcion">
             <span>📖 Lectura fácil</span>
             <button id="toggleLectura" aria-label="Activar o desactivar modo lectura">Activar</button>
@@ -1008,11 +891,60 @@ body.lectura-facil .panel-accesibilidad h3 {
     </div>
 
     <!-- ========================================== -->
-    <!-- JAVASCRIPT PARA ACCESIBILIDAD              -->
+    <!-- JAVASCRIPT PARA ACCESIBILIDAD Y MENÚ       -->
     <!-- ========================================== -->
     <script>
         // =============================================
-        // 1. ABRIR/CERRAR PANEL DE ACCESIBILIDAD
+        // 1. MENÚ HAMBURGUESA
+        // =============================================
+        const menuHamburguesa = document.getElementById('menuHamburguesa');
+        const menuNavegacion = document.getElementById('menuNavegacion');
+        let menuAbierto = false;
+
+        menuHamburguesa.addEventListener('click', function(e) {
+            e.stopPropagation();
+            menuAbierto = !menuAbierto;
+            menuNavegacion.classList.toggle('abierto', menuAbierto);
+            this.setAttribute('aria-expanded', menuAbierto);
+            const icono = this.querySelector('i');
+            icono.className = menuAbierto ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        });
+
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', function(e) {
+            if (menuAbierto && !menuNavegacion.contains(e.target) && e.target !== menuHamburguesa) {
+                menuNavegacion.classList.remove('abierto');
+                menuAbierto = false;
+                menuHamburguesa.setAttribute('aria-expanded', 'false');
+                menuHamburguesa.querySelector('i').className = 'fa-solid fa-bars';
+            }
+        });
+
+        // Cerrar menú con ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && menuAbierto) {
+                menuNavegacion.classList.remove('abierto');
+                menuAbierto = false;
+                menuHamburguesa.setAttribute('aria-expanded', 'false');
+                menuHamburguesa.querySelector('i').className = 'fa-solid fa-bars';
+                menuHamburguesa.focus();
+            }
+        });
+
+        // Cerrar menú al hacer clic en un enlace (móvil)
+        document.querySelectorAll('#menuNavegacion ul a, #menuNavegacion ul .btn-accesibilidad').forEach(enlace => {
+            enlace.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    menuNavegacion.classList.remove('abierto');
+                    menuAbierto = false;
+                    menuHamburguesa.setAttribute('aria-expanded', 'false');
+                    menuHamburguesa.querySelector('i').className = 'fa-solid fa-bars';
+                }
+            });
+        });
+
+        // =============================================
+        // 2. PANEL DE ACCESIBILIDAD
         // =============================================
         const btnAccesibilidad = document.getElementById('btnAccesibilidad');
         const panelAccesibilidad = document.getElementById('panelAccesibilidad');
@@ -1025,7 +957,6 @@ body.lectura-facil .panel-accesibilidad h3 {
             this.setAttribute('aria-expanded', panelAbierto);
         });
 
-        // Cerrar panel al hacer clic fuera
         document.addEventListener('click', function(e) {
             if (panelAbierto && !panelAccesibilidad.contains(e.target) && e.target !== btnAccesibilidad) {
                 panelAccesibilidad.classList.remove('activo');
@@ -1034,7 +965,6 @@ body.lectura-facil .panel-accesibilidad h3 {
             }
         });
 
-        // Cerrar con ESC
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && panelAbierto) {
                 panelAccesibilidad.classList.remove('activo');
@@ -1045,28 +975,25 @@ body.lectura-facil .panel-accesibilidad h3 {
         });
 
         // =============================================
-        // 2. FUNCIONES DE ACCESIBILIDAD
+        // 3. FUNCIONES DE ACCESIBILIDAD
         // =============================================
-
-        // Aumentar texto
         let tamañoTexto = 100;
         const body = document.body;
 
         document.getElementById('aumentarTexto').addEventListener('click', function() {
             if (tamañoTexto < 140) {
                 tamañoTexto += 10;
-                body.style.fontSize = tamañoTexto + '%';
+                body.style.zoom = tamañoTexto / 100;
             }
         });
 
         document.getElementById('disminuirTexto').addEventListener('click', function() {
             if (tamañoTexto > 70) {
                 tamañoTexto -= 10;
-                body.style.fontSize = tamañoTexto + '%';
+                body.style.zoom = tamañoTexto / 100;
             }
         });
 
-        // Alto contraste
         let contrasteActivo = false;
         document.getElementById('toggleContraste').addEventListener('click', function() {
             contrasteActivo = !contrasteActivo;
@@ -1075,7 +1002,6 @@ body.lectura-facil .panel-accesibilidad h3 {
             this.classList.toggle('activo', contrasteActivo);
         });
 
-        // Modo lectura fácil
         let lecturaActiva = false;
         document.getElementById('toggleLectura').addEventListener('click', function() {
             lecturaActiva = !lecturaActiva;
