@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- ===== META TAGS SEO ===== -->
+    <!-- ===== META TAGS SEO OPTIMIZADOS ===== -->
     <title>Kodyan Care - Primeros Auxilios Emocionales | Instagram: @kodyan.care</title>
     <meta name="description" content="Seguinos en Instagram @kodyan.care - Herramientas digitales gratuitas para crisis de ansiedad, pánico y salud mental. Técnicas de anclaje, respiración guiada y apoyo inmediato. Neurodivergente-friendly.">
+    
     <meta name="keywords" content="kodyan care, @kodyan.care, ansiedad, crisis, salud mental, primeros auxilios emocionales, técnicas anclaje, respiración, pánico, TDAH, autismo, neurodivergente, meltdown, shutdown">
+    
     <meta name="author" content="Kodyan Care">
     <meta name="robots" content="index, follow">
     
-    <!-- ===== OPEN GRAPH ===== -->
+    <!-- ===== OPEN GRAPH / REDES SOCIALES ===== -->
     <meta property="og:title" content="Kodyan Care - Tu Puerto Seguro para Tormentas Emocionales">
     <meta property="og:description" content="Herramientas digitales de primeros auxilios emocionales. Seguinos en Instagram @kodyan.care para contenido diario sobre salud mental.">
     <meta property="og:type" content="website">
@@ -27,7 +29,7 @@
     <meta name="twitter:image" content="https://kodyancare.com/resources/twitter-image.png">
     <meta name="twitter:creator" content="@kodyan.care">
     
-    <!-- ===== SCHEMA MARKUP ===== -->
+    <!-- ===== SCHEMA MARKUP - SEO AVANZADO ===== -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -59,52 +61,95 @@
         .btn, .btn-primary, .btn-outline, .btn-ig, .hero-buttons a {
             text-decoration: none !important;
         }
+        
         a.btn:hover {
             text-decoration: none !important;
         }
 
-        /* ===== HEADER MÁS COMPACTO ===== */
+        /* ===== HEADER MÁS COMPACTO (ESCRITORIO) ===== */
         header {
             padding: 12px 0;
         }
+
         .logo {
             font-size: 1.3rem;
         }
+
         .logo-pulpo {
             height: 32px;
             width: auto;
         }
+
         .nav-links a {
             font-size: 0.85rem;
             padding: 6px 12px;
         }
+
         .btn-donar, .btn-emergencia {
             font-size: 0.8rem;
             padding: 4px 12px;
         }
 
-        /* ===== HERO MÁS COMPACTO (PC Y MÓVIL) ===== */
-        .hero {
-            padding: 40px 0 30px !important;
-            min-height: auto !important;
-        }
-        .hero h1 {
-            font-size: 2.2rem;
-            line-height: 1.2;
-        }
-        .hero p {
-            font-size: 1rem;
-            max-width: 600px;
-        }
-        .hero-buttons {
-            gap: 12px;
-        }
-        .hero-buttons a {
-            font-size: 0.9rem;
-            padding: 10px 24px;
+        /* ===== HEADER MÁS COMPACTO (MÓVIL) ===== */
+        @media (max-width: 768px) {
+            header {
+                padding: 8px 0;
+            }
+
+            .logo {
+                font-size: 1rem;
+            }
+
+            .logo-pulpo {
+                height: 24px;
+            }
+
+            .hamburger {
+                font-size: 1.2rem;
+                padding: 4px 8px;
+            }
+
+            .nav-links {
+                gap: 4px;
+                padding: 8px 0;
+            }
+
+            .nav-links a {
+                font-size: 0.8rem;
+                padding: 6px 10px;
+            }
+
+            .btn-donar, .btn-emergencia {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+            }
         }
 
-        /* ===== BOTÓN VOLVER AL INICIO (HEADER) ===== */
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 0.9rem;
+            }
+
+            .logo-pulpo {
+                height: 20px;
+            }
+
+            .nav-links a {
+                font-size: 0.7rem;
+                padding: 4px 6px;
+            }
+
+            .btn-donar, .btn-emergencia {
+                font-size: 0.6rem;
+                padding: 2px 6px;
+            }
+
+            .hamburger {
+                font-size: 1rem;
+            }
+        }
+
+        /* ===== BOTÓN VOLVER AL INICIO (ARRIBA) ===== */
         .btn-volver-header {
             display: inline-flex;
             align-items: center;
@@ -121,6 +166,7 @@
             font-family: 'Montserrat', sans-serif;
             margin-left: auto;
         }
+
         .btn-volver-header:hover {
             background: #367588;
             color: #ffffff;
@@ -128,11 +174,23 @@
             transform: translateX(-2px);
             text-decoration: none;
         }
+
         .btn-volver-header i {
             font-size: 0.7rem;
         }
 
-        /* ===== BOTÓN VOLVER AL INICIO (FOOTER) ===== */
+        @media (max-width: 768px) {
+            .btn-volver-header {
+                font-size: 0.65rem;
+                padding: 3px 8px;
+                gap: 4px;
+            }
+            .btn-volver-header i {
+                font-size: 0.6rem;
+            }
+        }
+
+        /* ===== BOTÓN VOLVER AL INICIO (ABAJO) ===== */
         .btn-volver-footer {
             display: inline-block;
             padding: 12px 28px;
@@ -148,6 +206,7 @@
             font-family: 'Montserrat', sans-serif;
             box-shadow: 0 4px 15px rgba(54, 117, 136, 0.2);
         }
+
         .btn-volver-footer:hover {
             background: #1f4a5c;
             transform: translateY(-2px);
@@ -155,59 +214,38 @@
             color: #ffffff;
             text-decoration: none;
         }
+
         .btn-volver-footer i {
             margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .btn-volver-footer {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ===== SECCIÓN TRIPLE (COLUMNAS) ===== */
+        .columna {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         /* ============================================ */
         /* OPTIMIZACIONES PARA MÓVIL (SCROLL MÁS CORTO) */
         /* ============================================ */
-        @media (max-width: 768px) {
-            /* Header más compacto */
-            header {
-                padding: 8px 0;
-            }
-            .logo {
-                font-size: 1rem;
-            }
-            .logo-pulpo {
-                height: 24px;
-            }
-            .hamburger {
-                font-size: 1.2rem;
-                padding: 4px 8px;
-            }
-            .nav-links {
-                gap: 4px;
-                padding: 8px 0;
-            }
-            .nav-links a {
-                font-size: 0.8rem;
-                padding: 6px 10px;
-            }
-            .btn-donar, .btn-emergencia {
-                font-size: 0.7rem;
-                padding: 4px 8px;
-            }
-            .btn-volver-header {
-                font-size: 0.65rem;
-                padding: 3px 8px;
-                gap: 4px;
-            }
-            .btn-volver-header i {
-                font-size: 0.6rem;
-            }
 
-            /* Hero más compacto en móvil */
+        @media (max-width: 768px) {
+            /* 1. Hero más compacto */
             .hero {
-                padding: 30px 0 20px !important;
+                padding: 40px 0 30px;
             }
             .hero h1 {
                 font-size: 1.8rem;
                 line-height: 1.2;
             }
             .hero p {
-                font-size: 0.95rem;
+                font-size: 1rem;
             }
             .hero-buttons {
                 flex-direction: column;
@@ -216,11 +254,9 @@
             .hero-buttons a {
                 width: 100%;
                 text-align: center;
-                font-size: 0.85rem;
-                padding: 10px 16px;
             }
 
-            /* Herramientas en 2 columnas */
+            /* 2. Herramientas en 2 columnas */
             .tools-grid {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -249,7 +285,7 @@
                 height: 40px;
             }
 
-            /* Regulación en acordeón */
+            /* 3. Regulación en acordeón (solo se ve el título, se abre al clic) */
             .regulacion-grid {
                 display: flex;
                 flex-direction: column;
@@ -306,7 +342,7 @@
                 font-size: 0.9rem;
             }
 
-            /* Cómo Ayudar en grid 2 columnas */
+            /* 4. Sección "Cómo Ayudar" en grid de 2 columnas */
             .help-grid {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -330,7 +366,7 @@
                 padding: 4px 10px;
             }
 
-            /* Sección triple más compacta */
+            /* 5. Sección triple más compacta */
             .seccion-triple {
                 padding: 2rem 0 !important;
             }
@@ -355,7 +391,7 @@
                 font-size: 0.85rem !important;
             }
 
-            /* Footer más compacto */
+            /* 6. Footer más compacto */
             .footer-content {
                 flex-direction: column;
                 gap: 20px;
@@ -376,42 +412,6 @@
                 flex-direction: column;
                 gap: 6px;
             }
-
-            /* Botón volver footer móvil */
-            .btn-volver-footer {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.5rem;
-            }
-            .hero p {
-                font-size: 0.85rem;
-            }
-            .tools-grid {
-                gap: 8px;
-            }
-            .tool-item {
-                padding: 12px;
-            }
-            .tool-item h3 {
-                font-size: 0.85rem;
-            }
-            .help-grid {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-            .footer-links ul {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===== SECCIÓN TRIPLE (COLUMNAS) ===== */
-        .columna {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
     </style>
 </head>
@@ -431,6 +431,7 @@
                     <li><a href="#como-ayudar">Cómo Ayudar</a></li>
                     <li><a href="#conectar-apoyar" class="btn-donar">☕ Donar</a></li>
                     <li><a href="emergencias.html" class="btn-emergencia">🚨 Emergencia</a></li>
+                    <!-- Botón Volver al inicio en el header -->
                     <li>
                         <a href="../index.html" class="btn-volver-header" aria-label="Volver a la página principal de Kodyan">
                             <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Inicio
@@ -444,7 +445,7 @@
         </div>
     </header>
 
-    <!-- ===== HERO MÁS COMPACTO ===== -->
+    <!-- ===== HERO SECTION ===== -->
     <section class="hero" id="home">
         <div class="container hero-content">
             <h1>TU PUERTO SEGURO PARA TORMENTAS EMOCIONALES</h1>
@@ -461,7 +462,7 @@
         <div class="care-line care-line-2"></div>
     </section>
 
-    <!-- ===== HERRAMIENTAS ===== -->
+    <!-- ===== HERRAMIENTAS PRINCIPALES ===== -->
     <section class="herramientas" id="herramientas">
         <div class="container">
             <div class="section-title">
@@ -470,24 +471,27 @@
             </div>
             
             <div class="tools-grid">
+                <!-- 1. Anclaje -->
                 <div class="tool-item">
                     <div class="tool-icon">
-                        <img src="resources/pulpo-anclaje.png" alt="Técnicas de anclaje" class="pulpo-icon">
+                        <img src="resources/pulpo-anclaje.png" alt="Técnicas de anclaje para crisis de ansiedad" class="pulpo-icon">
                     </div>
                     <h3>Técnicas de Anclaje</h3>
                     <p>Técnicas 5-4-3-2-1, anclaje con hielo y respiración guiada para ataques de pánico o disociación.</p>
                     <a href="anclaje.html" class="btn btn-outline">Usar Ahora</a>
                 </div>
                 
+                <!-- 2. Descarga -->
                 <div class="tool-item">
                     <div class="tool-icon">
-                        <img src="resources/pulpo-descarga.png" alt="Descarga emocional" class="pulpo-icon">
+                        <img src="resources/pulpo-descarga.png" alt="Descarga emocional rápida y segura" class="pulpo-icon">
                     </div>
                     <h3>Descarga Rápida</h3>
                     <p>Escribe lo que sientes sin filtros. Todo se autodestruye en segundos. Sin juicios, solo liberación.</p>
                     <a href="descarga.html" class="btn btn-outline">Comenzar</a>
                 </div>
                 
+                <!-- 3. Espacio seguro -->
                 <div class="tool-item">
                     <div class="tool-icon">
                         <img src="resources/pulpo-audio.png" alt="Espacio seguro" class="pulpo-icon">
@@ -497,54 +501,60 @@
                     <a href="espacio-seguro.html" class="btn btn-outline">Planear</a>
                 </div>
                 
+                <!-- 4. Kit de Supervivencia -->
                 <div class="tool-item">
                     <div class="tool-icon">
-                        <img src="resources/pulpo-supervivencia.png" alt="Kit de Supervivencia" class="pulpo-icon">
+                        <img src="resources/pulpo-supervivencia.png" alt="Kit de Supervivencia para tiempos complejos" class="pulpo-icon">
                     </div>
                     <h3>Kit de Supervivencia</h3>
                     <p>Herramientas para navegar crisis económicas, laborales y encontrar tu tribu en tiempos difíciles.</p>
                     <a href="supervivencia.html" class="btn btn-outline">Explorar</a>
                 </div>
                 
+                <!-- 5. Salud Integral -->
                 <div class="tool-item">
                     <div class="tool-icon">
-                        <img src="resources/pulpo-salud.png" alt="Salud Integral" class="pulpo-icon">
+                        <img src="resources/pulpo-salud.png" alt="Salud Integral sin juicios" class="pulpo-icon">
                     </div>
                     <h3>Salud Integral</h3>
                     <p>Cuidado accesible para todos los cuerpos. Información médica sin estigmas y recursos públicos.</p>
                     <a href="salud.html" class="btn btn-outline">Cuidarse</a>
                 </div>
                 
+                <!-- 6. Kit Estudiantil -->
                 <div class="tool-item">
                     <div class="tool-icon">
-                        <img src="resources/pulpo-estudiantes.png" alt="Kit Estudiantil" class="pulpo-icon">
+                        <img src="resources/pulpo-estudiantes.png" alt="Kit de Supervivencia Estudiantil" class="pulpo-icon">
                     </div>
                     <h3>Kit Estudiantil</h3>
                     <p>Herramientas específicas para ansiedad académica, procrastinación y agotamiento estudiantil.</p>
                     <a href="estudiantes.html" class="btn btn-outline">Estudiar</a>
                 </div>
                 
+                <!-- 7. Sensorial -->
                 <div class="tool-item">
                     <div class="tool-icon">
-                        <img src="resources/pulpo-sensorial.png" alt="Herramientas sensoriales" class="pulpo-icon">
+                        <img src="resources/pulpo-sensorial.png" alt="Herramientas sensoriales para regulación" class="pulpo-icon">
                     </div>
                     <h3>Herramientas Sensoriales</h3>
                     <p>Para regular ansiedad.</p>
                     <a href="sensorial.html" class="btn btn-outline">Calmar</a>
                 </div>
                 
+                <!-- 8. Guías -->
                 <div class="tool-item">
                     <div class="tool-icon">
-                        <img src="resources/pulpo-guias.png" alt="Guías rápidas" class="pulpo-icon">
+                        <img src="resources/pulpo-guias.png" alt="Guías rápidas para diferentes crisis" class="pulpo-icon">
                     </div>
                     <h3>Guías Rápidas</h3>
                     <p>Qué hacer en crisis de ansiedad, TDAH, ideación suicida. Pasos claros y concretos.</p>
                     <a href="guias.html" class="btn btn-outline">Leer Guías</a>
                 </div>
                 
+                <!-- 9. Tarjetas de Afrontamiento -->
                 <div class="tool-item">
                     <div class="tool-icon">
-                        <img src="resources/pulpo-tarjetas.png" alt="Tarjetas de Afrontamiento" class="pulpo-icon">
+                        <img src="resources/pulpo-tarjetas.png" alt="Tarjetas de Afrontamiento para momentos de confusión" class="pulpo-icon">
                     </div>
                     <h3>Tarjetas de Afrontamiento</h3>
                     <p>Ideas concretas para momentos de confusión.</p>
@@ -554,7 +564,7 @@
         </div>
     </section>
 
-    <!-- ===== REGULACIÓN EMOCIONAL ===== -->
+    <!-- ===== REGULACIÓN EMOCIONAL (ACORDEÓN) ===== -->
     <section class="regulacion-emocional" id="regulacion">
         <div class="container">
             <div class="section-title">
@@ -563,7 +573,7 @@
             </div>
             
             <div class="regulacion-grid">
-                <div class="regulacion-item">
+                <div class="regulacion-item" onclick="toggleRegulacion(this)">
                     <h3>🔍 1. Reconocer</h3>
                     <p>"¿Qué estoy sintiendo EN EL CUERPO?"</p>
                     <ul>
@@ -574,7 +584,7 @@
                     <small>No juzgues, solo observá.</small>
                 </div>
                 
-                <div class="regulacion-item">
+                <div class="regulacion-item" onclick="toggleRegulacion(this)">
                     <h3>🏷️ 2. Nombrar</h3>
                     <p>"Esto es ______"</p>
                     <ul>
@@ -586,7 +596,7 @@
                     <small>Ponéle nombre al monstruo.</small>
                 </div>
                 
-                <div class="regulacion-item">
+                <div class="regulacion-item" onclick="toggleRegulacion(this)">
                     <h3>🛠️ 3. Regular</h3>
                     <p>"¿Qué necesito AHORA?"</p>
                     <ul>
@@ -597,7 +607,7 @@
                     <small>Usá las herramientas como apoyo para un alivio rápido.</small>
                 </div>
                 
-                <div class="regulacion-item">
+                <div class="regulacion-item" onclick="toggleRegulacion(this)">
                     <h3>🧩 4. Integrar</h3>
                     <p>"¿Qué aprendí de esta crisis?"</p>
                     <ul>
@@ -654,101 +664,103 @@
                 </div>
             </div>
             
-            <div class="text-center" style="margin-top: 2rem;">
+            <div class="text-center" style="margin-top: 3rem;">
                 <a href="como-ayudar.html" class="btn btn-primary">Ver Todas las Guías de Ayuda →</a>
             </div>
         </div>
     </section>
 
-    <!-- ===== SECCIÓN TRIPLE ===== -->
-    <section class="seccion-triple" id="conectar-apoyar" style="padding: 3rem 0; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+    <!-- ===== SECCIÓN TRIPLE - CONTACTO, INSTAGRAM Y APOYO ===== -->
+    <section class="seccion-triple" id="conectar-apoyar" style="padding: 4rem 0; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
         <div class="container">
-            <div class="section-title" style="text-align: center; margin-bottom: 2rem;">
+            <div class="section-title" style="text-align: center; margin-bottom: 3rem;">
                 <h2>💝 Conectemos y Crezcamos Juntos</h2>
                 <p>Tu voz, nuestra comunidad y el apoyo mutuo hacen posible este proyecto</p>
             </div>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; align-items: start;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: start;">
                 
                 <!-- COLUMNA 1: CONTACTO -->
-                <div class="columna" style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border-left: 4px solid #667eea;">
-                    <div style="text-align: center; margin-bottom: 1rem;">
-                        <div style="font-size: 2.2rem; margin-bottom: 0.3rem;">📬</div>
-                        <h3 style="color: #2d3748; margin-bottom: 0.3rem; font-size: 1.2rem;">Escribinos Directo</h3>
-                        <p style="color: #718096; font-size: 0.85rem;">Tu mensaje llega a nuestro equipo</p>
+                <div class="columna" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border-left: 4px solid #667eea;">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📬</div>
+                        <h3 style="color: #2d3748; margin-bottom: 0.5rem;">Escribinos Directo</h3>
+                        <p style="color: #718096; font-size: 0.9rem;">Tu mensaje llega a nuestro equipo</p>
                     </div>
                     
-                    <form id="formularioContactoCompacto" action="https://formspree.io/f/myegrdan" method="POST" style="display: flex; flex-direction: column; gap: 0.8rem;">
+                    <form id="formularioContactoCompacto" action="https://formspree.io/f/myegrdan" method="POST" style="display: flex; flex-direction: column; gap: 1rem;">
                         <input type="text" name="nombre" required 
                                placeholder="Tu nombre"
-                               style="padding: 10px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; transition: border-color 0.3s;">
+                               style="padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 14px; transition: border-color 0.3s;">
                         
                         <input type="email" name="email" required
                                placeholder="tu@email.com"
-                               style="padding: 10px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; transition: border-color 0.3s;">
+                               style="padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 14px; transition: border-color 0.3s;">
                         
                         <textarea name="mensaje" rows="3" required
                                   placeholder="Tu mensaje..."
-                                  style="padding: 10px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; resize: vertical; min-height: 70px; font-family: inherit;"></textarea>
+                                  style="padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 14px; resize: vertical; min-height: 80px; font-family: inherit;"></textarea>
                         
                         <button type="submit" 
-                                style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 10px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: transform 0.2s;">
+                                style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: transform 0.2s;">
                             📨 Enviar mensaje
                         </button>
                     </form>
                     
-                    <div id="mensajeExitoCompacto" style="display: none; background: #d4edda; color: #155724; padding: 0.6rem; border-radius: 8px; margin-top: 0.8rem; text-align: center; font-size: 0.85rem;">
+                    <div id="mensajeExitoCompacto" style="display: none; background: #d4edda; color: #155724; padding: 0.8rem; border-radius: 8px; margin-top: 1rem; text-align: center; font-size: 0.9rem;">
                         ✅ ¡Mensaje enviado!
                     </div>
                 </div>
                 
                 <!-- COLUMNA 2: INSTAGRAM -->
-                <div class="columna" style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border-left: 4px solid #E4405F; text-align: center;">
-                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📱</div>
-                    <h3 style="color: #2d3748; margin-bottom: 0.5rem; font-size: 1.2rem;">Seguinos en Instagram</h3>
-                    <p style="color: #718096; margin-bottom: 1rem; line-height: 1.5; font-size: 0.9rem;">
+                <div class="columna" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border-left: 4px solid #E4405F; text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
+                    <h3 style="color: #2d3748; margin-bottom: 1rem;">Seguinos en Instagram</h3>
+                    <p style="color: #718096; margin-bottom: 1.5rem; line-height: 1.5;">
                         Contenido diario sobre salud mental, tips neurodivergentes y comunidad en vivo.
                     </p>
                     
                     <a href="https://www.instagram.com/kodyan.care/" target="_blank" 
-                       style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #E4405F 0%, #C13584 100%); color: white; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: transform 0.2s; font-size: 0.9rem;">
+                       style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #E4405F 0%, #C13584 100%); color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: transform 0.2s;">
                         <i class="fab fa-instagram"></i>
                         @kodyan.care
                     </a>
                     
-                    <div style="margin-top: 1rem; padding: 0.8rem; background: #f8f9fa; border-radius: 10px;">
-                        <p style="font-size: 0.8rem; color: #4a5568; margin-bottom: 0.3rem;">
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+                        <p style="font-size: 0.9rem; color: #4a5568; margin-bottom: 0.5rem;">
                             <strong>✨ Lo nuevo en Instagram:</strong>
                         </p>
-                        <p style="font-size: 0.8rem; color: #718096;">
+                        <p style="font-size: 0.85rem; color: #718096;">
                             Tips diarios • Lives • Comunidad activa • Contenido exclusivo
                         </p>
                     </div>
                 </div>
                 
                 <!-- COLUMNA 3: DONACIONES -->
-                <div class="columna" style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border-left: 4px solid #27ae60; text-align: center;">
-                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💝</div>
-                    <h3 style="color: #2d3748; margin-bottom: 0.5rem; font-size: 1.2rem;">Apoyá este Proyecto</h3>
-                    <p style="color: #718096; margin-bottom: 1rem; line-height: 1.5; font-size: 0.9rem;">
+                <div class="columna" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border-left: 4px solid #27ae60; text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">💝</div>
+                    <h3 style="color: #2d3748; margin-bottom: 1rem;">Apoyá este Proyecto</h3>
+                    <p style="color: #718096; margin-bottom: 1.5rem; line-height: 1.5;">
                         Tu apoyo ayuda a que Kodyan Care siga siendo gratuito y accesible para toda la comunidad.
                     </p>
                     
-                    <div style="display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1rem;">
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1.5rem;">
                         <a href="https://cafecito.app/kodyancare" target="_blank" 
-                           style="display: flex; align-items: center; gap: 0.5rem; background: #FF813F; color: white; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s; justify-content: center; font-size: 0.9rem;">
-                            <span>☕</span> Cafecito
+                           style="display: flex; align-items: center; gap: 0.8rem; background: #FF813F; color: white; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s; justify-content: center;">
+                            <span>☕</span>
+                            Cafecito
                         </a>
                         
                         <a href="https://ko-fi.com/kodyancare" target="_blank" 
-                           style="display: flex; align-items: center; gap: 0.5rem; background: #29ABE0; color: white; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s; justify-content: center; font-size: 0.9rem;">
-                            <span>🎨</span> Ko-fi
+                           style="display: flex; align-items: center; gap: 0.8rem; background: #29ABE0; color: white; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s; justify-content: center;">
+                            <span>🎨</span>
+                            Ko-fi
                         </a>
                     </div>
                     
-                    <div style="background: #f0f9ff; padding: 0.8rem; border-radius: 10px; border-left: 3px solid #667eea;">
-                        <p style="font-size: 0.75rem; color: #4a5568; margin: 0;">
-                            <strong>💡 Tu aporte permite:</strong> Nuevas herramientas • Mantenimiento • Crecimiento comunitario
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 10px; border-left: 3px solid #667eea;">
+                        <p style="font-size: 0.8rem; color: #4a5568; margin: 0;">
+                            <strong>💡 Tu aporte permite:</strong> Nuevas herramientas + Mantenimiento + Crecimiento comunitario
                         </p>
                     </div>
                 </div>
@@ -756,8 +768,8 @@
         </div>
     </section>
 
-    <!-- ===== VOLVER AL INICIO (FOOTER) ===== -->
-    <div style="text-align: center; padding: 1.5rem 0 1rem;">
+    <!-- ===== VOLVER AL INICIO (ABAJO) ===== -->
+    <div style="text-align: center; padding: 2rem 0 1rem;">
         <a href="../index.html" class="btn-volver-footer" aria-label="Volver a la página principal de Kodyan">
             <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Volver al inicio
         </a>
@@ -861,13 +873,33 @@
         });
 
         // ===== ACORDEÓN PARA REGULACIÓN (MÓVIL) =====
-        document.querySelectorAll('.regulacion-item').forEach(item => {
-            item.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
-                    this.classList.toggle('abierto');
-                }
-            });
-        });
+        function toggleRegulacion(elemento) {
+            // Solo en móvil
+            if (window.innerWidth <= 768) {
+                elemento.classList.toggle('abierto');
+            }
+        }
+
+        // Asegurar que en escritorio siempre se vean abiertos
+        function ajustarRegulacion() {
+            const items = document.querySelectorAll('.regulacion-item');
+            if (window.innerWidth > 768) {
+                items.forEach(item => item.classList.add('abierto'));
+            } else {
+                // En móvil, solo el primero abierto por defecto
+                items.forEach((item, index) => {
+                    if (index === 0) {
+                        item.classList.add('abierto');
+                    } else {
+                        item.classList.remove('abierto');
+                    }
+                });
+            }
+        }
+
+        // Ejecutar al cargar y al redimensionar
+        window.addEventListener('load', ajustarRegulacion);
+        window.addEventListener('resize', ajustarRegulacion);
     </script>
 </body>
 </html>
