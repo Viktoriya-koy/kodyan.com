@@ -378,32 +378,7 @@
             font-size: 1.1rem;
             color: #475569;
             line-height: 1.7;
-            margin-bottom: 32px;
-        }
-
-        .pagina-interna .cta-tienda {
-            display: inline-block;
-            background: var(--color-3d);
-            color: var(--blanco);
-            padding: 16px 40px;
-            border-radius: 40px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .pagina-interna .cta-tienda:hover {
-            background: #d68910;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(243, 156, 18, 0.4);
-        }
-
-        .pagina-interna .cta-tienda i {
-            margin-right: 10px;
+            margin-bottom: 16px;
         }
 
         .pagina-interna .estado-tienda {
@@ -416,33 +391,100 @@
             color: #64748b;
         }
 
-        .pagina-interna hr {
+        /* ============================================ */
+        /* 7. FORMULARIO DE AVISO (FORMSPREE)           */
+        /* ============================================ */
+        .formulario-aviso {
+            max-width: 500px;
+            margin: 32px auto 24px;
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .form-aviso {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .form-aviso input[type="email"] {
+            flex: 1;
+            min-width: 200px;
+            padding: 14px 18px;
+            border: 2px solid #e9edf4;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--blanco);
+            color: #1e293b;
+        }
+
+        .form-aviso input[type="email"]:focus {
+            outline: none;
+            border-color: var(--color-3d);
+            box-shadow: 0 0 0 4px rgba(243, 156, 18, 0.1);
+        }
+
+        .form-aviso .btn-aviso {
+            background: var(--color-3d);
+            color: var(--blanco);
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
             border: none;
-            border-top: 2px solid #e9edf4;
-            margin: 40px 0;
-            max-width: 700px;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .pagina-interna .volver {
-            display: inline-block;
-            margin-top: 20px;
-            color: var(--color-primario);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.2s ease;
+        .form-aviso .btn-aviso:hover {
+            background: #d68910;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(243, 156, 18, 0.4);
         }
 
-        .pagina-interna .volver:hover {
-            color: var(--color-primario-oscuro);
-            transform: translateX(-4px);
+        .form-aviso .btn-aviso:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
-        .pagina-interna .volver i {
-            margin-right: 8px;
+        .mensaje-aviso {
+            margin-top: 16px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-weight: 500;
+            display: none;
+            font-size: 0.95rem;
+        }
+
+        .mensaje-aviso.exito {
+            display: block;
+            background: #e6f7e6;
+            color: #1a7a1a;
+            border: 1px solid #b3e0b3;
+        }
+
+        .mensaje-aviso.error {
+            display: block;
+            background: #fde8e8;
+            color: #a11a1a;
+            border: 1px solid #f5c2c2;
         }
 
         /* ============================================ */
-        /* 7. FOOTER                                    */
+        /* 8. FOOTER                                    */
         /* ============================================ */
         footer {
             background: linear-gradient(135deg, #1f4a5c 0%, #367588 50%, #4a8da0 100%);
@@ -533,7 +575,7 @@
         }
 
         /* ============================================ */
-        /* 8. RESPONSIVE                                */
+        /* 9. RESPONSIVE                                */
         /* ============================================ */
         @media (max-width: 992px) {
             .pagina-interna h1 {
@@ -660,9 +702,16 @@
                 top: 60px;
                 padding: 16px;
             }
-            .pagina-interna .cta-tienda {
-                width: 100%;
-                text-align: center;
+            .formulario-aviso {
+                padding: 16px;
+                margin: 24px 0;
+            }
+            .form-aviso {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .form-aviso .btn-aviso {
+                justify-content: center;
             }
         }
 
@@ -702,18 +751,220 @@
             .pagina-interna .icono-grande i {
                 font-size: 1.8rem;
             }
+            .form-aviso input[type="email"] {
+                min-width: unset;
+                width: 100%;
+            }
+        }
+
+        /* ============================================ */
+        /* 10. ALTO CONTRASTE                           */
+        /* ============================================ */
+        .alto-contraste {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        .alto-contraste * {
+            border-color: #ffffff;
+        }
+
+        .alto-contraste header {
+            background: #000000;
+            border-bottom: 2px solid #ffffff;
+        }
+
+        .alto-contraste nav a {
+            color: #ffffff;
+        }
+
+        .alto-contraste .panel-accesibilidad {
+            background: #1a1a1a;
+            border: 2px solid #ffffff;
+        }
+
+        .alto-contraste .panel-accesibilidad h3,
+        .alto-contraste .panel-accesibilidad .opcion span {
+            color: #ffffff;
+        }
+
+        .alto-contraste .panel-accesibilidad .opcion button {
+            background: #000000;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+        }
+
+        .alto-contraste .panel-accesibilidad .opcion button:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .alto-contraste footer {
+            background: #000000;
+            border-top: 2px solid #ffffff;
+        }
+
+        .alto-contraste .hero h1,
+        .alto-contraste .pagina-interna h1 {
+            color: #ffffff;
+        }
+
+        .alto-contraste .hero p,
+        .alto-contraste .pagina-interna p {
+            color: #dddddd;
+        }
+
+        .alto-contraste .logo span:last-child {
+            -webkit-text-fill-color: #ffffff;
+            background: none;
+        }
+
+        .alto-contraste .logo-icono {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .alto-contraste .menu-hamburguesa {
+            color: #ffffff;
+        }
+
+        .alto-contraste .menu-hamburguesa:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .alto-contraste .btn-accesibilidad i,
+        .alto-contraste .panel-accesibilidad h3 i,
+        .alto-contraste .panel-accesibilidad .opcion span i,
+        .alto-contraste .icono i,
+        .alto-contraste .fa-solid,
+        .alto-contraste .fa-regular,
+        .alto-contraste .fa-brands {
+            color: #ffffff !important;
+        }
+
+        .alto-contraste .logo-icono {
+            background: #ffffff !important;
+            color: #000000 !important;
+        }
+
+        .alto-contraste .panel-accesibilidad .opcion button i {
+            color: #475569 !important;
+        }
+
+        .alto-contraste .panel-accesibilidad .opcion button:hover i {
+            color: #ffffff !important;
+        }
+
+        .alto-contraste .formulario-aviso {
+            background: #1a1a1a !important;
+            border-color: #ffffff !important;
+        }
+
+        .alto-contraste .form-aviso input[type="email"] {
+            background: #000000 !important;
+            color: #ffffff !important;
+            border-color: #ffffff !important;
+        }
+
+        .alto-contraste .form-aviso input[type="email"]:focus {
+            border-color: var(--color-3d) !important;
+            box-shadow: 0 0 0 4px rgba(243, 156, 18, 0.3) !important;
+        }
+
+        .alto-contraste .form-aviso .btn-aviso {
+            background: #ffffff !important;
+            color: #000000 !important;
+        }
+
+        .alto-contraste .form-aviso .btn-aviso:hover {
+            background: #dddddd !important;
+        }
+
+        /* ============================================ */
+        /* 11. LECTURA FÁCIL                           */
+        /* ============================================ */
+        .lectura-facil {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+
+        .lectura-facil .pagina-interna h1 {
+            font-size: 4rem;
+            letter-spacing: -0.5px;
+        }
+
+        .lectura-facil .pagina-interna p {
+            font-size: 1.4rem;
+            line-height: 1.9;
+        }
+
+        .lectura-facil .pagina-interna .subtitulo-pagina {
+            font-size: 1.6rem;
+        }
+
+        .lectura-facil nav a {
+            font-size: 1.2rem;
+        }
+
+        .lectura-facil .btn-accesibilidad {
+            font-size: 1.1rem;
+            padding: 10px 22px;
+        }
+
+        .lectura-facil .panel-accesibilidad .opcion button {
+            font-size: 1.1rem;
+            padding: 10px 18px;
+        }
+
+        .lectura-facil .panel-accesibilidad h3 {
+            font-size: 1.4rem;
+        }
+
+        .lectura-facil .logo {
+            font-size: 2rem;
+        }
+
+        .lectura-facil .logo-icono {
+            font-size: 1.8rem;
+            padding: 6px 14px;
+        }
+
+        .lectura-facil .footer-grid p,
+        .lectura-facil .footer-grid ul a {
+            font-size: 1.1rem;
+        }
+
+        .lectura-facil .footer-grid h4 {
+            font-size: 1.2rem;
+        }
+
+        .lectura-facil .footer-grid .email-link {
+            font-size: 1.1rem;
+        }
+
+        .lectura-facil .footer-bottom {
+            font-size: 1rem;
+        }
+
+        .lectura-facil .form-aviso input[type="email"] {
+            font-size: 1.2rem !important;
+            padding: 16px 20px !important;
+        }
+
+        .lectura-facil .form-aviso .btn-aviso {
+            font-size: 1.2rem !important;
+            padding: 16px 36px !important;
         }
     </style>
 </head>
 <body>
 
     <!-- ========================================== -->
-    <!-- SKIP LINK (Accesibilidad)                  -->
+    <!-- SKIP LINK                                 -->
     <!-- ========================================== -->
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
     <!-- ========================================== -->
-    <!-- HEADER CON MENÚ HAMBURGUESA                -->
+    <!-- HEADER                                     -->
     <!-- ========================================== -->
     <header role="banner">
         <div class="container header-container">
@@ -745,7 +996,7 @@
     </header>
 
     <!-- ========================================== -->
-    <!-- MAIN (Contenido principal)                 -->
+    <!-- MAIN                                       -->
     <!-- ========================================== -->
     <main id="main-content" role="main" class="pagina-interna">
         <div class="container">
@@ -761,23 +1012,44 @@
                 <p>
                     Estamos preparando una tienda de objetos únicos hechos con impresión 3D.
                     Diseños funcionales, creativos y hechos con cuidado.
-                    <br /><br />
+                </p>
+                <p>
                     <strong>Muy pronto vas a poder llevarte a casa piezas que combinan diseño y utilidad.</strong>
                 </p>
 
-                <!-- Botón que avisa que está en construcción -->
-                <button class="cta-tienda" id="btnTienda" aria-label="Avisar cuando la tienda esté lista">
-                    <i class="fa-regular fa-bell" aria-hidden="true"></i> Avisarme cuando esté lista
-                </button>
+                <!-- ===== FORMULARIO DE AVISO (FORMSPREE) ===== -->
+                <div class="formulario-aviso">
+                    <p style="font-size: 1rem; color: #64748b; margin-bottom: 16px;">
+                        📬 Recibe un correo cuando la tienda de Kodyan 3D esté lista.
+                    </p>
+                    <form class="form-aviso" id="formAviso3D" action="https://formspree.io/f/mvkpeble" method="POST">
+                        <input 
+                            type="email" 
+                            name="email" 
+                            placeholder="Tu correo electrónico" 
+                            required 
+                            aria-label="Correo electrónico para recibir el aviso"
+                        />
+                        <button type="submit" class="btn-aviso" id="btnAviso">
+                            <i class="fa-regular fa-bell" aria-hidden="true"></i> Avisarme
+                        </button>
+                        <!-- Campo oculto para identificar el origen -->
+                        <input type="hidden" name="_subject" value="Nuevo suscriptor para Kodyan 3D" />
+                    </form>
+                    <div class="mensaje-aviso" id="mensajeAviso"></div>
+                    <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 12px;">
+                        Sin spam. Solo un correo cuando la tienda esté lista.
+                    </p>
+                </div>
 
                 <p class="estado-tienda">
                     <i class="fa-solid fa-circle" aria-hidden="true" style="color: #F39C12; font-size: 0.5rem; vertical-align: middle;"></i>
                     Tienda en construcción
                 </p>
 
-                <hr>
+                <hr style="border: none; border-top: 2px solid #e9edf4; margin: 40px 0; max-width: 700px;">
 
-                <a href="../index.html" class="volver">
+                <a href="../index.html" class="volver" style="display: inline-block; margin-top: 20px; color: var(--color-primario); text-decoration: none; font-weight: 600; transition: all 0.2s ease;">
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Volver al inicio
                 </a>
 
@@ -821,7 +1093,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Kodyan · Hecho con ❤️.</p>
+                <p>&copy; 2025 Kodyan · Hecho con ❤️ y 🐙</p>
             </div>
         </div>
     </footer>
@@ -964,7 +1236,7 @@
         }
 
         // =============================================
-        // 4. ALTO CONTRASTE (USANDO CLASES)
+        // 4. ALTO CONTRASTE
         // =============================================
         const toggleContraste = document.getElementById('toggleContraste');
         let contrasteActivo = false;
@@ -980,7 +1252,7 @@
         }
 
         // =============================================
-        // 5. LECTURA FÁCIL (USANDO CLASES)
+        // 5. LECTURA FÁCIL
         // =============================================
         const toggleLectura = document.getElementById('toggleLectura');
         let lecturaActiva = false;
@@ -996,15 +1268,54 @@
         }
 
         // =============================================
-        // 6. BOTÓN "AVISARME CUANDO ESTÉ LISTA"
+        // 6. FORMULARIO DE AVISO (FORMSPREE)
         // =============================================
-        const btnTienda = document.getElementById('btnTienda');
+        const formAviso = document.getElementById('formAviso3D');
+        const btnAviso = document.getElementById('btnAviso');
+        const mensajeAviso = document.getElementById('mensajeAviso');
 
-        if (btnTienda) {
-            btnTienda.addEventListener('click', function() {
-                const mensaje = '🔔 ¡Gracias! Te avisaremos cuando la tienda de Kodyan 3D esté lista.';
-                alert(mensaje);
-                // Aquí podrías añadir un formulario de suscripción más adelante.
+        if (formAviso) {
+            formAviso.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Mostrar estado de carga
+                btnAviso.disabled = true;
+                btnAviso.innerHTML = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Enviando...';
+                mensajeAviso.className = 'mensaje-aviso';
+                mensajeAviso.style.display = 'none';
+
+                const formData = new FormData(formAviso);
+
+                fetch(formAviso.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Error en el envío');
+                    }
+                })
+                .then(data => {
+                    mensajeAviso.textContent = '✅ ¡Listo! Te avisaremos cuando la tienda esté lista.';
+                    mensajeAviso.className = 'mensaje-aviso exito';
+                    mensajeAviso.style.display = 'block';
+                    formAviso.reset();
+                })
+                .catch(error => {
+                    mensajeAviso.textContent = '❌ Hubo un problema. Por favor, inténtalo de nuevo más tarde.';
+                    mensajeAviso.className = 'mensaje-aviso error';
+                    mensajeAviso.style.display = 'block';
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    btnAviso.disabled = false;
+                    btnAviso.innerHTML = '<i class="fa-regular fa-bell" aria-hidden="true"></i> Avisarme';
+                });
             });
         }
     </script>
