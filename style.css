@@ -286,3 +286,165 @@ footer p:first-child {
         padding: 16px;
     }
 }
+
+
+/* ============================================ */
+/* 10. ESTILOS PARA MODOS DE ACCESIBILIDAD      */
+/* ============================================ */
+
+/* ----- ALTO CONTRASTE ----- */
+body.alto-contraste {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.alto-contraste * {
+    border-color: #ffffff !important;
+}
+
+body.alto-contraste .card {
+    background: #1a1a1a !important;
+    border: 2px solid #ffffff !important;
+    box-shadow: none !important;
+}
+
+body.alto-contraste .card p {
+    color: #dddddd !important;
+}
+
+body.alto-contraste .card h2 {
+    color: #ffffff !important;
+}
+
+body.alto-contraste header {
+    background: #000000 !important;
+    border-bottom: 2px solid #ffffff !important;
+}
+
+body.alto-contraste nav a {
+    color: #ffffff !important;
+}
+
+body.alto-contraste .btn-card {
+    border: 2px solid #ffffff !important;
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.alto-contraste .btn-card:hover {
+    background: #ffffff !important;
+    color: #000000 !important;
+}
+
+body.alto-contraste .panel-accesibilidad {
+    background: #1a1a1a !important;
+    border: 2px solid #ffffff !important;
+}
+
+body.alto-contraste .panel-accesibilidad h3,
+body.alto-contraste .panel-accesibilidad .opcion span {
+    color: #ffffff !important;
+}
+
+body.alto-contraste .panel-accesibilidad .opcion button {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid #ffffff !important;
+}
+
+body.alto-contraste .panel-accesibilidad .opcion button:hover {
+    background: #ffffff !important;
+    color: #000000 !important;
+}
+
+body.alto-contraste footer {
+    background: #000000 !important;
+    border-top: 2px solid #ffffff !important;
+}
+
+body.alto-contraste .hero h1 {
+    color: #ffffff !important;
+}
+
+body.alto-contraste .hero p {
+    color: #dddddd !important;
+}
+
+body.alto-contraste .hero .destacado {
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+    background: transparent !important;
+}
+
+body.alto-contraste .logo span:last-child {
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+}
+
+body.alto-contraste .logo-icono,
+body.alto-contraste .logo span:first-child {
+    background: #ffffff !important;
+    color: #000000 !important;
+}
+
+body.alto-contraste .menu-hamburguesa {
+    color: #ffffff !important;
+}
+
+body.alto-contraste .menu-hamburguesa:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ----- LECTURA FÁCIL ----- */
+body.lectura-facil * {
+    font-family: 'Arial', 'Helvetica', sans-serif !important;
+}
+
+body.lectura-facil .card p {
+    font-size: 1.3rem !important;
+    line-height: 1.9 !important;
+}
+
+body.lectura-facil .hero p {
+    font-size: 1.5rem !important;
+    line-height: 1.9 !important;
+}
+
+body.lectura-facil .card .btn-card {
+    font-size: 1.2rem !important;
+    padding: 16px 36px !important;
+}
+
+body.lectura-facil nav a {
+    font-size: 1.2rem !important;
+}
+
+body.lectura-facil .card h2 {
+    font-size: 2.1rem !important;
+}
+
+body.lectura-facil .hero h1 {
+    font-size: 4.2rem !important;
+}
+
+body.lectura-facil .panel-accesibilidad .opcion button {
+    font-size: 1.1rem !important;
+    padding: 10px 18px !important;
+}
+
+body.lectura-facil .panel-accesibilidad h3 {
+    font-size: 1.4rem !important;
+}
+
+body.lectura-facil .logo {
+    font-size: 2rem !important;
+}
+
+body.lectura-facil .footer-grid p,
+body.lectura-facil .footer-grid ul a {
+    font-size: 1.1rem !important;
+}
+
+body.lectura-facil .footer-grid h4 {
+    font-size: 1.2rem !important;
+}
