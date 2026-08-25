@@ -29,7 +29,7 @@
     <meta name="twitter:image" content="https://kodyancare.com/resources/twitter-image.png">
     <meta name="twitter:creator" content="@kodyan.care">
     
-    <!-- ===== SCHEMA MARKUP - SEO AVANZADO ===== -->
+    <!-- ===== SCHEMA MARKUP - SEO AVANZADO (SIN EMAIL) ===== -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -41,11 +41,6 @@
         "sameAs": [
             "https://www.instagram.com/kodyan.care/"
         ],
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "email": "care@koyhq.com",
-            "contactType": "Customer service"
-        },
         "areaServed": "AR",
         "availableLanguage": "es"
     }
@@ -60,7 +55,7 @@
     <link rel="icon" href="resources/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="resources/apple-touch-icon.png">
 
-    <!-- ===== ESTILOS TEMPORALES PARA FIXES ===== -->
+    <!-- ===== ESTILOS ===== -->
     <style>
         /* Fix para líneas en botones */
         .btn, .btn-primary, .btn-outline, .btn-ig, .hero-buttons a {
@@ -75,7 +70,7 @@
         .instagram-cta {
             padding: 3rem 0;
             margin: 3rem 0;
-            background: transparent !important; /* Elimina el fondo celeste */
+            background: transparent !important;
         }
 
         .ig-banner {
@@ -148,23 +143,77 @@
             color: white;
         }
 
+        /* ============================================ */
+        /* BOTONES VOLVER AL INICIO                      */
+        /* ============================================ */
+
+        /* Botón de abajo (estilo principal) */
+        .btn-volver {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #367588;
+            color: #ffffff;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 4px 15px rgba(54, 117, 136, 0.2);
+        }
+
+        .btn-volver:hover {
+            background: #1f4a5c;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(54, 117, 136, 0.3);
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .btn-volver i {
+            margin-right: 8px;
+        }
+
+        /* Botón de arriba (estilo sutil) */
+        .btn-volver-arriba {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: transparent;
+            color: #367588;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(54, 117, 136, 0.15);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-volver-arriba:hover {
+            background: #367588;
+            color: #ffffff;
+            border-color: #367588;
+            transform: translateX(-2px);
+            text-decoration: none;
+        }
+
+        .btn-volver-arriba i {
+            font-size: 0.8rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
-            .ig-banner {
-                padding: 2rem 1.5rem;
-                margin: 0 1rem;
+            .btn-volver {
+                padding: 10px 20px;
+                font-size: 0.9rem;
             }
-            
-            .ig-icon {
-                font-size: 3rem;
-            }
-            
-            .ig-content h3 {
-                font-size: 1.3rem;
-            }
-            
-            .ig-content p {
-                font-size: 1rem;
+            .btn-volver-arriba {
+                font-size: 0.75rem;
+                padding: 4px 12px;
             }
         }
     </style>
@@ -183,7 +232,7 @@
                     <li><a href="#herramientas">Herramientas</a></li>
                     <li><a href="#regulacion">Regulación</a></li>
                     <li><a href="#como-ayudar">Cómo Ayudar</a></li>
-<li><a href="#conectar-apoyar" class="btn-donar">☕ Donar</a></li>
+                    <li><a href="#conectar-apoyar" class="btn-donar">☕ Donar</a></li>
                     <li><a href="emergencias.html" class="btn-emergencia">🚨 Emergencia</a></li>
                 </ul>
             </nav>
@@ -192,6 +241,13 @@
             </div>
         </div>
     </header>
+
+    <!-- ===== VOLVER AL INICIO (ARRIBA) ===== -->
+    <div style="text-align: right; padding: 0.8rem 2rem; background: rgba(54, 117, 136, 0.05); border-bottom: 1px solid rgba(54, 117, 136, 0.08);">
+        <a href="../index.html" class="btn-volver-arriba" aria-label="Volver a la página principal de Kodyan">
+            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Volver al inicio
+        </a>
+    </div>
 
     <!-- ===== HERO SECTION ===== -->
     <section class="hero" id="home">
@@ -210,106 +266,106 @@
         <div class="care-line care-line-2"></div>
     </section>
 
- <!-- ===== HERRAMIENTAS PRINCIPALES ===== -->
-<section class="herramientas" id="herramientas">
-    <div class="container">
-        <div class="section-title">
-            <h2>Tu Caja de Primeros Auxilios Emocionales</h2>
-            <p>Herramientas validadas para regular ansiedad, pánico y estrés en momentos difíciles</p>
+    <!-- ===== HERRAMIENTAS PRINCIPALES ===== -->
+    <section class="herramientas" id="herramientas">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tu Caja de Primeros Auxilios Emocionales</h2>
+                <p>Herramientas validadas para regular ansiedad, pánico y estrés en momentos difíciles</p>
+            </div>
+            
+            <div class="tools-grid">
+                <!-- 1. Anclaje -->
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <img src="resources/pulpo-anclaje.png" alt="Técnicas de anclaje para crisis de ansiedad" class="pulpo-icon">
+                    </div>
+                    <h3>Técnicas de Anclaje</h3>
+                    <p>Técnicas 5-4-3-2-1, anclaje con hielo y respiración guiada para ataques de pánico o disociación.</p>
+                    <a href="anclaje.html" class="btn btn-outline">Usar Ahora</a>
+                </div>
+                
+                <!-- 2. Descarga -->
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <img src="resources/pulpo-descarga.png" alt="Descarga emocional rápida y segura" class="pulpo-icon">
+                    </div>
+                    <h3>Descarga Rápida</h3>
+                    <p>Escribe lo que sientes sin filtros. Todo se autodestruye en segundos. Sin juicios, solo liberación.</p>
+                    <a href="descarga.html" class="btn btn-outline">Comenzar</a>
+                </div>
+                
+                <!-- 3. Espacio seguro -->
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <img src="resources/pulpo-audio.png" alt="Espacio seguro" class="pulpo-icon">
+                    </div>
+                    <h3>Espacio Seguro</h3>
+                    <p>Cuando sabés lo que te pasa pero no sabés por dónde empezar. Planes concretos para crisis comunes.</p>
+                    <a href="espacio-seguro.html" class="btn btn-outline">Planear</a>
+                </div>
+                
+                <!-- 4. Kit de Supervivencia (NUEVO) -->
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <img src="resources/pulpo-supervivencia.png" alt="Kit de Supervivencia para tiempos complejos" class="pulpo-icon">
+                    </div>
+                    <h3>Kit de Supervivencia</h3>
+                    <p>Herramientas para navegar crisis económicas, laborales y encontrar tu tribu en tiempos difíciles.</p>
+                    <a href="supervivencia.html" class="btn btn-outline">Explorar</a>
+                </div>
+                
+                <!-- 5. Salud Integral (NUEVO) -->
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <img src="resources/pulpo-salud.png" alt="Salud Integral sin juicios" class="pulpo-icon">
+                    </div>
+                    <h3>Salud Integral</h3>
+                    <p>Cuidado accesible para todos los cuerpos. Información médica sin estigmas y recursos públicos.</p>
+                    <a href="salud.html" class="btn btn-outline">Cuidarse</a>
+                </div>
+                
+                <!-- 6. Kit Estudiantil (NUEVO) -->
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <img src="resources/pulpo-estudiantes.png" alt="Kit de Supervivencia Estudiantil" class="pulpo-icon">
+                    </div>
+                    <h3>Kit Estudiantil</h3>
+                    <p>Herramientas específicas para ansiedad académica, procrastinación y agotamiento estudiantil.</p>
+                    <a href="estudiantes.html" class="btn btn-outline">Estudiar</a>
+                </div>
+                
+                <!-- 7. Sensorial -->
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <img src="resources/pulpo-sensorial.png" alt="Herramientas sensoriales para regulación" class="pulpo-icon">
+                    </div>
+                    <h3>Herramientas Sensoriales</h3>
+                    <p>Para regular ansiedad.</p>
+                    <a href="sensorial.html" class="btn btn-outline">Calmar</a>
+                </div>
+                <!-- 8. Guías -->
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <img src="resources/pulpo-guias.png" alt="Guías rápidas para diferentes crisis" class="pulpo-icon">
+                    </div>
+                    <h3>Guías Rápidas</h3>
+                    <p>Qué hacer en crisis de ansiedad, TDAH, ideación suicida. Pasos claros y concretos.</p>
+                    <a href="guias.html" class="btn btn-outline">Leer Guías</a>
+                </div>
+                
+                <!-- 9. Tarjetas de Afrontamiento -->
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <img src="resources/pulpo-tarjetas.png" alt="Tarjetas de Afrontamiento para momentos de confusión" class="pulpo-icon">
+                    </div>
+                    <h3>Tarjetas de Afrontamiento</h3>
+                    <p>Ideas concretas para momentos de confusión.</p>
+                    <a href="tarjetas.html" class="btn btn-outline">Ver Tarjetas</a>
+                </div>
+            </div>
         </div>
-        
-        <div class="tools-grid">
-            <!-- 1. Anclaje -->
-            <div class="tool-item">
-                <div class="tool-icon">
-                    <img src="resources/pulpo-anclaje.png" alt="Técnicas de anclaje para crisis de ansiedad" class="pulpo-icon">
-                </div>
-                <h3>Técnicas de Anclaje</h3>
-                <p>Técnicas 5-4-3-2-1, anclaje con hielo y respiración guiada para ataques de pánico o disociación.</p>
-                <a href="anclaje.html" class="btn btn-outline">Usar Ahora</a>
-            </div>
-            
-            <!-- 2. Descarga -->
-            <div class="tool-item">
-                <div class="tool-icon">
-                    <img src="resources/pulpo-descarga.png" alt="Descarga emocional rápida y segura" class="pulpo-icon">
-                </div>
-                <h3>Descarga Rápida</h3>
-                <p>Escribe lo que sientes sin filtros. Todo se autodestruye en segundos. Sin juicios, solo liberación.</p>
-                <a href="descarga.html" class="btn btn-outline">Comenzar</a>
-            </div>
-            
-            <!-- 3. Espacio seguro -->
-            <div class="tool-item">
-                <div class="tool-icon">
-                    <img src="resources/pulpo-audio.png" alt="Espacio seguro" class="pulpo-icon">
-                </div>
-                <h3>Espacio Seguro</h3>
-                <p>Cuando sabés lo que te pasa pero no sabés por dónde empezar. Planes concretos para crisis comunes.</p>
-                <a href="espacio-seguro.html" class="btn btn-outline">Planear</a>
-            </div>
-            
-            <!-- 4. Kit de Supervivencia (NUEVO) -->
-            <div class="tool-item">
-                <div class="tool-icon">
-                    <img src="resources/pulpo-supervivencia.png" alt="Kit de Supervivencia para tiempos complejos" class="pulpo-icon">
-                </div>
-                <h3>Kit de Supervivencia</h3>
-                <p>Herramientas para navegar crisis económicas, laborales y encontrar tu tribu en tiempos difíciles.</p>
-                <a href="supervivencia.html" class="btn btn-outline">Explorar</a>
-            </div>
-            
-            <!-- 5. Salud Integral (NUEVO) -->
-            <div class="tool-item">
-                <div class="tool-icon">
-                    <img src="resources/pulpo-salud.png" alt="Salud Integral sin juicios" class="pulpo-icon">
-                </div>
-                <h3>Salud Integral</h3>
-                <p>Cuidado accesible para todos los cuerpos. Información médica sin estigmas y recursos públicos.</p>
-                <a href="salud.html" class="btn btn-outline">Cuidarse</a>
-            </div>
-            
-            <!-- 6. Kit Estudiantil (NUEVO) -->
-            <div class="tool-item">
-                <div class="tool-icon">
-                    <img src="resources/pulpo-estudiantes.png" alt="Kit de Supervivencia Estudiantil" class="pulpo-icon">
-                </div>
-                <h3>Kit Estudiantil</h3>
-                <p>Herramientas específicas para ansiedad académica, procrastinación y agotamiento estudiantil.</p>
-                <a href="estudiantes.html" class="btn btn-outline">Estudiar</a>
-            </div>
-            
-           <!-- 7. Sensorial -->
-<div class="tool-item">
-    <div class="tool-icon">
-        <img src="resources/pulpo-sensorial.png" alt="Herramientas sensoriales para regulación" class="pulpo-icon">
-    </div>
-    <h3>Herramientas Sensoriales</h3>
-    <p>Para regular ansiedad.</p>
-    <a href="sensorial.html" class="btn btn-outline">Calmar</a>
-</div>
-            <!-- 8. Guías -->
-            <div class="tool-item">
-                <div class="tool-icon">
-                    <img src="resources/pulpo-guias.png" alt="Guías rápidas para diferentes crisis" class="pulpo-icon">
-                </div>
-                <h3>Guías Rápidas</h3>
-                <p>Qué hacer en crisis de ansiedad, TDAH, ideación suicida. Pasos claros y concretos.</p>
-                <a href="guias.html" class="btn btn-outline">Leer Guías</a>
-            </div>
-            
-            <!-- 9. Tarjetas de Afrontamiento -->
-            <div class="tool-item">
-                <div class="tool-icon">
-                    <img src="resources/pulpo-tarjetas.png" alt="Tarjetas de Afrontamiento para momentos de confusión" class="pulpo-icon">
-                </div>
-                <h3>Tarjetas de Afrontamiento</h3>
-                <p>Ideas concretas para momentos de confusión.</p>
-                <a href="tarjetas.html" class="btn btn-outline">Ver Tarjetas</a>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- ===== REGULACIÓN EMOCIONAL ===== -->
     <section class="regulacion-emocional" id="regulacion">
@@ -425,104 +481,112 @@
         </div>
     </section>
 
-   <!-- ===== SECCIÓN TRIPLE - CONTACTO, INSTAGRAM Y APOYO ===== -->
-<section class="seccion-triple" id="conectar-apoyar" style="padding: 4rem 0; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
-    <div class="container">
-        <div class="section-title" style="text-align: center; margin-bottom: 3rem;">
-            <h2>💝 Conectemos y Crezcamos Juntos</h2>
-            <p>Tu voz, nuestra comunidad y el apoyo mutuo hacen posible este proyecto</p>
-        </div>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: start;">
-            
-            <!-- COLUMNA 1: CONTACTO -->
-            <div class="columna" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border-left: 4px solid #667eea;">
-                <div style="text-align: center; margin-bottom: 1.5rem;">
-                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📬</div>
-                    <h3 style="color: #2d3748; margin-bottom: 0.5rem;">Escribinos Directo</h3>
-                    <p style="color: #718096; font-size: 0.9rem;">Tu mensaje llega a nuestro equipo</p>
-                </div>
-                
-                <form id="formularioContactoCompacto" action="https://formspree.io/f/xeonpzdk" method="POST" style="display: flex; flex-direction: column; gap: 1rem;">
-                    <input type="text" name="nombre" required 
-                           placeholder="Tu nombre"
-                           style="padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 14px; transition: border-color 0.3s;">
-                    
-                    <input type="email" name="email" required
-                           placeholder="tu@email.com"
-                           style="padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 14px; transition: border-color 0.3s;">
-                    
-                    <textarea name="mensaje" rows="3" required
-                              placeholder="Tu mensaje..."
-                              style="padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 14px; resize: vertical; min-height: 80px; font-family: inherit;"></textarea>
-                    
-                    <button type="submit" 
-                            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: transform 0.2s;">
-                        📨 Enviar mensaje
-                    </button>
-                </form>
-                
-                <div id="mensajeExitoCompacto" style="display: none; background: #d4edda; color: #155724; padding: 0.8rem; border-radius: 8px; margin-top: 1rem; text-align: center; font-size: 0.9rem;">
-                    ✅ ¡Mensaje enviado!
-                </div>
+    <!-- ===== SECCIÓN TRIPLE - CONTACTO, INSTAGRAM Y APOYO ===== -->
+    <section class="seccion-triple" id="conectar-apoyar" style="padding: 4rem 0; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+        <div class="container">
+            <div class="section-title" style="text-align: center; margin-bottom: 3rem;">
+                <h2>💝 Conectemos y Crezcamos Juntos</h2>
+                <p>Tu voz, nuestra comunidad y el apoyo mutuo hacen posible este proyecto</p>
             </div>
             
-            <!-- COLUMNA 2: INSTAGRAM -->
-            <div class="columna" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border-left: 4px solid #E4405F; text-align: center;">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
-                <h3 style="color: #2d3748; margin-bottom: 1rem;">Seguinos en Instagram</h3>
-                <p style="color: #718096; margin-bottom: 1.5rem; line-height: 1.5;">
-                    Contenido diario sobre salud mental, tips neurodivergentes y comunidad en vivo.
-                </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: start;">
                 
-                <a href="https://www.instagram.com/kodyan.care/" target="_blank" 
-                   style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #E4405F 0%, #C13584 100%); color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: transform 0.2s;">
-                    <i class="fab fa-instagram"></i>
-                    @kodyan.care
-                </a>
-                
-                <div style="margin-top: 1.5rem; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
-                    <p style="font-size: 0.9rem; color: #4a5568; margin-bottom: 0.5rem;">
-                        <strong>✨ Lo nuevo en Instagram:</strong>
-                    </p>
-                    <p style="font-size: 0.85rem; color: #718096;">
-                        Tips diarios • Lives • Comunidad activa • Contenido exclusivo
-                    </p>
+                <!-- COLUMNA 1: CONTACTO (FORMSPREE ACTUALIZADO) -->
+                <div class="columna" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border-left: 4px solid #667eea;">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📬</div>
+                        <h3 style="color: #2d3748; margin-bottom: 0.5rem;">Escribinos Directo</h3>
+                        <p style="color: #718096; font-size: 0.9rem;">Tu mensaje llega a nuestro equipo</p>
+                    </div>
+                    
+                    <form id="formularioContactoCompacto" action="https://formspree.io/f/myegrdan" method="POST" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <input type="text" name="nombre" required 
+                               placeholder="Tu nombre"
+                               style="padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 14px; transition: border-color 0.3s;">
+                        
+                        <input type="email" name="email" required
+                               placeholder="tu@email.com"
+                               style="padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 14px; transition: border-color 0.3s;">
+                        
+                        <textarea name="mensaje" rows="3" required
+                                  placeholder="Tu mensaje..."
+                                  style="padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 14px; resize: vertical; min-height: 80px; font-family: inherit;"></textarea>
+                        
+                        <button type="submit" 
+                                style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: transform 0.2s;">
+                            📨 Enviar mensaje
+                        </button>
+                    </form>
+                    
+                    <div id="mensajeExitoCompacto" style="display: none; background: #d4edda; color: #155724; padding: 0.8rem; border-radius: 8px; margin-top: 1rem; text-align: center; font-size: 0.9rem;">
+                        ✅ ¡Mensaje enviado!
+                    </div>
                 </div>
-            </div>
-            
-            <!-- COLUMNA 3: DONACIONES -->
-            <div class="columna" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border-left: 4px solid #27ae60; text-align: center;">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">💝</div>
-                <h3 style="color: #2d3748; margin-bottom: 1rem;">Apoyá este Proyecto</h3>
-                <p style="color: #718096; margin-bottom: 1.5rem; line-height: 1.5;">
-                    Tu apoyo ayuda a que Kodyan Care siga siendo gratuito y accesible para toda la comunidad.
-                </p>
                 
-                <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1.5rem;">
-                    <a href="https://cafecito.app/kodyancare" target="_blank" 
-                       style="display: flex; align-items: center; gap: 0.8rem; background: #FF813F; color: white; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s; justify-content: center;">
-                        <span>☕</span>
-                        Cafecito
+                <!-- COLUMNA 2: INSTAGRAM -->
+                <div class="columna" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border-left: 4px solid #E4405F; text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
+                    <h3 style="color: #2d3748; margin-bottom: 1rem;">Seguinos en Instagram</h3>
+                    <p style="color: #718096; margin-bottom: 1.5rem; line-height: 1.5;">
+                        Contenido diario sobre salud mental, tips neurodivergentes y comunidad en vivo.
+                    </p>
+                    
+                    <a href="https://www.instagram.com/kodyan.care/" target="_blank" 
+                       style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #E4405F 0%, #C13584 100%); color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: transform 0.2s;">
+                        <i class="fab fa-instagram"></i>
+                        @kodyan.care
                     </a>
                     
-                    <a href="https://ko-fi.com/kodyancare" target="_blank" 
-                       style="display: flex; align-items: center; gap: 0.8rem; background: #29ABE0; color: white; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s; justify-content: center;">
-                        <span>🎨</span>
-                        Ko-fi
-                    </a>
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+                        <p style="font-size: 0.9rem; color: #4a5568; margin-bottom: 0.5rem;">
+                            <strong>✨ Lo nuevo en Instagram:</strong>
+                        </p>
+                        <p style="font-size: 0.85rem; color: #718096;">
+                            Tips diarios • Lives • Comunidad activa • Contenido exclusivo
+                        </p>
+                    </div>
                 </div>
                 
-                <div style="background: #f0f9ff; padding: 1rem; border-radius: 10px; border-left: 3px solid #667eea;">
-                    <p style="font-size: 0.8rem; color: #4a5568; margin: 0;">
-                        <strong>💡 Tu aporte permite:</strong> Nuevas herramientas + Mantenimiento + Crecimiento comunitario
+                <!-- COLUMNA 3: DONACIONES -->
+                <div class="columna" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border-left: 4px solid #27ae60; text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">💝</div>
+                    <h3 style="color: #2d3748; margin-bottom: 1rem;">Apoyá este Proyecto</h3>
+                    <p style="color: #718096; margin-bottom: 1.5rem; line-height: 1.5;">
+                        Tu apoyo ayuda a que Kodyan Care siga siendo gratuito y accesible para toda la comunidad.
                     </p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1.5rem;">
+                        <a href="https://cafecito.app/kodyancare" target="_blank" 
+                           style="display: flex; align-items: center; gap: 0.8rem; background: #FF813F; color: white; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s; justify-content: center;">
+                            <span>☕</span>
+                            Cafecito
+                        </a>
+                        
+                        <a href="https://ko-fi.com/kodyancare" target="_blank" 
+                           style="display: flex; align-items: center; gap: 0.8rem; background: #29ABE0; color: white; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s; justify-content: center;">
+                            <span>🎨</span>
+                            Ko-fi
+                        </a>
+                    </div>
+                    
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 10px; border-left: 3px solid #667eea;">
+                        <p style="font-size: 0.8rem; color: #4a5568; margin: 0;">
+                            <strong>💡 Tu aporte permite:</strong> Nuevas herramientas + Mantenimiento + Crecimiento comunitario
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- ===== VOLVER AL INICIO (ABAJO) ===== -->
+    <div style="text-align: center; padding: 2rem 0 1rem;">
+        <a href="../index.html" class="btn-volver" aria-label="Volver a la página principal de Kodyan">
+            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Volver al inicio
+        </a>
     </div>
-</section>
-    <!-- ===== FOOTER ===== -->
+
+    <!-- ===== FOOTER (SIN EMAIL) ===== -->
     <footer id="contacto">
         <div class="container">
             <div class="footer-content">
@@ -530,43 +594,42 @@
                     <a href="index.html" class="footer-logo">Kodyan Care</a>
                     <p>Tu puerto seguro para tormentas emocionales.</p>
                     <div class="social-links">
-                       <ul>
-                        <li>
-                            <a href="https://www.instagram.com/kodyan.care/" target="_blank" style="display: flex; align-items: center; gap: 8px;">
-                                <i class="fab fa-instagram"></i>
-                                @kodyan.care
-                            </a>
-                        </li>
-                        <li><a href="mailto:care@koyhq.com">care@koyhq.com</a></li>
-                        <li><a href="https://koyhq.com" target="_blank">Koy HQ</a></li>
-                    </ul>
+                        <ul>
+                            <li>
+                                <a href="https://www.instagram.com/kodyan.care/" target="_blank" style="display: flex; align-items: center; gap: 8px;">
+                                    <i class="fab fa-instagram"></i>
+                                    @kodyan.care
+                                </a>
+                            </li>
+                            <li><a href="#conectar-apoyar">📬 Enviar mensaje</a></li>
+                        </ul>
                     </div>
                 </div>
                 
-   <div class="footer-links">
-    <h4>Herramientas</h4>
-    <ul>
-        <li><a href="anclaje.html">Técnicas de Anclaje</a></li>
-        <li><a href="descarga.html">Descarga Rápida</a></li>
-        <li><a href="espacio-seguro.html">Espacio Seguro</a></li>
-        <li><a href="supervivencia.html">Kit de Supervivencia</a></li>
-        <li><a href="salud.html">Salud Integral</a></li>
-        <li><a href="estudiantes.html">Kit Estudiantil</a></li>
-        <li><a href="sensorial.html">Herramientas Sensoriales</a></li>
-        <li><a href="tarjetas.html">Tarjetas de Afrontamiento</a></li>
-    </ul>
-</div>
+                <div class="footer-links">
+                    <h4>Herramientas</h4>
+                    <ul>
+                        <li><a href="anclaje.html">Técnicas de Anclaje</a></li>
+                        <li><a href="descarga.html">Descarga Rápida</a></li>
+                        <li><a href="espacio-seguro.html">Espacio Seguro</a></li>
+                        <li><a href="supervivencia.html">Kit de Supervivencia</a></li>
+                        <li><a href="salud.html">Salud Integral</a></li>
+                        <li><a href="estudiantes.html">Kit Estudiantil</a></li>
+                        <li><a href="sensorial.html">Herramientas Sensoriales</a></li>
+                        <li><a href="tarjetas.html">Tarjetas de Afrontamiento</a></li>
+                    </ul>
+                </div>
 
-<div class="footer-links">
-    <h4>Recursos</h4>
-    <ul>
-        <li><a href="guias.html">Guías Rápidas</a></li>
-        <li><a href="como-ayudar.html">Cómo Ayudar</a></li>
-        <li><a href="emergencias.html">Líneas de Crisis</a></li>
-    </ul>
-</div>
+                <div class="footer-links">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="guias.html">Guías Rápidas</a></li>
+                        <li><a href="como-ayudar.html">Cómo Ayudar</a></li>
+                        <li><a href="emergencias.html">Líneas de Crisis</a></li>
+                    </ul>
+                </div>
             </div>
-                   <div class="copyright">
+            <div class="copyright">
                 <p><strong>💡 Importante:</strong> Esto no es un substituto de terapia profesional. Si estás en crisis, contactá a <a href="emergencias.html">recursos de emergencia</a>.</p>
                 <p>&copy; 2025 Kodyan Care. Todos los derechos reservados.</p>
             </div>
@@ -575,61 +638,52 @@
 
     <!-- ===== SCRIPTS ===== -->
     <script src="js/script.js"></script>
-  <script>
-// Formulario compacto
-document.getElementById('formularioContactoCompacto').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const form = e.target;
-    const formData = new FormData(form);
-    
-    fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'Accept': 'application/json'
-        }
-    })
-    .then(response => {
-        if (response.ok) {
-            document.getElementById('mensajeExitoCompacto').style.display = 'block';
-            form.reset();
+    <script>
+        // ===== FORMULARIO COMPACTO =====
+        document.getElementById('formularioContactoCompacto').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            setTimeout(() => {
-                document.getElementById('mensajeExitoCompacto').style.display = 'none';
-            }, 5000);
-        } else {
-            alert('Hubo un error. Podés escribirnos a care@koyhq.com');
-        }
-    })
-    .catch(error => {
-        alert('Error de conexión. Podés escribirnos a care@koyhq.com');
-    });
-});
+            const form = e.target;
+            const formData = new FormData(form);
+            
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('mensajeExitoCompacto').style.display = 'block';
+                    form.reset();
+                    
+                    setTimeout(() => {
+                        document.getElementById('mensajeExitoCompacto').style.display = 'none';
+                    }, 5000);
+                } else {
+                    alert('Hubo un error. Podés escribirnos a través del formulario.');
+                }
+            })
+            .catch(error => {
+                alert('Error de conexión. Podés escribirnos a través del formulario.');
+            });
+        });
 
-// Efectos hover en las columnas
-document.querySelectorAll('.columna').forEach(columna => {
-    columna.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-    
-    columna.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-5px)';
-        this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.12)';
-    });
-    
-    columna.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-        this.style.boxShadow = '0 5px 20px rgba(0,0,0,0.08)';
-    });
-});
-</script>
+        // ===== EFECTOS HOVER EN COLUMNAS =====
+        document.querySelectorAll('.columna').forEach(columna => {
+            columna.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+            
+            columna.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.12)';
+            });
+            
+            columna.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 5px 20px rgba(0,0,0,0.08)';
+            });
+        });
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
