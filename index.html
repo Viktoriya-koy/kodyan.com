@@ -741,110 +741,137 @@
             .menu-hamburguesa { font-size: 1.5rem; }
         }
 
-        /* ============================================ */
-        /* 10. ALTO CONTRASTE (SIN !important)         */
-        /* ============================================ */
-        .alto-contraste {
-            background: #000000;
-            color: #ffffff;
-        }
+      /* ============================================ */
+/* ALTO CONTRASTE (CORREGIDO)                   */
+/* ============================================ */
+.alto-contraste {
+    background: #000000;
+    color: #ffffff;
+}
 
-        .alto-contraste * {
-            border-color: #ffffff;
-        }
+.alto-contraste * {
+    border-color: #ffffff;
+}
 
-        .alto-contraste .card {
-            background: #1a1a1a;
-            border: 2px solid #ffffff;
-            box-shadow: none;
-        }
+.alto-contraste .card {
+    background: #1a1a1a;
+    border: 2px solid #ffffff;
+    box-shadow: none;
+}
 
-        .alto-contraste .card p {
-            color: #dddddd;
-        }
+.alto-contraste .card p {
+    color: #dddddd;
+}
 
-        .alto-contraste .card h2 {
-            color: #ffffff;
-        }
+.alto-contraste .card h2 {
+    color: #ffffff;
+}
 
-        .alto-contraste header {
-            background: #000000;
-            border-bottom: 2px solid #ffffff;
-        }
+.alto-contraste header {
+    background: #000000;
+    border-bottom: 2px solid #ffffff;
+}
 
-        .alto-contraste nav a {
-            color: #ffffff;
-        }
+.alto-contraste nav a {
+    color: #ffffff;
+}
 
-        .alto-contraste .btn-card {
-            border: 2px solid #ffffff;
-            background: #000000;
-            color: #ffffff;
-        }
+.alto-contraste .btn-card {
+    border: 2px solid #ffffff;
+    background: #000000;
+    color: #ffffff;
+}
 
-        .alto-contraste .btn-card:hover {
-            background: #ffffff;
-            color: #000000;
-        }
+.alto-contraste .btn-card:hover {
+    background: #ffffff;
+    color: #000000;
+}
 
-        .alto-contraste .panel-accesibilidad {
-            background: #1a1a1a;
-            border: 2px solid #ffffff;
-        }
+.alto-contraste .panel-accesibilidad {
+    background: #1a1a1a;
+    border: 2px solid #ffffff;
+}
 
-        .alto-contraste .panel-accesibilidad h3,
-        .alto-contraste .panel-accesibilidad .opcion span {
-            color: #ffffff;
-        }
+.alto-contraste .panel-accesibilidad h3,
+.alto-contraste .panel-accesibilidad .opcion span {
+    color: #ffffff;
+}
 
-        .alto-contraste .panel-accesibilidad .opcion button {
-            background: #000000;
-            color: #ffffff;
-            border: 1px solid #ffffff;
-        }
+.alto-contraste .panel-accesibilidad .opcion button {
+    background: #000000;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
 
-        .alto-contraste .panel-accesibilidad .opcion button:hover {
-            background: #ffffff;
-            color: #000000;
-        }
+.alto-contraste .panel-accesibilidad .opcion button:hover {
+    background: #ffffff;
+    color: #000000;
+}
 
-        .alto-contraste footer {
-            background: #000000;
-            border-top: 2px solid #ffffff;
-        }
+.alto-contraste footer {
+    background: #000000;
+    border-top: 2px solid #ffffff;
+}
 
-        .alto-contraste .hero h1 {
-            color: #ffffff;
-        }
+.alto-contraste .hero h1 {
+    color: #ffffff;
+}
 
-        .alto-contraste .hero p {
-            color: #dddddd;
-        }
+.alto-contraste .hero p {
+    color: #dddddd;
+}
 
-        .alto-contraste .hero .destacado {
-            color: #ffffff;
-            border-color: #ffffff;
-            background: transparent;
-        }
+.alto-contraste .hero .destacado {
+    color: #ffffff;
+    border-color: #ffffff;
+    background: transparent;
+}
 
-        .alto-contraste .logo span:last-child {
-            -webkit-text-fill-color: #ffffff;
-            background: none;
-        }
+.alto-contraste .logo span:last-child {
+    -webkit-text-fill-color: #ffffff;
+    background: none;
+}
 
-        .alto-contraste .logo-icono,
-        .alto-contraste .logo span:first-child {
-            background: #ffffff;
-            color: #000000;
-        }
+.alto-contraste .logo-icono,
+.alto-contraste .logo span:first-child {
+    background: #ffffff;
+    color: #000000;
+}
 
-        .alto-contraste .menu-hamburguesa {
-            color: #ffffff;
-        }
+.alto-contraste .menu-hamburguesa {
+    color: #ffffff;
+}
 
-        .alto-contraste .menu-hamburguesa:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
+.alto-contraste .menu-hamburguesa:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== FORZAR ÍCONOS A BLANCO ===== */
+.alto-contraste .btn-accesibilidad i,
+.alto-contraste .panel-accesibilidad h3 i,
+.alto-contraste .panel-accesibilidad .opcion span i,
+.alto-contraste .hero .destacado i,
+.alto-contraste .icono i,
+.alto-contraste .logo-icono,
+.alto-contraste .fa-solid,
+.alto-contraste .fa-regular,
+.alto-contraste .fa-brands {
+    color: #ffffff !important;
+}
+
+/* Excepción: los íconos dentro del logo y del panel que ya están en blanco */
+.alto-contraste .logo-icono {
+    background: #ffffff !important;
+    color: #000000 !important;
+}
+
+.alto-contraste .panel-accesibilidad .opcion button i {
+    color: #475569 !important; /* Mantener el color original en los botones */
+}
+
+.alto-contraste .panel-accesibilidad .opcion button:hover i {
+    color: #ffffff !important; /* Y blanco al hacer hover */
+}
 
         /* ============================================ */
         /* 11. LECTURA FÁCIL                           */
