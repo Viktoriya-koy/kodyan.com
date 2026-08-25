@@ -237,7 +237,7 @@
         }
 
         /* ============================================ */
-        /* 5. PANEL DE ACCESIBILIDAD (NUEVO)            */
+        /* 5. PANEL DE ACCESIBILIDAD                    */
         /* ============================================ */
         .panel-accesibilidad {
             position: fixed;
@@ -337,6 +337,20 @@
             position: relative;
         }
 
+        .hero::before {
+            content: '\f4b9';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 18rem;
+            position: absolute;
+            top: -40px;
+            right: -60px;
+            color: rgba(54, 117, 136, 0.03);
+            pointer-events: none;
+            z-index: 0;
+            transform: rotate(10deg);
+        }
+
         .hero .container {
             position: relative;
             z-index: 1;
@@ -400,7 +414,7 @@
         }
 
         /* ============================================ */
-        /* 7. CARDS                                     */
+        /* 7. CARDS (con todos los enlaces corregidos)  */
         /* ============================================ */
         .cards-grid {
             display: grid;
@@ -515,15 +529,8 @@
         .card-3d .btn-card { background: var(--color-3d); color: var(--blanco); }
         .card-3d .btn-card:hover { background: #d68910; transform: scale(1.02); box-shadow: 0 8px 24px rgba(243, 156, 18, 0.3); }
 
-        .card-3d .btn-card.proximamente {
-            background: #e9edf4;
-            color: #94a3b8;
-            cursor: not-allowed;
-        }
-        .card-3d .btn-card.proximamente:hover { transform: none; box-shadow: none; }
-
         /* ============================================ */
-        /* 8. FOOTER (Azul Kodyan)                     */
+        /* 8. FOOTER                                    */
         /* ============================================ */
         footer {
             background: linear-gradient(135deg, #1f4a5c 0%, #367588 50%, #4a8da0 100%);
@@ -615,7 +622,7 @@
         }
 
         /* ============================================ */
-        /* 9. RESPONSIVE (Móvil)                        */
+        /* 9. RESPONSIVE                                */
         /* ============================================ */
         @media (max-width: 992px) {
             .cards-grid {
@@ -727,137 +734,134 @@
             .menu-hamburguesa { font-size: 1.5rem; }
         }
 
-      /* ============================================ */
-/* ALTO CONTRASTE (CORREGIDO)                   */
-/* ============================================ */
-.alto-contraste {
-    background: #000000;
-    color: #ffffff;
-}
+        /* ============================================ */
+        /* 10. ALTO CONTRASTE                           */
+        /* ============================================ */
+        .alto-contraste {
+            background: #000000;
+            color: #ffffff;
+        }
 
-.alto-contraste * {
-    border-color: #ffffff;
-}
+        .alto-contraste * {
+            border-color: #ffffff;
+        }
 
-.alto-contraste .card {
-    background: #1a1a1a;
-    border: 2px solid #ffffff;
-    box-shadow: none;
-}
+        .alto-contraste .card {
+            background: #1a1a1a;
+            border: 2px solid #ffffff;
+            box-shadow: none;
+        }
 
-.alto-contraste .card p {
-    color: #dddddd;
-}
+        .alto-contraste .card p {
+            color: #dddddd;
+        }
 
-.alto-contraste .card h2 {
-    color: #ffffff;
-}
+        .alto-contraste .card h2 {
+            color: #ffffff;
+        }
 
-.alto-contraste header {
-    background: #000000;
-    border-bottom: 2px solid #ffffff;
-}
+        .alto-contraste header {
+            background: #000000;
+            border-bottom: 2px solid #ffffff;
+        }
 
-.alto-contraste nav a {
-    color: #ffffff;
-}
+        .alto-contraste nav a {
+            color: #ffffff;
+        }
 
-.alto-contraste .btn-card {
-    border: 2px solid #ffffff;
-    background: #000000;
-    color: #ffffff;
-}
+        .alto-contraste .btn-card {
+            border: 2px solid #ffffff;
+            background: #000000;
+            color: #ffffff;
+        }
 
-.alto-contraste .btn-card:hover {
-    background: #ffffff;
-    color: #000000;
-}
+        .alto-contraste .btn-card:hover {
+            background: #ffffff;
+            color: #000000;
+        }
 
-.alto-contraste .panel-accesibilidad {
-    background: #1a1a1a;
-    border: 2px solid #ffffff;
-}
+        .alto-contraste .panel-accesibilidad {
+            background: #1a1a1a;
+            border: 2px solid #ffffff;
+        }
 
-.alto-contraste .panel-accesibilidad h3,
-.alto-contraste .panel-accesibilidad .opcion span {
-    color: #ffffff;
-}
+        .alto-contraste .panel-accesibilidad h3,
+        .alto-contraste .panel-accesibilidad .opcion span {
+            color: #ffffff;
+        }
 
-.alto-contraste .panel-accesibilidad .opcion button {
-    background: #000000;
-    color: #ffffff;
-    border: 1px solid #ffffff;
-}
+        .alto-contraste .panel-accesibilidad .opcion button {
+            background: #000000;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+        }
 
-.alto-contraste .panel-accesibilidad .opcion button:hover {
-    background: #ffffff;
-    color: #000000;
-}
+        .alto-contraste .panel-accesibilidad .opcion button:hover {
+            background: #ffffff;
+            color: #000000;
+        }
 
-.alto-contraste footer {
-    background: #000000;
-    border-top: 2px solid #ffffff;
-}
+        .alto-contraste footer {
+            background: #000000;
+            border-top: 2px solid #ffffff;
+        }
 
-.alto-contraste .hero h1 {
-    color: #ffffff;
-}
+        .alto-contraste .hero h1 {
+            color: #ffffff;
+        }
 
-.alto-contraste .hero p {
-    color: #dddddd;
-}
+        .alto-contraste .hero p {
+            color: #dddddd;
+        }
 
-.alto-contraste .hero .destacado {
-    color: #ffffff;
-    border-color: #ffffff;
-    background: transparent;
-}
+        .alto-contraste .hero .destacado {
+            color: #ffffff;
+            border-color: #ffffff;
+            background: transparent;
+        }
 
-.alto-contraste .logo span:last-child {
-    -webkit-text-fill-color: #ffffff;
-    background: none;
-}
+        .alto-contraste .logo span:last-child {
+            -webkit-text-fill-color: #ffffff;
+            background: none;
+        }
 
-.alto-contraste .logo-icono,
-.alto-contraste .logo span:first-child {
-    background: #ffffff;
-    color: #000000;
-}
+        .alto-contraste .logo-icono,
+        .alto-contraste .logo span:first-child {
+            background: #ffffff;
+            color: #000000;
+        }
 
-.alto-contraste .menu-hamburguesa {
-    color: #ffffff;
-}
+        .alto-contraste .menu-hamburguesa {
+            color: #ffffff;
+        }
 
-.alto-contraste .menu-hamburguesa:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
+        .alto-contraste .menu-hamburguesa:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
 
-/* ===== FORZAR ÍCONOS A BLANCO ===== */
-.alto-contraste .btn-accesibilidad i,
-.alto-contraste .panel-accesibilidad h3 i,
-.alto-contraste .panel-accesibilidad .opcion span i,
-.alto-contraste .hero .destacado i,
-.alto-contraste .icono i,
-.alto-contraste .logo-icono,
-.alto-contraste .fa-solid,
-.alto-contraste .fa-regular,
-.alto-contraste .fa-brands {
-    color: #ffffff !important;
-}
+        .alto-contraste .btn-accesibilidad i,
+        .alto-contraste .panel-accesibilidad h3 i,
+        .alto-contraste .panel-accesibilidad .opcion span i,
+        .alto-contraste .hero .destacado i,
+        .alto-contraste .icono i,
+        .alto-contraste .fa-solid,
+        .alto-contraste .fa-regular,
+        .alto-contraste .fa-brands {
+            color: #ffffff !important;
+        }
 
-/* Excepción: los íconos dentro del logo y del panel que ya están en blanco */
-.alto-contraste .logo-icono {
-    background: #ffffff !important;
-    color: #000000 !important;
-}
+        .alto-contraste .logo-icono {
+            background: #ffffff !important;
+            color: #000000 !important;
+        }
 
-.alto-contraste .panel-accesibilidad .opcion button i {
-    color: #475569 !important; /* Mantener el color original en los botones */
-}
+        .alto-contraste .panel-accesibilidad .opcion button i {
+            color: #475569 !important;
+        }
 
-.alto-contraste .panel-accesibilidad .opcion button:hover i {
-    color: #ffffff !important; /* Y blanco al hacer hover */
-}
+        .alto-contraste .panel-accesibilidad .opcion button:hover i {
+            color: #ffffff !important;
+        }
 
         /* ============================================ */
         /* 11. LECTURA FÁCIL                           */
@@ -945,12 +949,12 @@
 <body>
 
     <!-- ========================================== -->
-    <!-- SKIP LINK (Accesibilidad)                  -->
+    <!-- SKIP LINK                                 -->
     <!-- ========================================== -->
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
     <!-- ========================================== -->
-    <!-- HEADER CON MENÚ HAMBURGUESA                -->
+    <!-- HEADER                                     -->
     <!-- ========================================== -->
     <header role="banner">
         <div class="container header-container">
@@ -959,17 +963,15 @@
                 <span>Kodyan</span>
             </a>
 
-            <!-- Botón hamburguesa (visible en móvil) -->
             <button class="menu-hamburguesa" id="menuHamburguesa" aria-label="Abrir menú de navegación" aria-expanded="false">
                 <i class="fa-solid fa-bars" aria-hidden="true"></i>
             </button>
 
-            <!-- Menú de navegación -->
             <nav role="navigation" aria-label="Menú principal" id="menuNavegacion">
                 <ul>
                     <li><a href="care/" aria-label="Ir a Kodyan Care, herramientas emocionales">Care</a></li>
                     <li><a href="eco/" aria-label="Ir a Kodyan Eco, calculadoras ecológicas">Eco</a></li>
-                    <li><a href="3d/" aria-label="Ir a Kodyan 3D, objetos impresos en 3D">3D</a></li>
+                    <li><a href="3d/index.html" aria-label="Ir a Kodyan 3D, objetos impresos en 3D">3D</a></li>
                     <li><a href="acercade.html" aria-label="Conoce más sobre Kodyan">Acerca de</a></li>
                     <li><a href="contacto.html" aria-label="Ponte en contacto con Kodyan">Contacto</a></li>
                     <li>
@@ -984,7 +986,7 @@
     </header>
 
     <!-- ========================================== -->
-    <!-- MAIN (Contenido principal)                 -->
+    <!-- MAIN                                       -->
     <!-- ========================================== -->
     <main id="main-content" role="main">
 
@@ -1001,57 +1003,56 @@
             </div>
         </section>
 
-        <!-- CARDS (Los 3 pilares) -->
+        <!-- CARDS -->
         <section class="container" aria-labelledby="pilares-title">
             <h2 id="pilares-title" class="visually-hidden">Los tres pilares de Kodyan</h2>
-          <div class="cards-grid">
+            <div class="cards-grid">
 
-    <!-- CARD: CARE -->
-    <a href="care/" class="card card-care" aria-label="Ir a Kodyan Care, herramientas emocionales">
-        <span class="icono" aria-hidden="true"><i class="fa-solid fa-heart-pulse"></i></span>
-        <h2>Kodyan Care</h2>
-        <p>
-            Primeros auxilios emocionales y psicológicos para situaciones de crisis.
-            Recursos, guías y herramientas para cuidar tu mente.
-        </p>
-        <span class="btn-card" aria-hidden="true">Explorar Care →</span>
-    </a>
+                <!-- CARD: CARE -->
+                <a href="care/" class="card card-care" aria-label="Ir a Kodyan Care, herramientas emocionales">
+                    <span class="icono" aria-hidden="true"><i class="fa-solid fa-heart-pulse"></i></span>
+                    <h2>Kodyan Care</h2>
+                    <p>
+                        Primeros auxilios emocionales y psicológicos para situaciones de crisis.
+                        Recursos, guías y herramientas para cuidar tu mente.
+                    </p>
+                    <span class="btn-card" aria-hidden="true">Explorar Care →</span>
+                </a>
 
-    <!-- CARD: ECO -->
-    <a href="eco/" class="card card-eco" aria-label="Ir a Kodyan Eco, calculadoras ecológicas">
-        <span class="icono" aria-hidden="true"><i class="fa-solid fa-leaf"></i></span>
-        <h2>Kodyan Eco</h2>
-        <p>
-            Calcula tu huella de carbono y aprende cómo reducir tu impacto en el planeta.
-            Herramientas educativas para niños, jóvenes y adultos.
-        </p>
-        <span class="btn-card" aria-hidden="true">Explorar Eco →</span>
-    </a>
+                <!-- CARD: ECO -->
+                <a href="eco/" class="card card-eco" aria-label="Ir a Kodyan Eco, calculadoras ecológicas">
+                    <span class="icono" aria-hidden="true"><i class="fa-solid fa-leaf"></i></span>
+                    <h2>Kodyan Eco</h2>
+                    <p>
+                        Calcula tu huella de carbono y aprende cómo reducir tu impacto en el planeta.
+                        Herramientas educativas para niños, jóvenes y adultos.
+                    </p>
+                    <span class="btn-card" aria-hidden="true">Explorar Eco →</span>
+                </a>
 
-    <!-- CARD: 3D (con enlace directo a 3d/index.html) -->
-    <a href="3d/index.html" class="card card-3d" aria-label="Ir a Kodyan 3D, objetos impresos en 3D">
-        <span class="icono" aria-hidden="true"><i class="fa-solid fa-cube"></i></span>
-        <h2>Kodyan 3D</h2>
-        <p>
-            Próximamente: Tienda de objetos únicos hechos con impresión 3D.
-            Diseños funcionales y creativos.
-        </p>
-        <span class="btn-card proximamente" aria-label="Kodyan 3D estará disponible próximamente" aria-disabled="true">Próximamente</span>
-    </a>
+                <!-- CARD: 3D (con enlace directo y botón activo) -->
+                <a href="3d/index.html" class="card card-3d" aria-label="Ir a Kodyan 3D, objetos impresos en 3D">
+                    <span class="icono" aria-hidden="true"><i class="fa-solid fa-cube"></i></span>
+                    <h2>Kodyan 3D</h2>
+                    <p>
+                        Próximamente: Tienda de objetos únicos hechos con impresión 3D.
+                        Diseños funcionales y creativos.
+                    </p>
+                    <span class="btn-card" aria-hidden="true">Ver tienda →</span>
+                </a>
 
-</div>
+            </div>
         </section>
 
     </main>
 
     <!-- ========================================== -->
-    <!-- FOOTER                                     -->
+    <!-- FOOTER (sin aviso legal)                   -->
     <!-- ========================================== -->
     <footer role="contentinfo">
         <div class="container">
             <div class="footer-grid">
 
-                <!-- Columna 1: Sobre Kodyan -->
                 <div>
                     <h4>🐙 Kodyan</h4>
                     <p>Conciencia, creatividad y cuidado. Un espacio donde la salud mental, el medio ambiente y la creatividad se encuentran.</p>
@@ -1061,19 +1062,17 @@
                     </p>
                 </div>
 
-                <!-- Columna 2: Explora -->
                 <div>
                     <h4>Explora</h4>
                     <ul>
                         <li><a href="care/">❤️ Care</a></li>
                         <li><a href="eco/">🌱 Eco</a></li>
-                        <li><a href="3d/">🖨️ 3D</a></li>
+                        <li><a href="3d/index.html">🖨️ 3D</a></li>
                         <li><a href="acercade.html">📖 Acerca de</a></li>
                         <li><a href="contacto.html">✉️ Contacto</a></li>
                     </ul>
                 </div>
 
-                <!-- Columna 3: Detrás de Kodyan -->
                 <div>
                     <h4>Detrás de Kodyan</h4>
                     <p style="font-size: 0.92rem; line-height: 1.6; opacity: 0.85;">
@@ -1087,13 +1086,13 @@
 
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Kodyan · Hecho con ❤️.</p>
+                <p>&copy; 2025 Kodyan · Hecho con ❤️ y 🐙</p>
             </div>
         </div>
     </footer>
 
     <!-- ========================================== -->
-    <!-- PANEL DE ACCESIBILIDAD (NUEVO)             -->
+    <!-- PANEL DE ACCESIBILIDAD                     -->
     <!-- ========================================== -->
     <div class="panel-accesibilidad" id="panelAccesibilidad" role="dialog" aria-label="Panel de accesibilidad" aria-live="polite">
         <h3><i class="fa-solid fa-sliders" aria-hidden="true"></i> Opciones de accesibilidad</h3>
@@ -1118,7 +1117,7 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- JAVASCRIPT (Accesibilidad + Menú)          -->
+    <!-- JAVASCRIPT                                 -->
     <!-- ========================================== -->
     <script>
         // =============================================
@@ -1203,7 +1202,7 @@
         }
 
         // =============================================
-        // 3. TAMAÑO DE TEXTO (ZOOM)
+        // 3. TAMAÑO DE TEXTO
         // =============================================
         let tamañoTexto = 100;
         const body = document.body;
@@ -1230,7 +1229,7 @@
         }
 
         // =============================================
-        // 4. ALTO CONTRASTE (USANDO CLASES)
+        // 4. ALTO CONTRASTE
         // =============================================
         const toggleContraste = document.getElementById('toggleContraste');
         let contrasteActivo = false;
@@ -1246,7 +1245,7 @@
         }
 
         // =============================================
-        // 5. LECTURA FÁCIL (USANDO CLASES)
+        // 5. LECTURA FÁCIL
         // =============================================
         const toggleLectura = document.getElementById('toggleLectura');
         let lecturaActiva = false;
