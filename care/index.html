@@ -70,7 +70,7 @@
         .instagram-cta {
             padding: 3rem 0;
             margin: 3rem 0;
-            background: transparent !important; /* Elimina el fondo celeste */
+            background: transparent !important;
         }
 
         .ig-banner {
@@ -147,6 +147,29 @@
         /* BOTONES VOLVER AL INICIO                      */
         /* ============================================ */
 
+        /* Botón en el header */
+        .btn-volver-header {
+            display: inline-block;
+            padding: 6px 14px;
+            background: transparent;
+            color: #367588;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(54, 117, 136, 0.15);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-volver-header:hover {
+            background: #367588;
+            color: #ffffff;
+            border-color: #367588;
+            transform: scale(1.02);
+            text-decoration: none;
+        }
+
         /* Botón de abajo (estilo principal) */
         .btn-volver {
             display: inline-block;
@@ -215,6 +238,10 @@
                 font-size: 0.75rem;
                 padding: 4px 12px;
             }
+            .btn-volver-header {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+            }
         }
     </style>
 </head>
@@ -229,6 +256,8 @@
             </a>
             <nav>
                 <ul class="nav-links">
+                    <!-- ===== BOTÓN VOLVER AL INICIO EN EL HEADER ===== -->
+                    <li><a href="../index.html" class="btn-volver-header">← Volver al Inicio</a></li>
                     <li><a href="#herramientas">Herramientas</a></li>
                     <li><a href="#regulacion">Regulación</a></li>
                     <li><a href="#como-ayudar">Cómo Ayudar</a></li>
