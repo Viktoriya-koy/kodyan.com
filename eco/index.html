@@ -2,411 +2,526 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Calculadora de Huella de Carbono - Kodyan HQ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kodyan Eco · Calculadora de Huella de Carbono</title>
+    
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WBQ4HF94SH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-WBQ4HF94SH');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WBQ4HF94SH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-WBQ4HF94SH');
+    </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        /* ============================================ */
+        /* 1. VARIABLES Y RESET                         */
+        /* ============================================ */
         :root {
-            --koy-bg-light: #f8fafc;
-            --koy-text-dark: #0f172a;
-            --koy-text-medium: #334155;
-            --koy-text-light: #64748b;
-            --koy-primary: #28736e;
-            --koy-primary-light: #38b2ac;
-            --koy-highlight: #00ffd1;
-            --koy-accent: #2563eb;
-            --koy-border: #cbd5e1;
-            --koy-card-bg: #ffffff;
+            --eco-primary: #2ECC71;
+            --eco-primary-dark: #1EA85A;
+            --eco-primary-light: #82E0AA;
+            --eco-bg: #f0fcf4;
+            --text-dark: #0f172a;
+            --text-medium: #334155;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --border-color: #cbd5e1;
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.10);
+            --radius: 20px;
         }
-        
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, var(--koy-primary) 0%, var(--koy-primary-light) 100%);
-            color: white;
-            text-align: center;
-            padding: 50px 20px;
-            margin: 0;
+            background: var(--eco-bg);
+            color: var(--text-dark);
             min-height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
+            padding: 0;
         }
-        
+
         .container {
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto;
-            background: var(--koy-card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            color: var(--koy-text-dark);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            border: 2px solid var(--koy-highlight);
+            padding: 20px;
+            width: 100%;
+            flex: 1;
         }
-        
-        h1 {
-            color: var(--koy-primary);
-            margin-bottom: 10px;
-            font-size: 2.2rem;
+
+        /* ============================================ */
+        /* 2. HEADER Y BOTÓN VOLVER                     */
+        /* ============================================ */
+        .header-eco {
+            background: var(--white);
+            padding: 16px 24px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 3px solid var(--eco-primary-light);
         }
-        
-        p {
-            color: var(--koy-text-medium);
-            margin-bottom: 25px;
-            font-size: 1.1rem;
+
+        .header-eco .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
-        
-        .koy-logo {
-            font-size: 2.5rem;
-            color: var(--koy-primary);
-            margin-bottom: 20px;
+
+        .header-eco .logo-area i {
+            font-size: 2rem;
+            color: var(--eco-primary);
         }
-        
+
+        .header-eco .logo-area span {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--eco-primary-dark);
+        }
+
+        .btn-volver-header {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: transparent;
+            color: var(--eco-primary-dark);
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(30, 168, 90, 0.2);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-volver-header:hover {
+            background: var(--eco-primary);
+            color: var(--white);
+            border-color: var(--eco-primary);
+            transform: scale(1.02);
+        }
+
+        /* ============================================ */
+        /* 3. CARD PRINCIPAL                            */
+        /* ============================================ */
+        .card-eco {
+            background: var(--white);
+            padding: 32px 28px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(46, 204, 113, 0.15);
+            margin-top: 24px;
+        }
+
+        .card-eco .icono-grande {
+            text-align: center;
+            font-size: 3.5rem;
+            color: var(--eco-primary);
+            margin-bottom: 12px;
+        }
+
+        .card-eco h1 {
+            text-align: center;
+            color: var(--eco-primary-dark);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .card-eco .subtitulo {
+            text-align: center;
+            color: var(--text-medium);
+            font-size: 1rem;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        /* ============================================ */
+        /* 4. FORMULARIO                                */
+        /* ============================================ */
         select {
             width: 100%;
-            padding: 15px;
-            margin: 15px 0;
-            border: 2px solid var(--koy-border);
-            border-radius: 10px;
-            font-size: 16px;
+            padding: 14px 16px;
+            margin: 10px 0;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 1rem;
             font-family: 'Montserrat', sans-serif;
-            background: var(--koy-bg-light);
-            color: var(--koy-text-dark);
+            background: var(--eco-bg);
+            color: var(--text-dark);
             transition: all 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232ECC71' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            cursor: pointer;
         }
-        
+
         select:focus {
             outline: none;
-            border-color: var(--koy-primary);
-            box-shadow: 0 0 0 3px rgba(40, 115, 110, 0.2);
+            border-color: var(--eco-primary);
+            box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.15);
         }
-        
-        button {
+
+        select:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background-color: #f1f5f9;
+        }
+
+        /* ============================================ */
+        /* 5. BOTÓN CONTINUAR                           */
+        /* ============================================ */
+        .btn-continuar {
             width: 100%;
             padding: 16px;
-            margin: 10px 0;
+            margin-top: 16px;
             border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: 600;
-            background: var(--koy-primary);
-            color: white;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            background: var(--eco-primary);
+            color: var(--white);
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
-        
-        button:hover {
-            background: var(--koy-primary-light);
+
+        .btn-continuar:hover:not(:disabled) {
+            background: var(--eco-primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 24px rgba(46, 204, 113, 0.3);
         }
-        
-        button:disabled {
-            background: var(--koy-text-light);
+
+        .btn-continuar:disabled {
+            background: var(--text-light);
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
         }
-        
-        .brand {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid var(--koy-border);
-            color: var(--koy-text-light);
-            font-size: 0.9rem;
-        }
-        
-        .brand strong {
-            color: var(--koy-primary);
-        }
-        
-        .localidad-group {
+
+        /* ============================================ */
+        /* 6. SECCIÓN INFO (San Luis)                   */
+        /* ============================================ */
+        .seccion-info {
+            background: #e8f8ef;
+            padding: 16px;
+            border-radius: 12px;
+            margin: 12px 0;
+            border-left: 4px solid var(--eco-primary);
+            text-align: left;
             display: none;
         }
-        
-        .seccion-info {
-            background-color: #e8f4f8;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 10px 0;
-            border-left: 4px solid var(--koy-primary);
-            text-align: left;
-        }
-        
+
         .seccion-info h4 {
-            margin: 0 0 10px 0;
-            color: var(--koy-primary);
+            margin: 0 0 8px 0;
+            color: var(--eco-primary-dark);
+            font-size: 0.95rem;
         }
-        
+
         .seccion-info ul {
             margin: 0;
             padding-left: 20px;
             columns: 2;
-            column-gap: 20px;
+            column-gap: 16px;
         }
-        
+
         .seccion-info li {
-            font-size: 11px;
-            margin-bottom: 3px;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
             break-inside: avoid;
+            color: var(--text-medium);
         }
-        
-        @media (max-width: 768px) {
+
+        /* ============================================ */
+        /* 7. BOTÓN VOLVER ABAJO                        */
+        /* ============================================ */
+        .volver-abajo {
+            text-align: center;
+            padding: 24px 0 12px;
+        }
+
+        .btn-volver-abajo {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--eco-primary);
+            color: var(--white);
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.25);
+        }
+
+        .btn-volver-abajo:hover {
+            background: var(--eco-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(46, 204, 113, 0.35);
+            color: var(--white);
+        }
+
+        .btn-volver-abajo i {
+            margin-right: 8px;
+        }
+
+        /* ============================================ */
+        /* 8. FOOTER                                    */
+        /* ============================================ */
+        .footer-eco {
+            text-align: center;
+            padding: 20px;
+            margin-top: 24px;
+            border-top: 1px solid rgba(46, 204, 113, 0.15);
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .footer-eco strong {
+            color: var(--eco-primary-dark);
+        }
+
+        /* ============================================ */
+        /* 9. RESPONSIVE                                */
+        /* ============================================ */
+        @media (max-width: 640px) {
             .container {
-                padding: 20px;
+                padding: 12px;
             }
-            
+
+            .header-eco {
+                padding: 12px 16px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .header-eco .logo-area {
+                justify-content: center;
+            }
+
+            .header-eco .logo-area span {
+                font-size: 1.1rem;
+            }
+
+            .btn-volver-header {
+                justify-content: center;
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+
+            .card-eco {
+                padding: 20px 16px;
+                margin-top: 16px;
+            }
+
+            .card-eco h1 {
+                font-size: 1.5rem;
+            }
+
+            .card-eco .subtitulo {
+                font-size: 0.9rem;
+            }
+
+            select {
+                font-size: 0.9rem;
+                padding: 12px 14px;
+            }
+
+            .btn-continuar {
+                font-size: 1rem;
+                padding: 14px;
+            }
+
             .seccion-info ul {
                 columns: 1;
+            }
+
+            .volver-abajo {
+                padding: 16px 0 8px;
+            }
+
+            .btn-volver-abajo {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .footer-eco {
+                font-size: 0.75rem;
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .card-eco {
+                padding: 16px 12px;
+            }
+
+            .card-eco h1 {
+                font-size: 1.3rem;
+            }
+
+            select {
+                font-size: 0.85rem;
+                padding: 10px 12px;
+            }
+
+            .btn-continuar {
+                font-size: 0.9rem;
+                padding: 12px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="koy-logo">
-            <i class="fas fa-leaf"></i>
-        </div>
-        
-        <h1>Calculadora de Huella de Carbono</h1>
-        <p>¡Empecemos por tu edad y ubicación! Completá los datos para continuar</p>
-        
-        <select id="edad" required>
-            <option value="">-- Seleccioná tu edad --</option>
-            <option value="ninos">6 a 12 años</option>
-            <option value="jovenes">13 a 18 años</option>
-            <option value="adultos">19 años o más</option>
-        </select>
-        
-        <select id="provincia" required>
-            <option value="">-- Seleccioná tu provincia --</option>
-            <option value="caba">Ciudad de Buenos Aires</option>
-            <option value="buenos_aires">Buenos Aires</option>
-            <option value="catamarca">Catamarca</option>
-            <option value="chaco">Chaco</option>
-            <option value="chubut">Chubut</option>
-            <option value="cordoba">Córdoba</option>
-            <option value="corrientes">Corrientes</option>
-            <option value="entre_rios">Entre Ríos</option>
-            <option value="formosa">Formosa</option>
-            <option value="jujuy">Jujuy</option>
-            <option value="la_pampa">La Pampa</option>
-            <option value="la_rioja">La Rioja</option>
-            <option value="mendoza">Mendoza</option>
-            <option value="misiones">Misiones</option>
-            <option value="neuquen">Neuquén</option>
-            <option value="rio_negro">Río Negro</option>
-            <option value="salta">Salta</option>
-            <option value="san_juan">San Juan</option>
-            <option value="san_luis">San Luis</option>
-            <option value="santa_cruz">Santa Cruz</option>
-            <option value="santa_fe">Santa Fe</option>
-            <option value="santiago">Santiago del Estero</option>
-            <option value="tierra_fuego">Tierra del Fuego</option>
-            <option value="tucuman">Tucumán</option>
-        </select>
-        
-        <select id="departamento" disabled required>
-            <option value="">Primero seleccioná una provincia</option>
-        </select>
-        
-        <div id="localidadGroup" class="localidad-group">
-            <select id="localidad" disabled>
-                <option value="">Seleccioná localidad</option>
-            </select>
-        </div>
-        
-        <div id="seccionInfo" class="seccion-info" style="display: none;">
-            <h4>Partidos incluidos en esta sección:</h4>
-            <div id="partidosList"></div>
-        </div>
-        
-        <button id="continueBtn" onclick="irACalculadora()" disabled>
-            <i class="fas fa-arrow-right"></i> CONTINUAR
-        </button>
-        
-        <div class="brand">
-            Una herramienta de <strong>Kodyan HQ</strong>
-        </div>
-    </div>
 
+    <!-- ========================================== -->
+    <!-- HEADER CON BOTÓN VOLVER                     -->
+    <!-- ========================================== -->
+    <header class="header-eco">
+        <div class="logo-area">
+            <i class="fas fa-leaf" aria-hidden="true"></i>
+            <span>Kodyan Eco</span>
+        </div>
+        <a href="../index.html" class="btn-volver-header" aria-label="Volver a la página principal de Kodyan">
+            <i class="fas fa-arrow-left" aria-hidden="true"></i> Volver al inicio
+        </a>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- CONTENIDO PRINCIPAL                        -->
+    <!-- ========================================== -->
+    <main class="container">
+        <div class="card-eco">
+            <div class="icono-grande" aria-hidden="true">
+                <i class="fas fa-leaf"></i>
+            </div>
+
+            <h1>Calculadora de Huella de Carbono</h1>
+            <p class="subtitulo">¡Empecemos por tu edad y ubicación! Completá los datos para continuar</p>
+
+            <!-- EDAD -->
+            <select id="edad" required>
+                <option value="">-- Seleccioná tu edad --</option>
+                <option value="ninos">6 a 12 años</option>
+                <option value="jovenes">13 a 18 años</option>
+                <option value="adultos">19 años o más</option>
+            </select>
+
+            <!-- PROVINCIA -->
+            <select id="provincia" required>
+                <option value="">-- Seleccioná tu provincia --</option>
+                <option value="caba">Ciudad de Buenos Aires</option>
+                <option value="buenos_aires">Buenos Aires</option>
+                <option value="catamarca">Catamarca</option>
+                <option value="chaco">Chaco</option>
+                <option value="chubut">Chubut</option>
+                <option value="cordoba">Córdoba</option>
+                <option value="corrientes">Corrientes</option>
+                <option value="entre_rios">Entre Ríos</option>
+                <option value="formosa">Formosa</option>
+                <option value="jujuy">Jujuy</option>
+                <option value="la_pampa">La Pampa</option>
+                <option value="la_rioja">La Rioja</option>
+                <option value="mendoza">Mendoza</option>
+                <option value="misiones">Misiones</option>
+                <option value="neuquen">Neuquén</option>
+                <option value="rio_negro">Río Negro</option>
+                <option value="salta">Salta</option>
+                <option value="san_juan">San Juan</option>
+                <option value="san_luis">San Luis</option>
+                <option value="santa_cruz">Santa Cruz</option>
+                <option value="santa_fe">Santa Fe</option>
+                <option value="santiago">Santiago del Estero</option>
+                <option value="tierra_fuego">Tierra del Fuego</option>
+                <option value="tucuman">Tucumán</option>
+            </select>
+
+            <!-- DEPARTAMENTO (solo para San Luis) -->
+            <select id="departamento" disabled required>
+                <option value="">Primero seleccioná una provincia</option>
+            </select>
+
+            <!-- LOCALIDAD (solo para San Luis) -->
+            <div id="localidadGroup" class="localidad-group" style="display: none;">
+                <select id="localidad" disabled>
+                    <option value="">Seleccioná localidad</option>
+                </select>
+            </div>
+
+            <!-- INFO DE PARTIDOS (solo para San Luis) -->
+            <div id="seccionInfo" class="seccion-info">
+                <h4>📍 Localidades disponibles en esta zona:</h4>
+                <div id="partidosList"></div>
+            </div>
+
+            <!-- BOTÓN CONTINUAR -->
+            <button id="continueBtn" class="btn-continuar" onclick="irACalculadora()" disabled>
+                <i class="fas fa-arrow-right" aria-hidden="true"></i> CONTINUAR
+            </button>
+        </div>
+
+        <!-- ===== BOTÓN VOLVER AL INICIO (ABAJO) ===== -->
+        <div class="volver-abajo">
+            <a href="../index.html" class="btn-volver-abajo" aria-label="Volver a la página principal de Kodyan">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i> Volver al inicio
+            </a>
+        </div>
+    </main>
+
+    <!-- ========================================== -->
+    <!-- FOOTER                                     -->
+    <!-- ========================================== -->
+    <footer class="footer-eco">
+        Una herramienta de <strong>Kodyan Eco</strong> · Conciencia, creatividad y cuidado.
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- SCRIPTS                                    -->
+    <!-- ========================================== -->
     <script>
         // =============================================
-// INTEGRACIÓN SUPABASE - INDEX.HTML
-// =============================================
-const SUPABASE_CONFIG = {
-    url: 'https://rrbzechsvaadttqslwed.supabase.co',
-    key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJyYnplY2hzdmFhZHR0cXNsd2VkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg1NjQ3MDMsImV4cCI6MjA3NDE0MDcwM30.2qXULldBwTwHDnmGsd4veG5C6TMHSECNnPbPc_zRJ5A'
-};
-
-// Función para guardar la selección inicial
-async function guardarSeleccionInicial(edadGrupo, ubicacion) {
-    try {
-        const supabase = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.key);
-        
-        const { data, error } = await supabase
-            .from('calculadora_inicial')
-            .insert([{
-                edad_grupo: edadGrupo,
-                provincia: ubicacion.provincia,
-                departamento: ubicacion.departamento,
-                localidad: ubicacion.localidad,
-                user_agent: navigator.userAgent
-            }]);
-            
-        if (error) {
-            console.error('Error guardando selección inicial:', error);
-        } else {
-            console.log('Selección inicial guardada:', data);
-        }
-    } catch (error) {
-        console.error('Error inesperado:', error);
-    }
-}
-
-// Modificar la función existente irACalculadora()
-function irACalculadora() {
-    const edad = document.getElementById('edad').value;
-    const provincia = document.getElementById('provincia').value;
-    const departamento = document.getElementById('departamento').value;
-    const localidad = document.getElementById('localidad').value || '';
-    
-    if (!edad || !provincia || !departamento) {
-        alert("¡Completá todos los campos para continuar!");
-        return;
-    }
-    
-    // Guardar en localStorage para usar en la próxima página
-    const ubicacion = {
-        provincia: provincia,
-        departamento: departamento,
-        localidad: localidad
-    };
-    localStorage.setItem('ubicacion', JSON.stringify(ubicacion));
-    
-    // Guardar también en Supabase (en segundo plano, no bloqueante)
-    guardarSeleccionInicial(edad, ubicacion);
-    
-    window.location.href = edad + ".html";
-}
-        // Mapeo completo de provincias y departamentos
+        // 1. DATOS DE UBICACIONES (SOLO SAN LUIS CON LOCALIDADES)
+        // =============================================
         const ubicaciones = {
-            caba: {
-                nombre: "Ciudad de Buenos Aires",
-                departamentos: [
-                    "Comuna 1", "Comuna 2", "Comuna 3", "Comuna 4", "Comuna 5",
-                    "Comuna 6", "Comuna 7", "Comuna 8", "Comuna 9", "Comuna 10",
-                    "Comuna 11", "Comuna 12", "Comuna 13", "Comuna 14", "Comuna 15"
-                ]
-            },
-            
-            buenos_aires: {
-                nombre: "Buenos Aires",
-                departamentos: [
-                    "Sección 1", "Sección 2", "Sección 3", "Sección 4", 
-                    "Sección 5", "Sección 6", "Sección 7", "Sección 8"
-                ],
-                secciones: {
-                    "Sección 1": ["Campana", "Escobar", "General Las Heras", "General Rodríguez", "General San Martín", "Hurlingham", "Ituzaingó", "José C. Paz", "Luján", "Malvinas Argentinas", "Marcos Paz", "Mercedes", "Merlo", "Moreno", "Morón", "Navarro", "Pilar", "San Fernando", "San Isidro", "San Miguel", "Suipacha", "Tigre", "Tres de Febrero", "Vicente López"],
-                    "Sección 2": ["Arrecifes", "Baradero", "Capitán Sarmiento", "Carmen de Areco", "Colón", "Exaltación de la Cruz", "Pergamino", "Ramallo", "Rojas", "Salto", "San Andrés de Giles", "San Antonio de Areco", "San Nicolás", "San Pedro", "Zárate"],
-                    "Sección 3": ["Almirante Brown", "Avellaneda", "Berazategui", "Berisso", "Brandsen", "Cañuelas", "Ensenada", "Esteban Echeverría", "Ezeiza", "Florencio Varela", "La Matanza", "Lanús", "Lobos", "Lomas de Zamora", "Magdalena", "Presidente Perón", "Punta Indio", "Quilmes", "San Vicente"],
-                    "Sección 4": ["Alberti", "Bragado", "Carlos Casares", "Carlos Tejedor", "Chacabuco", "Chivilcoy", "Florentino Ameghino", "General Arenales", "General Pinto", "General Viamonte", "General Villegas", "Hipólito Yrigoyen", "Junín", "Leandro N. Alem", "Lincoln", "Nueve de Julio", "Pehuajó", "Rivadavia", "Trenque Lauquen"],
-                    "Sección 5": ["Ayacucho", "Balcarce", "Castelli", "Chascomús", "Dolores", "General Alvarado", "General Belgrano", "General Guido", "General Lavalle", "General Madariaga", "General Paz", "General Pueyrredón", "La Costa", "Las Flores", "Lezama", "Lobería", "Maipú", "Mar Chiquita", "Monte", "Necochea", "Pila", "Pinamar", "Rauch", "San Cayetano", "Tandil", "Tordillo", "Villa Gesell"],
-                    "Sección 6": ["Adolfo Alsina", "Adolfo Gonzales Chaves", "Bahía Blanca", "Benito Juárez", "Coronel Dorrego", "Coronel Pringles", "Coronel Rosales", "Coronel Suárez", "Daireaux", "Guaminí", "General Lamadrid", "Laprida", "Monte Hermoso", "Patagones", "Pellegrini", "Puan", "Saavedra", "Salliqueló", "Tornquist", "Tres Arroyos", "Tres Lomas", "Villarino"],
-                    "Sección 7": ["Azul", "Bolívar", "General Alvear", "Olavarría", "Roque Pérez", "Saladillo", "Tapalqué", "Veinticinco de Mayo"],
-                    "Sección 8": ["La Plata"]
-                }
-            },
-            
-            catamarca: {
-                nombre: "Catamarca",
-                departamentos: ["Ambato", "Ancasti", "Andalgalá", "Antofagasta de la Sierra", "Belén", "Capayán", "Capital", "El Alto", "Fray Mamerto Esquiú", "La Paz", "Paclín", "Pomán", "Santa María", "Santa Rosa", "Tinogasta", "Valle Viejo"]
-            },
-            
-            chaco: {
-                nombre: "Chaco",
-                departamentos: ["Almirante Brown", "Bermejo", "Chacabuco", "Comandante Fernández", "Doce de Octubre", "Dos de Abril", "Fray Justo Santa María de Oro", "General Belgrano", "General Donovan", "General Güemes", "Independencia", "Libertad", "Libertador General San Martín", "Maipú", "Mayor Luis Jorge Fontana", "Nueve de Julio", "O'Higgins", "Presidencia de la Plaza", "Primero de Mayo", "Quitilipi", "San Fernando", "San Lorenzo", "Sargento Cabral", "Tapenagá", "Veinticinco de Mayo"]
-            },
-            
-            chubut: {
-                nombre: "Chubut",
-                departamentos: ["Biedma", "Cushamen", "Escalante", "Florentino Ameghino", "Futaleufú", "Gaiman", "Gastre", "Languiñeo", "Mártires", "Paso de Indios", "Rawson", "Río Senguer", "Sarmiento", "Tehuelches", "Telsen"]
-            },
-            
-            cordoba: {
-                nombre: "Córdoba",
-                departamentos: ["Calamuchita", "Capital", "Colón", "Cruz del Eje", "General Roca", "General San Martín", "Ischilín", "Juárez Celman", "Marcos Juárez", "Minas", "Pocho", "Presidente Roque Sáenz Peña", "Punilla", "Río Cuarto", "Río Primero", "Río Seco", "Río Segundo", "San Alberto", "San Javier", "San Justo", "Santa María", "Sobremonte", "Tercero Arriba", "Totoral", "Tulumba", "Unión"]
-            },
-            
-            corrientes: {
-                nombre: "Corrientes",
-                departamentos: ["Bella Vista", "Berón de Astrada", "Capital", "Concepción", "Curuzú Cuatiá", "Empedrado", "Esquina", "General Alvear", "General Paz", "Goya", "Itatí", "Ituzaingó", "Lavalle", "Mburucuyá", "Mercedes", "Monte Caseros", "Paso de los Libres", "Saladas", "San Cosme", "San Luis del Palmar", "San Martín", "San Miguel", "San Roque", "Santo Tomé", "Sauce"]
-            },
-            
-            entre_rios: {
-                nombre: "Entre Ríos",
-                departamentos: ["Colón", "Concordia", "Diamante", "Federación", "Federal", "Gualeguay", "Gualeguaychú", "Islas del Ibicuy", "La Paz", "Nogoyá", "Paraná", "San José de Feliciano", "San Salvador", "Tala", "Uruguay", "Victoria", "Villaguay"]
-            },
-            
-            formosa: {
-                nombre: "Formosa",
-                departamentos: ["Bermejo", "Formosa", "Laishí", "Matacos", "Pilagás", "Pilcomayo", "Pirané", "Ramón Lista", "Patiño"]
-            },
-            
-            jujuy: {
-                nombre: "Jujuy",
-                departamentos: ["Cochinoca", "Dr. Manuel Belgrano", "El Carmen", "Humahuaca", "Ledesma", "Palpalá", "Rinconada", "San Antonio", "San Pedro", "Santa Bárbara", "Santa Catalina", "Susques", "Tilcara", "Tumbaya", "Valle Grande", "Yavi"]
-            },
-            
-            la_pampa: {
-                nombre: "La Pampa",
-                departamentos: ["Atreucó", "Caleu Caleu", "Capital", "Catriló", "Chalileo", "Chapaleufú", "Chical Co", "Conhelo", "Curacó", "Guatraché", "Hucal", "Lihuel Calel", "Limay Mahuida", "Loventué", "Maracó", "Puelén", "Quemú Quemú", "Rancul", "Realicó", "Toay", "Trenel", "Utracán"]
-            },
-            
-            la_rioja: {
-                nombre: "La Rioja",
-                departamentos: ["Arauco", "Capital", "Castro Barros", "Chamical", "Chilecito", "Coronel Felipe Varela", "Famatina", "General Ángel V. Peñaloza", "General Belgrano", "General Juan Facundo Quiroga", "General Lamadrid", "General Ocampo", "General San Martín", "Independencia", "Rosario Vera Peñaloza", "San Blas de los Sauces", "Sanagasta", "Vicente Armando"]
-            },
-            
-            mendoza: {
-                nombre: "Mendoza",
-                departamentos: ["Capital", "General Alvear", "Godoy Cruz", "Guaymallén", "Junín", "La Paz", "Las Heras", "Lavalle", "Luján de Cuyo", "Maipú", "Malargüe", "Rivadavia", "San Carlos", "San Martín", "San Rafael", "Santa Rosa", "Tunuyán", "Tupungato"]
-            },
-            
-            misiones: {
-                nombre: "Misiones",
-                departamentos: ["Apóstoles", "Cainguás", "Candelaria", "Capital", "Concepción", "Eldorado", "General Manuel Belgrano", "Guaraní", "Iguazú", "Leandro N. Alem", "Libertador General San Martín", "Montecarlo", "Oberá", "San Ignacio", "San Javier", "San Pedro", "Veinticinco de Mayo"]
-            },
-            
-            neuquen: {
-                nombre: "Neuquén",
-                departamentos: ["Aluminé", "Añelo", "Catán Lil", "Collón Curá", "Confluencia", "Chos Malal", "Huiliches", "Lácar", "Loncopué", "Los Lagos", "Minas", "Ñorquín", "Pehuenches", "Picún Leufú", "Picunches", "Zapala"]
-            },
-            
-            rio_negro: {
-                nombre: "Río Negro",
-                departamentos: ["Adolfo Alsina", "Avellaneda", "Bariloche", "Conesa", "El Cuy", "General Roca", "Nueve de Julio", "Ñorquincó", "Pichi Mahuida", "Pilcaniyeu", "San Antonio", "Valcheta", "Veinticinco de Mayo"]
-            },
-            
-            salta: {
-                nombre: "Salta",
-                departamentos: ["Anta", "Cachi", "Cafayate", "Capital", "Cerrillos", "Chicoana", "General Güemes", "General José de San Martín", "Guachipas", "Iruya", "La Caldera", "La Candelaria", "La Poma", "La Viña", "Los Andes", "Metán", "Molinos", "Orán", "Rivadavia", "Rosario de la Frontera", "Rosario de Lerma", "San Carlos", "Santa Victoria"]
-            },
-            
-            san_juan: {
-                nombre: "San Juan",
-                departamentos: ["Albardón", "Angaco", "Calingasta", "Capital", "Caucete", "Chimbas", "Iglesia", "Jáchal", "Nueve de Julio", "Pocito", "Rawson", "Rivadavia", "San Martín", "Santa Lucía", "Sarmiento", "Ullum", "Valle Fértil", "Veinticinco de Mayo", "Zonda"]
-            },
-            
+            caba: { nombre: "Ciudad de Buenos Aires", departamentos: [] },
+            buenos_aires: { nombre: "Buenos Aires", departamentos: [] },
+            catamarca: { nombre: "Catamarca", departamentos: [] },
+            chaco: { nombre: "Chaco", departamentos: [] },
+            chubut: { nombre: "Chubut", departamentos: [] },
+            cordoba: { nombre: "Córdoba", departamentos: [] },
+            corrientes: { nombre: "Corrientes", departamentos: [] },
+            entre_rios: { nombre: "Entre Ríos", departamentos: [] },
+            formosa: { nombre: "Formosa", departamentos: [] },
+            jujuy: { nombre: "Jujuy", departamentos: [] },
+            la_pampa: { nombre: "La Pampa", departamentos: [] },
+            la_rioja: { nombre: "La Rioja", departamentos: [] },
+            mendoza: { nombre: "Mendoza", departamentos: [] },
+            misiones: { nombre: "Misiones", departamentos: [] },
+            neuquen: { nombre: "Neuquén", departamentos: [] },
+            rio_negro: { nombre: "Río Negro", departamentos: [] },
+            salta: { nombre: "Salta", departamentos: [] },
+            san_juan: { nombre: "San Juan", departamentos: [] },
             san_luis: {
                 nombre: "San Luis",
                 departamentos: ["Ayacucho", "Belgrano", "Chacabuco", "Coronel Pringles", "General Pedernera", "Gobernador Dupuy", "Junín", "La Capital", "Libertador General San Martín"],
@@ -422,81 +537,68 @@ function irACalculadora() {
                     "Libertador General San Martín": ["San Martín", "Las Aguadas", "Las Chacras", "Potrero de los Funes", "El Rincón", "Los Molles", "Otra"]
                 }
             },
-            
-            santa_cruz: {
-                nombre: "Santa Cruz",
-                departamentos: ["Corpen Aike", "Deseado", "Güer Aike", "Lago Argentino", "Lago Buenos Aires", "Magallanes", "Río Chico"]
-            },
-            
-            santa_fe: {
-                nombre: "Santa Fe",
-                departamentos: ["Belgrano", "Caseros", "Castellanos", "Constitución", "Garay", "General López", "General Obligado", "Iriondo", "La Capital", "Las Colonias", "Nueve de Julio", "Rosario", "San Cristóbal", "San Javier", "San Jerónimo", "San Justo", "San Lorenzo", "San Martín", "Vera"]
-            },
-            
-            santiago: {
-                nombre: "Santiago del Estero",
-                departamentos: ["Aguirre", "Alberdi", "Atamisqui", "Avellaneda", "Banda", "Belgrano", "Capital", "Choya", "Copo", "Figueroa", "General Taboada", "Guasayán", "Jiménez", "Juan Felipe Ibarra", "Loreto", "Mitre", "Moreno", "Ojo de Agua", "Pellegrini", "Quebrachos", "Río Hondo", "Rivadavia", "Robles", "Salavina", "San Martín", "Sarmiento", "Silípica"]
-            },
-            
-            tierra_fuego: {
-                nombre: "Tierra del Fuego",
-                departamentos: ["Ushuaia", "Río Grande", "Tolhuin", "Antártida Argentina"]
-            },
-            
-            tucuman: {
-                nombre: "Tucumán",
-                departamentos: ["Burruyacú", "Capital", "Chicligasta", "Cruz Alta", "Famaillá", "Graneros", "Juan Bautista Alberdi", "La Cocha", "Leales", "Lules", "Monteros", "Río Chico", "Simoca", "Tafí del Valle", "Tafí Viejo", "Trancas", "Yerba Buena"]
-            }
+            santa_cruz: { nombre: "Santa Cruz", departamentos: [] },
+            santa_fe: { nombre: "Santa Fe", departamentos: [] },
+            santiago: { nombre: "Santiago del Estero", departamentos: [] },
+            tierra_fuego: { nombre: "Tierra del Fuego", departamentos: [] },
+            tucuman: { nombre: "Tucumán", departamentos: [] }
         };
 
-        // Función para verificar si todos los campos están completos
+        // =============================================
+        // 2. FUNCIONES DEL FORMULARIO
+        // =============================================
+
         function verificarCampos() {
             const edad = document.getElementById('edad').value;
             const provincia = document.getElementById('provincia').value;
             const departamento = document.getElementById('departamento').value;
             const localidad = document.getElementById('localidad');
-            
-            let camposCompletos = edad && provincia && departamento;
-            
-            // Si es San Luis, también verificar la localidad
-            if (provincia === 'san_luis' && localidad) {
-                camposCompletos = camposCompletos && localidad.value;
+            const btn = document.getElementById('continueBtn');
+
+            let camposCompletos = edad && provincia;
+
+            // Si es San Luis, también verificar departamento y localidad
+            if (provincia === 'san_luis') {
+                camposCompletos = camposCompletos && departamento && localidad && localidad.value;
+            } else {
+                // Para otras provincias, no necesitamos departamento
+                camposCompletos = camposCompletos && true;
             }
-            
-            document.getElementById('continueBtn').disabled = !camposCompletos;
+
+            btn.disabled = !camposCompletos;
         }
 
-        // Configurar event listeners para los campos
+        // Configurar event listeners
         document.getElementById('edad').addEventListener('change', verificarCampos);
+
         document.getElementById('provincia').addEventListener('change', function() {
             const provinciaId = this.value;
             const departamentoSelect = document.getElementById('departamento');
             const localidadGroup = document.getElementById('localidadGroup');
             const seccionInfo = document.getElementById('seccionInfo');
-            
+
             // Resetear
             departamentoSelect.innerHTML = '<option value="">Seleccionar...</option>';
             departamentoSelect.disabled = true;
             localidadGroup.style.display = 'none';
             seccionInfo.style.display = 'none';
-            
-            if (provinciaId && ubicaciones[provinciaId]) {
+
+            // Si es San Luis, mostrar departamentos y localidades
+            if (provinciaId === 'san_luis' && ubicaciones[provinciaId]) {
                 departamentoSelect.disabled = false;
-                
-                // Cargar departamentos
                 ubicaciones[provinciaId].departamentos.forEach(depto => {
                     const option = document.createElement('option');
                     option.value = depto;
                     option.textContent = depto;
                     departamentoSelect.appendChild(option);
                 });
-                
-                // Mostrar grupo de localidad solo para San Luis
-                if (provinciaId === 'san_luis') {
-                    localidadGroup.style.display = 'block';
-                }
+                localidadGroup.style.display = 'block';
+            } else if (provinciaId) {
+                // Para otras provincias, solo mostramos el nombre
+                departamentoSelect.innerHTML = '<option value="">Provincia seleccionada</option>';
+                departamentoSelect.disabled = true;
             }
-            
+
             verificarCampos();
         });
 
@@ -506,72 +608,74 @@ function irACalculadora() {
             const localidadSelect = document.getElementById('localidad');
             const seccionInfo = document.getElementById('seccionInfo');
             const partidosList = document.getElementById('partidosList');
-            
+
             // Resetear
             localidadSelect.disabled = true;
             seccionInfo.style.display = 'none';
-            
-            if (provinciaId && departamento) {
-                // Cargar localidades para San Luis
-                if (provinciaId === 'san_luis' && ubicaciones[provinciaId].localidades[departamento]) {
-                    localidadSelect.innerHTML = '<option value="">Seleccionar localidad...</option>';
-                    localidadSelect.disabled = false;
-                    
-                    ubicaciones[provinciaId].localidades[departamento].forEach(localidad => {
-                        const option = document.createElement('option');
-                        option.value = localidad;
-                        option.textContent = localidad;
-                        localidadSelect.appendChild(option);
-                    });
-                }
-                
-                // Mostrar info de secciones para Buenos Aires
-                if (provinciaId === 'buenos_aires' && ubicaciones[provinciaId].secciones[departamento]) {
-                    seccionInfo.style.display = 'block';
-                    partidosList.innerHTML = '';
-                    
-                    const ul = document.createElement('ul');
-                    ubicaciones[provinciaId].secciones[departamento].forEach(partido => {
-                        const li = document.createElement('li');
-                        li.textContent = partido;
-                        ul.appendChild(li);
-                    });
-                    partidosList.appendChild(ul);
-                }
+
+            if (provinciaId === 'san_luis' && departamento && ubicaciones[provinciaId].localidades[departamento]) {
+                // Cargar localidades de San Luis
+                localidadSelect.innerHTML = '<option value="">Seleccionar localidad...</option>';
+                localidadSelect.disabled = false;
+
+                ubicaciones[provinciaId].localidades[departamento].forEach(localidad => {
+                    const option = document.createElement('option');
+                    option.value = localidad;
+                    option.textContent = localidad;
+                    localidadSelect.appendChild(option);
+                });
+
+                // Mostrar info de localidades
+                seccionInfo.style.display = 'block';
+                partidosList.innerHTML = '';
+                const ul = document.createElement('ul');
+                ubicaciones[provinciaId].localidades[departamento].forEach(localidad => {
+                    const li = document.createElement('li');
+                    li.textContent = localidad;
+                    ul.appendChild(li);
+                });
+                partidosList.appendChild(ul);
             }
-            
+
             verificarCampos();
         });
 
         document.getElementById('localidad').addEventListener('change', verificarCampos);
 
+        // =============================================
+        // 3. FUNCIÓN PARA IR A LA CALCULADORA
+        // =============================================
         function irACalculadora() {
             const edad = document.getElementById('edad').value;
             const provincia = document.getElementById('provincia').value;
             const departamento = document.getElementById('departamento').value;
             const localidad = document.getElementById('localidad').value || '';
-            
-            if (!edad || !provincia || !departamento) {
+
+            if (!edad || !provincia) {
                 alert("¡Completá todos los campos para continuar!");
                 return;
             }
-            
-            // Guardar en localStorage para usar en la próxima página
+
+            // Guardar en localStorage
             localStorage.setItem('ubicacion', JSON.stringify({
                 provincia: provincia,
                 departamento: departamento,
                 localidad: localidad
             }));
-            
+
             window.location.href = edad + ".html";
         }
-        
-        // Enter key support
+
+        // Soporte para Enter
         document.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
-                irACalculadora();
+                const btn = document.getElementById('continueBtn');
+                if (!btn.disabled) {
+                    irACalculadora();
+                }
             }
         });
     </script>
+
 </body>
 </html>
