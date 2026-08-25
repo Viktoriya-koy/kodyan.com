@@ -868,26 +868,26 @@
     <!-- ========================================== -->
     <!-- PANEL DE ACCESIBILIDAD (HTML)              -->
     <!-- ========================================== -->
-    <div class="panel-accesibilidad" id="panelAccesibilidad" role="dialog" aria-label="Panel de accesibilidad" aria-live="polite">
-        <h3>♿ Opciones de accesibilidad</h3>
+ <div class="panel-accesibilidad" id="panelAccesibilidad" role="dialog" aria-label="Panel de accesibilidad" aria-live="polite">
+    <h3>♿ Opciones de accesibilidad</h3>
 
         <div class="opcion">
-            <span>🔍 Tamaño de texto</span>
-            <div>
-                <button id="disminuirTexto" aria-label="Disminuir tamaño de texto">A-</button>
-                <button id="aumentarTexto" aria-label="Aumentar tamaño de texto">A+</button>
-            </div>
+        <span>🔍 Tamaño de texto</span>
+        <div>
+            <button id="disminuirTexto" aria-label="Disminuir tamaño de texto">A-</button>
+            <button id="aumentarTexto" aria-label="Aumentar tamaño de texto">A+</button>
         </div>
+    </div>
 
         <div class="opcion">
-            <span>🌓 Contraste</span>
-            <button id="toggleContraste" aria-label="Activar o desactivar alto contraste">Activar</button>
-        </div>
+        <span>🌓 Contraste</span>
+        <button id="toggleContraste" aria-label="Activar o desactivar alto contraste">Activar</button>
+    </div>
 
-        <div class="opcion">
-            <span>📖 Lectura fácil</span>
-            <button id="toggleLectura" aria-label="Activar o desactivar modo lectura">Activar</button>
-        </div>
+          <div class="opcion">
+        <span>📖 Lectura fácil</span>
+        <button id="toggleLectura" aria-label="Activar o desactivar modo lectura">Activar</button>
+    </div>
     </div>
 
     <!-- ========================================== -->
@@ -994,21 +994,31 @@
             }
         });
 
-        let contrasteActivo = false;
-        document.getElementById('toggleContraste').addEventListener('click', function() {
-            contrasteActivo = !contrasteActivo;
-            body.classList.toggle('alto-contraste', contrasteActivo);
-            this.textContent = contrasteActivo ? 'Desactivar' : 'Activar';
-            this.classList.toggle('activo', contrasteActivo);
-        });
+        // Alto contraste
+let contrasteActivo = false;
+const toggleContraste = document.getElementById('toggleContraste');
+if (toggleContraste) {
+    toggleContraste.addEventListener('click', function() {
+        contrasteActivo = !contrasteActivo;
+        document.body.classList.toggle('alto-contraste', contrasteActivo);
+        this.textContent = contrasteActivo ? 'Desactivar' : 'Activar';
+        this.classList.toggle('activo', contrasteActivo);
+        console.log('Contraste activado:', contrasteActivo); // Para depurar
+    });
+}
 
-        let lecturaActiva = false;
-        document.getElementById('toggleLectura').addEventListener('click', function() {
-            lecturaActiva = !lecturaActiva;
-            body.classList.toggle('lectura-facil', lecturaActiva);
-            this.textContent = lecturaActiva ? 'Desactivar' : 'Activar';
-            this.classList.toggle('activo', lecturaActiva);
-        });
+// Modo lectura fácil
+let lecturaActiva = false;
+const toggleLectura = document.getElementById('toggleLectura');
+if (toggleLectura) {
+    toggleLectura.addEventListener('click', function() {
+        lecturaActiva = !lecturaActiva;
+        document.body.classList.toggle('lectura-facil', lecturaActiva);
+        this.textContent = lecturaActiva ? 'Desactivar' : 'Activar';
+        this.classList.toggle('activo', lecturaActiva);
+        console.log('Lectura fácil activada:', lecturaActiva); // Para depurar
+    });
+}
     </script>
 
 </body>
