@@ -182,6 +182,11 @@
             background-color: #f1f5f9;
         }
 
+        /* Ocultar selector de departamento cuando no se usa */
+        #departamento[style*="display: none"] {
+            display: none !important;
+        }
+
         /* ============================================ */
         /* 5. BOTÓN CONTINUAR                           */
         /* ============================================ */
@@ -459,7 +464,7 @@
 
             <!-- DEPARTAMENTO (solo para San Luis) -->
             <select id="departamento" disabled required>
-                <option value="">Primero seleccioná una provincia</option>
+                <option value="">Seleccionar...</option>
             </select>
 
             <!-- LOCALIDAD (solo para San Luis) -->
@@ -469,7 +474,7 @@
                 </select>
             </div>
 
-            <!-- INFO DE PARTIDOS (solo para San Luis) -->
+            <!-- INFO DE LOCALIDADES (solo para San Luis) -->
             <div id="seccionInfo" class="seccion-info">
                 <h4>📍 Localidades disponibles en esta zona:</h4>
                 <div id="partidosList"></div>
@@ -560,9 +565,6 @@
             // Si es San Luis, también verificar departamento y localidad
             if (provincia === 'san_luis') {
                 camposCompletos = camposCompletos && departamento && localidad && localidad.value;
-            } else {
-                // Para otras provincias, no necesitamos departamento
-                camposCompletos = camposCompletos && true;
             }
 
             btn.disabled = !camposCompletos;
@@ -580,12 +582,14 @@
             // Resetear
             departamentoSelect.innerHTML = '<option value="">Seleccionar...</option>';
             departamentoSelect.disabled = true;
+            departamentoSelect.style.display = 'block';
             localidadGroup.style.display = 'none';
             seccionInfo.style.display = 'none';
 
             // Si es San Luis, mostrar departamentos y localidades
             if (provinciaId === 'san_luis' && ubicaciones[provinciaId]) {
                 departamentoSelect.disabled = false;
+                departamentoSelect.style.display = 'block';
                 ubicaciones[provinciaId].departamentos.forEach(depto => {
                     const option = document.createElement('option');
                     option.value = depto;
@@ -594,9 +598,10 @@
                 });
                 localidadGroup.style.display = 'block';
             } else if (provinciaId) {
-                // Para otras provincias, solo mostramos el nombre
-                departamentoSelect.innerHTML = '<option value="">Provincia seleccionada</option>';
+                // Para otras provincias, ocultamos el selector de departamento
+                departamentoSelect.innerHTML = '<option value="">--</option>';
                 departamentoSelect.disabled = true;
+                departamentoSelect.style.display = 'none';
             }
 
             verificarCampos();
