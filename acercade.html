@@ -120,21 +120,18 @@
             gap: 12px;
         }
 
-        .logo i {
-            font-size: 2rem;
-            color: var(--color-primario);
+        .logo-icono {
+            font-weight: 800;
+            font-size: 1.6rem;
             background: rgba(54, 117, 136, 0.08);
-            padding: 8px;
-            border-radius: 14px;
-            transition: all 0.2s ease;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            color: var(--color-primario);
+            line-height: 1;
         }
 
-        .logo:hover i {
-            background: rgba(54, 117, 136, 0.15);
-            transform: rotate(-5deg);
-        }
-
-        .logo span {
+        .logo span:last-child {
             background: linear-gradient(135deg, var(--color-primario), var(--color-primario-claro));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -299,15 +296,32 @@
             font-weight: 800;
             letter-spacing: -1.5px;
             color: #0f172a;
-            margin-bottom: 24px;
+            margin-bottom: 8px;
         }
 
-        .pagina-interna h1 i {
+        .pagina-interna .h1-icono {
+            font-weight: 800;
+            font-size: 2.2rem;
+            background: rgba(54, 117, 136, 0.08);
+            padding: 4px 14px;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
             color: var(--color-primario);
+            line-height: 1;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .pagina-interna .subtitulo-pagina {
+            font-size: 1.1rem;
+            color: #475569;
+            margin-bottom: 32px;
+            max-width: 700px;
+            line-height: 1.7;
         }
 
         .pagina-interna h2 {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--color-primario);
             margin-top: 40px;
@@ -315,12 +329,33 @@
             letter-spacing: -0.3px;
         }
 
-        .pagina-interna p {
+        .pagina-interna h3 {
             font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-primario-oscuro);
+            margin-top: 24px;
+            margin-bottom: 6px;
+        }
+
+        .pagina-interna p {
+            font-size: 1.05rem;
             color: #475569;
             line-height: 1.7;
             max-width: 700px;
             margin-bottom: 16px;
+        }
+
+        .pagina-interna ul {
+            max-width: 700px;
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+
+        .pagina-interna ul li {
+            font-size: 1.05rem;
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 8px;
         }
 
         .pagina-interna hr {
@@ -511,7 +546,7 @@
     <header role="banner">
         <div class="container header-container">
             <a href="index.html" class="logo" aria-label="Kodyan, página principal">
-                <i class="fa-solid fa-octopus-deploy" aria-hidden="true"></i>
+                <span class="logo-icono" aria-hidden="true">&lt;/&gt;</span>
                 <span>Kodyan</span>
             </a>
             <nav role="navigation" aria-label="Menú principal">
@@ -538,18 +573,31 @@
     <main id="main-content" role="main" class="pagina-interna">
         <div class="container">
 
-            <h1>Acerca de <i>Kodyan</i></h1>
+            <h1>
+                <span class="h1-icono" aria-hidden="true">&lt;/&gt;</span>
+                Acerca de <i>Kodyan</i>
+            </h1>
+            <p class="subtitulo-pagina">
+                En Kodyan, creamos soluciones tecnológicas integradas para las necesidades complejas de la vida moderna. Nuestra misión es ofrecer herramientas prácticas y accesibles que conecten el bienestar personal, la responsabilidad ambiental y la expresión creativa en un ecosistema digital en constante evolución.
+            </p>
 
-            <h2>¿Qué es Kodyan?</h2>
-            <p>Kodyan es un proyecto que nace de la necesidad de crear herramientas reales para la vida cotidiana. No somos una empresa grande, somos un equipo pequeño (a veces de una sola persona) que cree que el cuidado emocional, la conciencia ambiental y la creatividad no deberían estar separados.</p>
+            <h2>Nuestra Filosofía: Tres Pilares Fundamentales</h2>
+            <p>Todo lo que hacemos en Kodyan gira en torno a tres áreas esenciales, que consideramos clave para generar un impacto positivo y duradero:</p>
 
-            <h2>¿Por qué estos tres pilares?</h2>
-            <p>Porque la vida no es una sola cosa. A veces necesitamos ayuda para manejar una crisis (Care), otras veces queremos entender nuestro impacto en el planeta (Eco), y otras simplemente queremos crear o comprar algo hecho con cuidado (3D).</p>
+            <h3>1. Bienestar y Cuidado Personal (Care)</h3>
+            <p>Diseñamos recursos y aplicaciones basados en psicología e inteligencia emocional para brindar apoyo real en el día a día. Creemos que la tecnología debe ser una aliada de la salud mental, ofreciendo herramientas claras, efectivas y al alcance de todos.</p>
 
-            <p>Kodyan es el lugar donde esas tres cosas conviven sin venderse como una marca perfecta. Hay herramientas, hay errores, hay aprendizaje y hay mucho trabajo en proceso.</p>
+            <h3>2. Conciencia y Sostenibilidad (Eco)</h3>
+            <p>Creemos que entender nuestro impacto en el planeta es el primer paso para reducirlo. Por eso desarrollamos soluciones que ayudan a personas y organizaciones a tomar decisiones más conscientes y a construir un futuro más sostenible.</p>
 
-            <h2>¿Quién está detrás?</h2>
-            <p>Detrás de Kodyan hay un equipo humano, pequeño y comprometido, que cree que las herramientas para cuidar la mente y el planeta deberían ser accesibles y estar al alcance de todos, .</p>
+            <h3>3. Creatividad y Fabricación (3D)</h3>
+            <p>Impulsamos la creatividad a través de la fabricación digital y el diseño. Creemos en el valor de lo hecho con cuidado y en la capacidad de la tecnología para convertir ideas en realidad, uniendo el mundo digital con el físico.</p>
+
+            <h2>Nuestro Equipo</h2>
+            <p>Detrás de Kodyan hay un equipo de profesionales con perfiles diversos, unidos por una visión común: hacer que las herramientas de alto valor sean accesibles para todos. Somos un grupo comprometido, que cree en la mejora continua, la transparencia y el aprendizaje constante.</p>
+
+            <h2>Nuestro Compromiso</h2>
+            <p>En Kodyan, la innovación va acompañada de la responsabilidad. No ofrecemos productos perfectos, sino un camino de progreso y evolución constante. Invitamos a nuestros usuarios a ser parte de este viaje, donde cada herramienta es un paso hacia una vida más consciente, creativa y equilibrada.</p>
 
             <hr>
 
